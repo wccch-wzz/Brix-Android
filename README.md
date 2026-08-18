@@ -1,5 +1,6 @@
 # Brix
-
+pc版https://github.com/zhizhu0002/Brix-PC
+作者并非本人，如有侵权提issue删除。
 一个基于 WebView 的 Minecraft（我的世界）启动器 / 模组管理器，适用于 Android。
 
 ## 简介
