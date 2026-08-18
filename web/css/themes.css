@@ -1,0 +1,263 @@
+﻿/**
+ * Brix - Minecraft Launcher
+ * Copyright (c) 2026 YMA. All Rights Reserved.
+ *
+ * AI TRAINING PROHIBITED: This code is protected by copyright law.
+ * Unauthorized use for AI model training, machine learning datasets,
+ * or any form of artificial intelligence training is strictly prohibited.
+ *
+ * This software is proprietary and confidential.
+ * Any unauthorized reproduction or distribution is prohibited.
+ */
+
+/**
+ * Brix - 深绿色主题色方案 (Deep Emerald Theme)
+ * ============================================================================
+ * 通过 data-theme 属性切换不同主题色方案
+ *
+ * 可用主题:
+ * - dark   (默认) - 深绿暗夜主题
+ * - light          - 翠绿清新主题
+ */
+
+/* ============================================================================
+ * 深绿色暗色主题 - Deep Emerald Night
+ * ============================================================================ */
+[data-theme="dark"] {
+    /* 背景系统 - 深绿暗夜 */
+    --bg-primary: #030a07;
+    --bg-secondary: #071a12;
+    --bg-tertiary: #0d2818;
+    --bg-card: #0a1f14;
+    --bg-hover: #122e1e;
+    --bg-active: #1a3d28;
+    --text-primary: #e8f5e9;
+    --text-secondary: #a5d6a7;
+    --text-muted: #6b9b7a;
+    --accent: #e8f5e9;
+    --accent-hover: #c8e6c9;
+    --accent-glow: rgba(16, 185, 129, 0.2);
+    --accent-text: #030a07;
+
+    /* 深绿色主色调 - Emerald 色系 */
+    --accent-color: #10b981;
+    --accent-color-light: #34d399;
+    --accent-color-dark: #059669;
+    --accent-color-darker: #047857;
+    --accent-color-deeper: #064e3b;
+    --accent-orange: #f59e0b;
+    --accent-yellow: #fbbf24;
+
+    /* 柔光玻璃 深色液态玻璃 - 深绿 tint */
+    --bg-glass: rgba(8, 26, 16, 0.82);
+    --bg-card-glass: rgba(10, 31, 20, 0.78);
+    --bg-sidebar-glass: rgba(4, 18, 10, 0.88);
+    --bg-titlebar-glass: rgba(4, 18, 10, 0.85);
+    --bg-panel-glass: rgba(8, 26, 16, 0.75);
+
+    --soft-blur: 28px;
+    --soft-blur-light: 18px;
+    --soft-blur-heavy: 36px;
+    --soft-saturate: 1.5;
+    --soft-brightness: 0.92;
+    --soft-border: rgba(16, 185, 129, 0.15);
+    --soft-border-light: rgba(52, 211, 153, 0.25);
+    --soft-border-dark: rgba(4, 78, 59, 0.2);
+
+    /* 柔光玻璃 深色多层投影 - 绿色光晕 */
+    --soft-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.3),
+        0 4px 16px rgba(0, 0, 0, 0.35),
+        0 12px 32px rgba(0, 0, 0, 0.4);
+    --soft-shadow-lg:
+        0 2px 4px rgba(0, 0, 0, 0.35),
+        0 8px 24px rgba(0, 0, 0, 0.4),
+        0 20px 56px rgba(0, 0, 0, 0.45);
+    --soft-shadow-hover:
+        0 2px 6px rgba(0, 0, 0, 0.35),
+        0 12px 32px rgba(0, 0, 0, 0.45),
+        0 24px 64px rgba(0, 0, 0, 0.5);
+    --soft-shadow-inset:
+        inset 0 1px 1px rgba(16, 185, 129, 0.08),
+        inset 0 -1px 1px rgba(0, 0, 0, 0.3);
+
+    --accent-rgb: 16, 185, 129;
+    --green: #10b981;
+    --green-glow: rgba(16, 185, 129, 0.4);
+    --red: #ef4444;
+    --red-glow: rgba(239, 68, 68, 0.3);
+    --orange: #f97316;
+    --yellow: #eab308;
+    --border: rgba(16, 185, 129, 0.12);
+    --border-glass: rgba(16, 185, 129, 0.18);
+    --hover-overlay: rgba(16, 185, 129, 0.08);
+    --dot-border: rgba(16, 185, 129, 0.2);
+    --splash-bg-start: #030a07;
+    --splash-bg-end: #010805;
+    --launch-bg: #030a07;
+    --launch-track-bg: rgba(16, 185, 129, 0.15);
+    --launch-progress-bg: #10b981;
+    --launch-status-color: rgba(165, 214, 167, 0.6);
+    --launch-error-bg: rgba(239, 68, 68, 0.12);
+    --launch-error-border: rgba(239, 68, 68, 0.25);
+    --launch-error-msg-color: rgba(248, 113, 113, 0.8);
+    --launch-repair-bg: rgba(16, 185, 129, 0.1);
+    --launch-repair-border: rgba(16, 185, 129, 0.25);
+    --launch-repair-color: rgba(165, 214, 167, 0.85);
+    --hero-gradient-start: #064e3b;
+    --hero-gradient-end: #022c22;
+    --accent-blue: #10b981;
+
+    /* 柔光玻璃 圆角 */
+    --radius: 14px;
+    --radius-sm: 10px;
+    --radius-md: 16px;
+    --radius-lg: 22px;
+    --radius-xl: 30px;
+
+    --sidebar-width: 88px;
+    --titlebar-height: 44px;
+    --launchbar-height: 60px;
+
+    /* 流畅过渡 */
+    --transition: 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --ios-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --ios-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --sidebar-bg-solid: rgba(4, 18, 10, 0.96);
+
+    /* 新增：绿色系统色阶 */
+    --green-50: #ecfdf5;
+    --green-100: #d1fae5;
+    --green-200: #a7f3d0;
+    --green-300: #6ee7b7;
+    --green-400: #34d399;
+    --green-500: #10b981;
+    --green-600: #059669;
+    --green-700: #047857;
+    --green-800: #065f46;
+    --green-900: #064e3b;
+    --green-950: #022c22;
+}
+
+/* ============================================================================
+ * 翠绿色亮色主题 - Fresh Emerald Light
+ * ============================================================================ */
+[data-theme="light"] {
+    /* 背景系统 - 翠绿清新 */
+    --bg-primary: #f0fdf4;
+    --bg-secondary: #dcfce7;
+    --bg-tertiary: #bbf7d0;
+    --bg-card: #f0fdf4;
+    --bg-hover: #dcfce7;
+    --bg-active: #bbf7d0;
+    --text-primary: #052e16;
+    --text-secondary: #14532d;
+    --text-muted: #4ade80;
+    --accent: #052e16;
+    --accent-hover: #14532d;
+    --accent-glow: rgba(5, 150, 105, 0.15);
+    --accent-text: #ffffff;
+
+    /* 翠绿色主色调 */
+    --accent-color: #059669;
+    --accent-color-light: #10b981;
+    --accent-color-dark: #047857;
+    --accent-color-darker: #065f46;
+    --accent-color-deeper: #064e3b;
+    --accent-orange: #f97316;
+    --accent-yellow: #eab308;
+
+    /* 柔光玻璃 浅色液态玻璃 - 翠绿 tint */
+    --bg-glass: rgba(240, 253, 244, 0.88);
+    --bg-card-glass: rgba(220, 252, 231, 0.85);
+    --bg-sidebar-glass: rgba(240, 253, 244, 0.92);
+    --bg-titlebar-glass: rgba(240, 253, 244, 0.90);
+    --bg-panel-glass: rgba(220, 252, 231, 0.80);
+
+    --soft-blur: 24px;
+    --soft-blur-light: 16px;
+    --soft-blur-heavy: 32px;
+    --soft-saturate: 1.6;
+    --soft-brightness: 1.06;
+    --soft-border: rgba(5, 150, 105, 0.25);
+    --soft-border-light: rgba(52, 211, 153, 0.4);
+    --soft-border-dark: rgba(4, 120, 87, 0.15);
+
+    /* 柔光玻璃 浅色多层投影 - 绿色光晕 */
+    --soft-shadow:
+        0 1px 2px rgba(5, 150, 105, 0.05),
+        0 4px 12px rgba(5, 150, 105, 0.08),
+        0 12px 32px rgba(5, 150, 105, 0.06);
+    --soft-shadow-lg:
+        0 2px 4px rgba(5, 150, 105, 0.06),
+        0 8px 24px rgba(5, 150, 105, 0.1),
+        0 20px 56px rgba(5, 150, 105, 0.08);
+    --soft-shadow-hover:
+        0 2px 6px rgba(5, 150, 105, 0.08),
+        0 12px 32px rgba(5, 150, 105, 0.12),
+        0 24px 64px rgba(5, 150, 105, 0.1);
+    --soft-shadow-inset:
+        inset 0 1px 1px rgba(255, 255, 255, 0.7),
+        inset 0 -1px 1px rgba(5, 150, 105, 0.03);
+
+    --accent-rgb: 5, 150, 105;
+    --green: #059669;
+    --green-glow: rgba(5, 150, 105, 0.25);
+    --red: #dc2626;
+    --red-glow: rgba(220, 38, 38, 0.2);
+    --orange: #f97316;
+    --yellow: #eab308;
+    --border: rgba(5, 150, 105, 0.2);
+    --border-glass: rgba(5, 150, 105, 0.3);
+    --hover-overlay: rgba(5, 150, 105, 0.08);
+    --dot-border: rgba(5, 150, 105, 0.25);
+    --splash-bg-start: #f0fdf4;
+    --splash-bg-end: #dcfce7;
+    --launch-bg: #f0fdf4;
+    --launch-track-bg: #bbf7d0;
+    --launch-progress-bg: #059669;
+    --launch-status-color: #6ee7b7;
+    --launch-error-bg: #fef2f2;
+    --launch-error-border: #fecaca;
+    --launch-error-msg-color: #475569;
+    --launch-repair-bg: #ecfdf5;
+    --launch-repair-border: #a7f3d0;
+    --launch-repair-color: #065f46;
+    --hero-gradient-start: #065f46;
+    --hero-gradient-end: #047857;
+    --accent-blue: #059669;
+
+    /* 柔光玻璃 圆角 */
+    --radius: 14px;
+    --radius-sm: 10px;
+    --radius-md: 16px;
+    --radius-lg: 22px;
+    --radius-xl: 30px;
+
+    --sidebar-width: 88px;
+    --titlebar-height: 44px;
+    --launchbar-height: 60px;
+
+    /* 流畅过渡 */
+    --transition: 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --ios-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --ios-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --sidebar-bg-solid: rgba(220, 252, 231, 0.96);
+
+    /* 新增：绿色系统色阶 */
+    --green-50: #ecfdf5;
+    --green-100: #d1fae5;
+    --green-200: #a7f3d0;
+    --green-300: #6ee7b7;
+    --green-400: #34d399;
+    --green-500: #10b981;
+    --green-600: #059669;
+    --green-700: #047857;
+    --green-800: #065f46;
+    --green-900: #064e3b;
+    --green-950: #022c22;
+}
