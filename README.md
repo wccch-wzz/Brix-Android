@@ -1,4 +1,7 @@
 # Brix
+
+> 💻 **PC 版（Windows）配套仓库：[wswangzai/Brix-PC](https://github.com/wswangzai/Brix-PC)**
+> 本仓库为 **Brix 手机版（主项目）**；PC 版与关联项目见上方链接。
 pc版https://github.com/zhizhu0002/Brix-PC
 作者并非本人，如有侵权提issue删除。
 一个基于 WebView 的 Minecraft（我的世界）启动器 / 模组管理器，适用于 Android。
