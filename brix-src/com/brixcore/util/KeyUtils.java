@@ -1,0 +1,29 @@
+package com.brixcore.util;
+
+import java.security.GeneralSecurityException;
+import java.security.KeyPair;
+import java.security.KeyPairGenerator;
+import java.security.PublicKey;
+import java.security.SecureRandom;
+import java.util.Base64;
+
+/* JADX INFO: loaded from: classes11.dex */
+public final class KeyUtils {
+    private KeyUtils() {
+    }
+
+    public static KeyPair generateKey() {
+        try {
+            KeyPairGenerator gen = KeyPairGenerator.getInstance("RSA");
+            gen.initialize(4096, new SecureRandom());
+            return gen.genKeyPair();
+        } catch (GeneralSecurityException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static String toPEMPublicKey(PublicKey key) {
+        byte[] encoded = key.getEncoded();
+        return "-----BEGIN PUBLIC KEY-----\n" + Base64.getMimeEncoder(76, new byte[]{10}).encodeToString(encoded) + "\n-----END PUBLIC KEY-----\n";
+    }
+}
