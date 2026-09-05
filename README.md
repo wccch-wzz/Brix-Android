@@ -1,6 +1,6 @@
 # Brix
 
-> 💻 **PC 版（Windows）配套仓库：[wswangzai/Brix-PC](https://github.com/wswangzai/Brix-PC)**
+> 💻 **PC 版（Windows）配套仓库：[wccch-wzz/Brix-PC](https://github.com/wccch-wzz/Brix-PC)**
 > 本仓库为 **Brix 手机版（主项目）**；PC 版与关联项目见上方链接。
 pc版https://github.com/zhizhu0002/Brix-PC
 作者并非本人，如有侵权提issue删除。
