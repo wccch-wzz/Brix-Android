@@ -12,6 +12,7 @@ import android.util.Property;
 import androidx.collection.SimpleArrayMap;
 import java.util.ArrayList;
 import java.util.List;
+import org.lwjgl.system.macosx.ObjCRuntime;
 
 /* JADX INFO: loaded from: classes.dex */
 public class MotionSpec {
@@ -66,7 +67,7 @@ public class MotionSpec {
 
     public long getTotalDuration() {
         long duration = 0;
-        int count = this.timings.size();
+        int count = this.timings.getSize();
         for (int i = 0; i < count; i++) {
             MotionTiming timing = this.timings.valueAt(i);
             duration = Math.max(duration, timing.getDelay() + timing.getDuration());
@@ -136,6 +137,6 @@ public class MotionSpec {
     }
 
     public String toString() {
-        return '\n' + getClass().getName() + '{' + Integer.toHexString(System.identityHashCode(this)) + " timings: " + this.timings + "}\n";
+        return '\n' + getClass().getName() + ObjCRuntime._C_STRUCT_B + Integer.toHexString(System.identityHashCode(this)) + " timings: " + this.timings + "}\n";
     }
 }
