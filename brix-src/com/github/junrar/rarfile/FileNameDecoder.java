@@ -1,11 +1,9 @@
 package com.github.junrar.rarfile;
 
-import kotlin.UByte;
-
 /* JADX INFO: loaded from: classes.dex */
 public class FileNameDecoder {
     public static int getChar(byte[] name, int pos) {
-        return name[pos] & UByte.MAX_VALUE;
+        return name[pos] & 255;
     }
 
     public static String decode(byte[] name, int encPos) {
