@@ -26,7 +26,7 @@ import java.util.Random;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-/* JADX INFO: loaded from: classes18.dex */
+/* JADX INFO: loaded from: classes19.dex */
 public class ChatActivity extends AppCompatActivity {
     private static final int MSG_LIMIT = 50;
     private static final int MSG_OFFSET_STEP = 50;
@@ -152,7 +152,7 @@ public class ChatActivity extends AppCompatActivity {
                 }
             });
         } catch (Exception e) {
-            Log.e(TAG, "加载消息失败: " + e.getMessage());
+            Log.e(TAG, "加载消息失败");
             runOnUiThread(new Runnable() { // from class: com.brix.brixlauncher.ChatActivity$$ExternalSyntheticLambda3
                 @Override // java.lang.Runnable
                 public final void run() {
@@ -206,7 +206,7 @@ public class ChatActivity extends AppCompatActivity {
                 }
             });
         } catch (Exception e) {
-            Log.e(TAG, "加载更多失败: " + e.getMessage());
+            Log.e(TAG, "加载更多失败");
             this.loadingMore = false;
         }
     }
@@ -242,7 +242,7 @@ public class ChatActivity extends AppCompatActivity {
                 }
             });
         } catch (Exception e) {
-            Log.e(TAG, "发送消息失败: " + e.getMessage());
+            Log.e(TAG, "发送消息失败");
             runOnUiThread(new Runnable() { // from class: com.brix.brixlauncher.ChatActivity$$ExternalSyntheticLambda9
                 @Override // java.lang.Runnable
                 public final void run() {
@@ -272,7 +272,7 @@ public class ChatActivity extends AppCompatActivity {
             try {
                 decrypted = MessageCrypt.decrypt(rawContent);
             } catch (Exception e) {
-                Log.w(TAG, "解密失败，显示原始内容: " + e.getMessage());
+                Log.w(TAG, "解密失败，显示原始内容");
                 decrypted = rawContent;
             }
         }
