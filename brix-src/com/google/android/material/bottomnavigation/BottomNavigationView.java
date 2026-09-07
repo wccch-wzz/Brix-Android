@@ -5,7 +5,6 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
 import androidx.appcompat.widget.TintTypedArray;
-import androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -79,7 +78,7 @@ public class BottomNavigationView extends NavigationBarView {
     private int makeMinHeightSpec(int measureSpec) {
         int minHeight = getSuggestedMinimumHeight();
         if (View.MeasureSpec.getMode(measureSpec) != 1073741824 && minHeight > 0) {
-            return View.MeasureSpec.makeMeasureSpec(Math.min(View.MeasureSpec.getSize(measureSpec), minHeight + getPaddingTop() + getPaddingBottom()), BasicMeasure.EXACTLY);
+            return View.MeasureSpec.makeMeasureSpec(Math.min(View.MeasureSpec.getSize(measureSpec), minHeight + getPaddingTop() + getPaddingBottom()), 1073741824);
         }
         return measureSpec;
     }
