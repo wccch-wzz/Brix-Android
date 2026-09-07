@@ -27,7 +27,6 @@ import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 import androidx.appcompat.widget.AppCompatCheckBox;
-import androidx.core.view.PointerIconCompat;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
 import androidx.customview.widget.ExploreByTouchHelper;
@@ -134,13 +133,13 @@ public class Chip extends AppCompatCheckBox implements ChipDrawable.Delegate, Sh
         super.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() { // from class: com.google.android.material.chip.Chip$$ExternalSyntheticLambda0
             @Override // android.widget.CompoundButton.OnCheckedChangeListener
             public final void onCheckedChanged(CompoundButton compoundButton, boolean z) {
-                this.f$0.m368lambda$new$0$comgoogleandroidmaterialchipChip(compoundButton, z);
+                this.f$0.m436lambda$new$0$comgoogleandroidmaterialchipChip(compoundButton, z);
             }
         });
     }
 
     /* JADX INFO: renamed from: lambda$new$0$com-google-android-material-chip-Chip, reason: not valid java name */
-    /* synthetic */ void m368lambda$new$0$comgoogleandroidmaterialchipChip(CompoundButton buttonView, boolean isChecked) {
+    /* synthetic */ void m436lambda$new$0$comgoogleandroidmaterialchipChip(CompoundButton buttonView, boolean isChecked) {
         if (this.onCheckedChangeListenerInternal != null) {
             this.onCheckedChangeListenerInternal.onCheckedChanged(this, isChecked);
         }
@@ -720,7 +719,7 @@ public class Chip extends AppCompatCheckBox implements ChipDrawable.Delegate, Sh
     @Override // android.widget.Button, android.widget.TextView, android.view.View
     public PointerIcon onResolvePointerIcon(MotionEvent event, int pointerIndex) {
         if (getCloseIconTouchBounds().contains(event.getX(), event.getY()) && isEnabled()) {
-            return PointerIcon.getSystemIcon(getContext(), PointerIconCompat.TYPE_HAND);
+            return PointerIcon.getSystemIcon(getContext(), 1002);
         }
         return super.onResolvePointerIcon(event, pointerIndex);
     }
