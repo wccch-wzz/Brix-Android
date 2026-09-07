@@ -21,7 +21,6 @@ import android.view.ViewTreeObserver;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.TextView;
 import androidx.appcompat.content.res.AppCompatResources;
-import androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure;
 import androidx.core.view.AccessibilityDelegateCompat;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
@@ -257,7 +256,7 @@ class ClockFaceView extends RadialViewGroup implements ClockHandView.OnRotateLis
         float height = displayMetrics.heightPixels;
         float width = displayMetrics.widthPixels;
         int size = (int) (this.clockSize / max3(this.minimumHeight / height, this.minimumWidth / width, 1.0f));
-        int spec = View.MeasureSpec.makeMeasureSpec(size, BasicMeasure.EXACTLY);
+        int spec = View.MeasureSpec.makeMeasureSpec(size, 1073741824);
         setMeasuredDimension(size, size);
         super.onMeasure(spec, spec);
     }
