@@ -1,6 +1,5 @@
 package com.brixcore.task;
 
-import androidx.core.app.NotificationCompat;
 import com.brixcore.event.EventManager;
 import com.brixcore.fakefx.beans.property.ReadOnlyDoubleProperty;
 import com.brixcore.fakefx.beans.property.ReadOnlyDoubleWrapper;
@@ -51,7 +50,7 @@ public abstract class Task<T> {
     private boolean dependenciesSucceeded = false;
     private String name = getClass().getName();
     private long lastTime = Long.MIN_VALUE;
-    private final ReadOnlyDoubleWrapper progress = new ReadOnlyDoubleWrapper(this, NotificationCompat.CATEGORY_PROGRESS, -1.0d);
+    private final ReadOnlyDoubleWrapper progress = new ReadOnlyDoubleWrapper(this, "progress", -1.0d);
 
     public interface FinalizedCallback {
         void execute(Exception exc) throws Exception;
