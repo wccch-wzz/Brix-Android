@@ -68,7 +68,7 @@ public class StringTag extends Tag {
 
     @Override // com.github.steveice10.opennbt.tag.builtin.Tag
     /* JADX INFO: renamed from: clone */
-    public StringTag mo360clone() {
+    public StringTag mo428clone() {
         return new StringTag(getName(), getValue());
     }
 }
