@@ -80,8 +80,8 @@ class MaterialCardViewHelper {
         this.foregroundContentDrawable = new MaterialShapeDrawable();
         setShapeAppearanceModel(shapeAppearanceModelBuilder.build());
         this.iconFadeAnimInterpolator = MotionUtils.resolveThemeInterpolator(this.materialCardView.getContext(), R.attr.motionEasingLinearInterpolator, AnimationUtils.LINEAR_INTERPOLATOR);
-        this.iconFadeInAnimDuration = MotionUtils.resolveThemeDuration(this.materialCardView.getContext(), R.attr.motionDurationShort2, DEFAULT_FADE_ANIM_DURATION);
-        this.iconFadeOutAnimDuration = MotionUtils.resolveThemeDuration(this.materialCardView.getContext(), R.attr.motionDurationShort1, DEFAULT_FADE_ANIM_DURATION);
+        this.iconFadeInAnimDuration = MotionUtils.resolveThemeDuration(this.materialCardView.getContext(), R.attr.motionDurationShort2, 300);
+        this.iconFadeOutAnimDuration = MotionUtils.resolveThemeDuration(this.materialCardView.getContext(), R.attr.motionDurationShort1, 300);
         cardViewAttributes.recycle();
     }
 
@@ -200,7 +200,7 @@ class MaterialCardViewHelper {
         this.iconAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() { // from class: com.google.android.material.card.MaterialCardViewHelper$$ExternalSyntheticLambda0
             @Override // android.animation.ValueAnimator.AnimatorUpdateListener
             public final void onAnimationUpdate(ValueAnimator valueAnimator) {
-                this.f$0.m364xa4d79c2b(valueAnimator);
+                this.f$0.m432xa4d79c2b(valueAnimator);
             }
         });
         this.iconAnimator.setInterpolator(this.iconFadeAnimInterpolator);
@@ -215,7 +215,7 @@ class MaterialCardViewHelper {
     }
 
     /* JADX INFO: renamed from: lambda$animateCheckedIcon$0$com-google-android-material-card-MaterialCardViewHelper, reason: not valid java name */
-    /* synthetic */ void m364xa4d79c2b(ValueAnimator animation) {
+    /* synthetic */ void m432xa4d79c2b(ValueAnimator animation) {
         float progress = ((Float) animation.getAnimatedValue()).floatValue();
         int alpha = (int) (255.0f * progress);
         this.checkedIcon.setAlpha(alpha);
