@@ -12,7 +12,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.appcompat.widget.Toolbar;
-import androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure;
 import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.core.view.ViewCompat;
 import com.google.android.material.R;
@@ -128,7 +127,7 @@ public class MaterialToolbar extends Toolbar {
         if (overlap > 0) {
             titleLeft += overlap;
             titleRight -= overlap;
-            titleView.measure(View.MeasureSpec.makeMeasureSpec(titleRight - titleLeft, BasicMeasure.EXACTLY), titleView.getMeasuredHeightAndState());
+            titleView.measure(View.MeasureSpec.makeMeasureSpec(titleRight - titleLeft, 1073741824), titleView.getMeasuredHeightAndState());
         }
         titleView.layout(titleLeft, titleView.getTop(), titleRight, titleView.getBottom());
     }
