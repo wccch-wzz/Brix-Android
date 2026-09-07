@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import kotlin.text.Typography;
+import org.lwjgl.system.macosx.ObjCRuntime;
 
 /* JADX INFO: loaded from: classes.dex */
 public class CompoundTag extends Tag implements Iterable<Tag> {
@@ -117,7 +118,7 @@ public class CompoundTag extends Tag implements Iterable<Tag> {
                 tagName = in.readUntil(false, Typography.quote);
                 in.read();
             }
-            String tagName2 = tagName + in.readUntil(false, ':');
+            String tagName2 = tagName + in.readUntil(false, ObjCRuntime._C_SEL);
             in.read();
             put(in.readNextTag(tagName2));
             char endChar = in.readSkipWhitespace();
@@ -129,7 +130,7 @@ public class CompoundTag extends Tag implements Iterable<Tag> {
 
     @Override // com.github.steveice10.opennbt.tag.builtin.Tag
     public void stringify(SNBTIO.StringifiedNBTWriter out, boolean linebreak, int depth) throws IOException {
-        out.append('{');
+        out.append(ObjCRuntime._C_STRUCT_B);
         boolean first = true;
         for (Tag t : this.value.values()) {
             if (first) {
@@ -146,15 +147,15 @@ public class CompoundTag extends Tag implements Iterable<Tag> {
             out.append('\n');
             out.indent(depth);
         }
-        out.append('}');
+        out.append(ObjCRuntime._C_STRUCT_E);
     }
 
     @Override // com.github.steveice10.opennbt.tag.builtin.Tag
     /* JADX INFO: renamed from: clone */
-    public CompoundTag mo360clone() {
+    public CompoundTag mo428clone() {
         Map<String, Tag> newMap = new LinkedHashMap<>();
         for (Map.Entry<String, Tag> entry : this.value.entrySet()) {
-            newMap.put(entry.getKey(), entry.getValue().mo360clone());
+            newMap.put(entry.getKey(), entry.getValue().mo428clone());
         }
         return new CompoundTag(getName(), newMap);
     }
