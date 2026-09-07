@@ -30,7 +30,6 @@ import android.view.ViewTreeObserver;
 import android.view.WindowInsets;
 import android.view.accessibility.AccessibilityManager;
 import android.widget.FrameLayout;
-import androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.core.view.AccessibilityDelegateCompat;
@@ -241,8 +240,8 @@ public abstract class BaseTransientBottomBar<B extends BaseTransientBottomBar<B>
         });
         this.accessibilityManager = (AccessibilityManager) context.getSystemService("accessibility");
         this.animationSlideDuration = MotionUtils.resolveThemeDuration(context, R.attr.motionDurationLong2, 250);
-        this.animationFadeInDuration = MotionUtils.resolveThemeDuration(context, R.attr.motionDurationLong2, DEFAULT_ANIMATION_FADE_IN_DURATION);
-        this.animationFadeOutDuration = MotionUtils.resolveThemeDuration(context, R.attr.motionDurationMedium1, DEFAULT_ANIMATION_FADE_OUT_DURATION);
+        this.animationFadeInDuration = MotionUtils.resolveThemeDuration(context, R.attr.motionDurationLong2, 150);
+        this.animationFadeOutDuration = MotionUtils.resolveThemeDuration(context, R.attr.motionDurationMedium1, 75);
         this.animationFadeInterpolator = MotionUtils.resolveThemeInterpolator(context, R.attr.motionEasingEmphasizedInterpolator, DEFAULT_ANIMATION_FADE_INTERPOLATOR);
         this.animationScaleInterpolator = MotionUtils.resolveThemeInterpolator(context, R.attr.motionEasingEmphasizedInterpolator, DEFAULT_ANIMATION_SCALE_INTERPOLATOR);
         this.animationSlideInterpolator = MotionUtils.resolveThemeInterpolator(context, R.attr.motionEasingEmphasizedInterpolator, DEFAULT_ANIMATION_SLIDE_INTERPOLATOR);
@@ -838,7 +837,7 @@ public abstract class BaseTransientBottomBar<B extends BaseTransientBottomBar<B>
         protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
             super.onMeasure(widthMeasureSpec, heightMeasureSpec);
             if (this.maxWidth > 0 && getMeasuredWidth() > this.maxWidth) {
-                int widthMeasureSpec2 = View.MeasureSpec.makeMeasureSpec(this.maxWidth, BasicMeasure.EXACTLY);
+                int widthMeasureSpec2 = View.MeasureSpec.makeMeasureSpec(this.maxWidth, 1073741824);
                 super.onMeasure(widthMeasureSpec2, heightMeasureSpec);
             }
         }
