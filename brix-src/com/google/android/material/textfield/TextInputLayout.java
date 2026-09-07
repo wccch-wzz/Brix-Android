@@ -375,14 +375,14 @@ public class TextInputLayout extends LinearLayout implements ViewTreeObserver.On
             this.editText.post(new Runnable() { // from class: com.google.android.material.textfield.TextInputLayout$$ExternalSyntheticLambda0
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.m449xa47602b9();
+                    this.f$0.m517xa47602b9();
                 }
             });
         }
     }
 
     /* JADX INFO: renamed from: lambda$onGlobalLayout$1$com-google-android-material-textfield-TextInputLayout, reason: not valid java name */
-    /* synthetic */ void m449xa47602b9() {
+    /* synthetic */ void m517xa47602b9() {
         this.editText.requestLayout();
     }
 
@@ -1359,7 +1359,7 @@ public class TextInputLayout extends LinearLayout implements ViewTreeObserver.On
 
     private Fade createPlaceholderFadeTransition() {
         Fade placeholderFadeTransition = new Fade();
-        placeholderFadeTransition.setDuration(MotionUtils.resolveThemeDuration(getContext(), R.attr.motionDurationShort2, DEFAULT_PLACEHOLDER_FADE_DURATION));
+        placeholderFadeTransition.setDuration(MotionUtils.resolveThemeDuration(getContext(), R.attr.motionDurationShort2, 87));
         placeholderFadeTransition.setInterpolator(MotionUtils.resolveThemeInterpolator(getContext(), R.attr.motionEasingLinearInterpolator, AnimationUtils.LINEAR_INTERPOLATOR));
         return placeholderFadeTransition;
     }
@@ -2495,7 +2495,7 @@ public class TextInputLayout extends LinearLayout implements ViewTreeObserver.On
         if (this.animator == null) {
             this.animator = new ValueAnimator();
             this.animator.setInterpolator(MotionUtils.resolveThemeInterpolator(getContext(), R.attr.motionEasingEmphasizedInterpolator, AnimationUtils.FAST_OUT_SLOW_IN_INTERPOLATOR));
-            this.animator.setDuration(MotionUtils.resolveThemeDuration(getContext(), R.attr.motionDurationMedium4, LABEL_SCALE_ANIMATION_DURATION));
+            this.animator.setDuration(MotionUtils.resolveThemeDuration(getContext(), R.attr.motionDurationMedium4, 167));
             this.animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() { // from class: com.google.android.material.textfield.TextInputLayout.3
                 @Override // android.animation.ValueAnimator.AnimatorUpdateListener
                 public void onAnimationUpdate(ValueAnimator animator) {
