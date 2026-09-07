@@ -1,7 +1,6 @@
 package com.github.junrar.rarfile;
 
 import com.github.junrar.io.Raw;
-import kotlin.UByte;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,9 +17,9 @@ public class EAHeader extends SubBlockHeader {
         super(sb);
         this.unpSize = Raw.readIntLittleEndian(eahead, 0);
         int pos = 0 + 4;
-        this.unpVer = (byte) (this.unpVer | (eahead[pos] & UByte.MAX_VALUE));
+        this.unpVer = (byte) (this.unpVer | (eahead[pos] & 255));
         int pos2 = pos + 1;
-        this.method = (byte) (this.method | (eahead[pos2] & UByte.MAX_VALUE));
+        this.method = (byte) (this.method | (eahead[pos2] & 255));
         this.EACRC = Raw.readIntLittleEndian(eahead, pos2 + 1);
     }
 
