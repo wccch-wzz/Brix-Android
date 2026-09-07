@@ -6,6 +6,7 @@ import androidx.core.content.ContextCompat;
 import androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
 import com.google.android.material.R;
 import org.apache.commons.compress.archivers.tar.TarConstants;
+import org.lwjgl.util.spvc.Spv;
 
 /* JADX INFO: loaded from: classes.dex */
 class TimePickerClockPresenter implements ClockHandView.OnRotateListener, TimePickerView.OnSelectionChange, TimePickerView.OnPeriodChangeListener, ClockHandView.OnActionUpListener, TimePickerPresenter {
@@ -179,6 +180,6 @@ class TimePickerClockPresenter implements ClockHandView.OnRotateListener, TimePi
     }
 
     private int getHourRotation() {
-        return (this.time.getHourForDisplay() * 30) % 360;
+        return (this.time.getHourForDisplay() * 30) % Spv.SpvOpGroupNonUniformBitwiseOr;
     }
 }
