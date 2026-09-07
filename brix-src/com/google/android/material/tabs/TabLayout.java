@@ -31,7 +31,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.appcompat.widget.TooltipCompat;
-import androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure;
 import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.core.util.Pools;
 import androidx.core.view.GravityCompat;
@@ -921,7 +920,7 @@ public class TabLayout extends HorizontalScrollView {
                 }
                 break;
             case 0:
-                heightMeasureSpec = View.MeasureSpec.makeMeasureSpec(getPaddingTop() + idealHeight + getPaddingBottom(), BasicMeasure.EXACTLY);
+                heightMeasureSpec = View.MeasureSpec.makeMeasureSpec(getPaddingTop() + idealHeight + getPaddingBottom(), 1073741824);
                 break;
         }
         int specWidth = View.MeasureSpec.getSize(widthMeasureSpec);
@@ -948,7 +947,7 @@ public class TabLayout extends HorizontalScrollView {
             }
             if (remeasure) {
                 int childHeightMeasureSpec = getChildMeasureSpec(heightMeasureSpec, getPaddingTop() + getPaddingBottom(), child.getLayoutParams().height);
-                int childWidthMeasureSpec = View.MeasureSpec.makeMeasureSpec(getMeasuredWidth(), BasicMeasure.EXACTLY);
+                int childWidthMeasureSpec = View.MeasureSpec.makeMeasureSpec(getMeasuredWidth(), 1073741824);
                 child.measure(childWidthMeasureSpec, childHeightMeasureSpec);
             }
         }
@@ -1345,7 +1344,7 @@ public class TabLayout extends HorizontalScrollView {
             setGravity(17);
             setOrientation(!TabLayout.this.inlineLabel ? 1 : 0);
             setClickable(true);
-            ViewCompat.setPointerIcon(this, PointerIconCompat.getSystemIcon(getContext(), PointerIconCompat.TYPE_HAND));
+            ViewCompat.setPointerIcon(this, PointerIconCompat.getSystemIcon(getContext(), 1002));
         }
 
         /* JADX INFO: Access modifiers changed from: private */
@@ -2050,10 +2049,7 @@ public class TabLayout extends HorizontalScrollView {
                 break;
             }
         }
-        if (!hasIconAndText || this.inlineLabel) {
-            return 48;
-        }
-        return DEFAULT_HEIGHT_WITH_TEXT_ICON;
+        return (!hasIconAndText || this.inlineLabel) ? 48 : 72;
     }
 
     private int getTabMinWidth() {
