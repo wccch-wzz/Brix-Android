@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import androidx.appcompat.widget.TintTypedArray;
-import androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -195,7 +194,7 @@ public class NavigationRailView extends NavigationBarView {
     private int makeMinWidthSpec(int measureSpec) {
         int minWidth = getSuggestedMinimumWidth();
         if (View.MeasureSpec.getMode(measureSpec) != 1073741824 && minWidth > 0) {
-            return View.MeasureSpec.makeMeasureSpec(Math.min(View.MeasureSpec.getSize(measureSpec), minWidth + getPaddingLeft() + getPaddingRight()), BasicMeasure.EXACTLY);
+            return View.MeasureSpec.makeMeasureSpec(Math.min(View.MeasureSpec.getSize(measureSpec), minWidth + getPaddingLeft() + getPaddingRight()), 1073741824);
         }
         return measureSpec;
     }
