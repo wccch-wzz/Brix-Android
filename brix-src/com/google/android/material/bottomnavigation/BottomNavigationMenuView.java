@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import androidx.appcompat.view.menu.MenuBuilder;
-import androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure;
 import androidx.core.view.ViewCompat;
 import com.google.android.material.R;
 import com.google.android.material.navigation.NavigationBarItemView;
@@ -44,7 +43,7 @@ public class BottomNavigationMenuView extends NavigationBarMenuView {
         int totalCount = getChildCount();
         this.tempChildWidths.clear();
         int parentHeight = View.MeasureSpec.getSize(heightMeasureSpec);
-        int heightSpec = View.MeasureSpec.makeMeasureSpec(parentHeight, BasicMeasure.EXACTLY);
+        int heightSpec = View.MeasureSpec.makeMeasureSpec(parentHeight, 1073741824);
         int i = 8;
         if (isShifting(getLabelVisibilityMode(), visibleCount) && isItemHorizontalTranslationEnabled()) {
             View activeChild = getChildAt(getSelectedItemPosition());
@@ -95,7 +94,7 @@ public class BottomNavigationMenuView extends NavigationBarMenuView {
         for (int i4 = 0; i4 < totalCount; i4++) {
             View child = getChildAt(i4);
             if (child.getVisibility() != 8) {
-                child.measure(View.MeasureSpec.makeMeasureSpec(this.tempChildWidths.get(i4).intValue(), BasicMeasure.EXACTLY), heightSpec);
+                child.measure(View.MeasureSpec.makeMeasureSpec(this.tempChildWidths.get(i4).intValue(), 1073741824), heightSpec);
                 ViewGroup.LayoutParams params = child.getLayoutParams();
                 params.width = child.getMeasuredWidth();
                 totalWidth += child.getMeasuredWidth();
