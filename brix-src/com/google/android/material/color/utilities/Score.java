@@ -6,6 +6,7 @@ import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import org.lwjgl.util.spvc.Spv;
 
 /* JADX INFO: loaded from: classes.dex */
 public final class Score {
@@ -35,7 +36,7 @@ public final class Score {
 
     public static List<Integer> score(Map<Integer, Integer> colorsToPopulation, int maxColorCount, int fallbackColorArgb, boolean filter) {
         List<Hct> colorsHct = new ArrayList<>();
-        int[] huePopulation = new int[360];
+        int[] huePopulation = new int[Spv.SpvOpGroupNonUniformBitwiseOr];
         double populationSum = 0.0d;
         for (Map.Entry<Integer, Integer> entry : colorsToPopulation.entrySet()) {
             Hct hct = Hct.fromInt(entry.getKey().intValue());
@@ -45,7 +46,7 @@ public final class Score {
             huePopulation[hue] = huePopulation[hue] + population;
             populationSum += (double) population;
         }
-        double[] hueExcitedProportions = new double[360];
+        double[] hueExcitedProportions = new double[Spv.SpvOpGroupNonUniformBitwiseOr];
         for (int hue2 = 0; hue2 < 360; hue2++) {
             double proportion = ((double) huePopulation[hue2]) / populationSum;
             for (int i = hue2 - 14; i < hue2 + 16; i++) {
