@@ -143,7 +143,7 @@ public class MaintainTask extends Task<Version> {
             return version;
         }
         if (libraryAnalyzer.has(LibraryAnalyzer.LibraryType.OPTIFINE)) {
-            final Library hmclTransformerDiscoveryService = new Library(new Artifact("org.jackhuang.hmcl", "transformer-discovery-service", "1.0"));
+            final Library transformerDiscoveryService = new Library(new Artifact("com.brix.terracotta", "transformer-discovery-service", "1.0"));
             Optional<Library> optiFine = version.getLibraries().stream().filter(new Predicate() { // from class: com.brixcore.download.MaintainTask$$ExternalSyntheticLambda3
                 @Override // java.util.function.Predicate
                 public final boolean test(Object obj) {
@@ -153,30 +153,30 @@ public class MaintainTask extends Task<Version> {
             final boolean libraryExisting = version.getLibraries().stream().anyMatch(new Predicate() { // from class: com.brixcore.download.MaintainTask$$ExternalSyntheticLambda4
                 @Override // java.util.function.Predicate
                 public final boolean test(Object obj) {
-                    return ((Library) obj).is("org.jackhuang.hmcl", "transformer-discovery-service");
+                    return ((Library) obj).is("com.brix.terracotta", "transformer-discovery-service");
                 }
             });
             optiFine.ifPresent(new Consumer() { // from class: com.brixcore.download.MaintainTask$$ExternalSyntheticLambda5
                 @Override // java.util.function.Consumer
                 public final void accept(Object obj) {
-                    MaintainTask.lambda$maintainGameWithCpwModLauncher$2(builder, libraryExisting, hmclTransformerDiscoveryService, repository, version, (Library) obj);
+                    MaintainTask.lambda$maintainGameWithCpwModLauncher$2(builder, libraryExisting, transformerDiscoveryService, repository, version, (Library) obj);
                 }
             });
         }
         return builder.build();
     }
 
-    static /* synthetic */ void lambda$maintainGameWithCpwModLauncher$2(VersionLibraryBuilder builder, boolean libraryExisting, Library hmclTransformerDiscoveryService, GameRepository repository, Version version, Library library) {
-        builder.addJvmArgument("-Dhmcl.transformer.candidates=${library_directory}/" + library.getPath());
+    static /* synthetic */ void lambda$maintainGameWithCpwModLauncher$2(VersionLibraryBuilder builder, boolean libraryExisting, Library transformerDiscoveryService, GameRepository repository, Version version, Library library) {
+        builder.addJvmArgument("-Dbrix.transformer.candidates=${library_directory}/" + library.getPath());
         if (!libraryExisting) {
-            builder.addLibrary(hmclTransformerDiscoveryService);
+            builder.addLibrary(transformerDiscoveryService);
         }
-        Path libraryPath = repository.getLibraryFile(version, hmclTransformerDiscoveryService).toPath();
+        Path libraryPath = repository.getLibraryFile(version, transformerDiscoveryService).toPath();
         try {
             InputStream input = MaintainTask.class.getResourceAsStream("/assets/game/HMCLTransformerDiscoveryService-1.0.jar");
             try {
                 Files.createDirectories(libraryPath.getParent(), new FileAttribute[0]);
-                Files.copy((InputStream) Objects.requireNonNull(input, "Bundled HMCLTransformerDiscoveryService is missing."), libraryPath, StandardCopyOption.REPLACE_EXISTING);
+                Files.copy((InputStream) Objects.requireNonNull(input, "Bundled transformer-discovery-service is missing."), libraryPath, StandardCopyOption.REPLACE_EXISTING);
                 if (input != null) {
                     input.close();
                 }
@@ -191,7 +191,7 @@ public class MaintainTask extends Task<Version> {
                 throw th;
             }
         } catch (IOException | NullPointerException e) {
-            Logging.LOG.log(Level.WARNING, "Unable to unpack HMCLTransformerDiscoveryService", (Throwable) e);
+            Logging.LOG.log(Level.WARNING, "Unable to unpack transformer-discovery-service", (Throwable) e);
         }
     }
 
