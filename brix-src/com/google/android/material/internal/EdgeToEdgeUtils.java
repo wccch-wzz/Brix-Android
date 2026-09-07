@@ -5,7 +5,6 @@ import android.content.Context;
 import android.os.Build;
 import android.view.Window;
 import androidx.core.graphics.ColorUtils;
-import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsControllerCompat;
 import com.google.android.material.color.MaterialColors;
@@ -25,7 +24,7 @@ public class EdgeToEdgeUtils {
         boolean useDefaultBackgroundColorForStatusBar = statusBarOverlapBackgroundColor == null || statusBarOverlapBackgroundColor.intValue() == 0;
         boolean useDefaultBackgroundColorForNavigationBar = navigationBarOverlapBackgroundColor == null || navigationBarOverlapBackgroundColor.intValue() == 0;
         if (useDefaultBackgroundColorForStatusBar || useDefaultBackgroundColorForNavigationBar) {
-            int defaultBackgroundColor = MaterialColors.getColor(window.getContext(), R.attr.colorBackground, ViewCompat.MEASURED_STATE_MASK);
+            int defaultBackgroundColor = MaterialColors.getColor(window.getContext(), R.attr.colorBackground, -16777216);
             if (useDefaultBackgroundColorForStatusBar) {
                 statusBarOverlapBackgroundColor = Integer.valueOf(defaultBackgroundColor);
             }
@@ -56,18 +55,18 @@ public class EdgeToEdgeUtils {
         if (isEdgeToEdgeEnabled) {
             return 0;
         }
-        return MaterialColors.getColor(context, R.attr.statusBarColor, ViewCompat.MEASURED_STATE_MASK);
+        return MaterialColors.getColor(context, R.attr.statusBarColor, -16777216);
     }
 
     private static int getNavigationBarColor(Context context, boolean isEdgeToEdgeEnabled) {
         if (isEdgeToEdgeEnabled && Build.VERSION.SDK_INT < 27) {
-            int opaqueNavBarColor = MaterialColors.getColor(context, R.attr.navigationBarColor, ViewCompat.MEASURED_STATE_MASK);
+            int opaqueNavBarColor = MaterialColors.getColor(context, R.attr.navigationBarColor, -16777216);
             return ColorUtils.setAlphaComponent(opaqueNavBarColor, 128);
         }
         if (isEdgeToEdgeEnabled) {
             return 0;
         }
-        return MaterialColors.getColor(context, R.attr.navigationBarColor, ViewCompat.MEASURED_STATE_MASK);
+        return MaterialColors.getColor(context, R.attr.navigationBarColor, -16777216);
     }
 
     private static boolean isUsingLightSystemBar(int systemBarColor, boolean isLightBackground) {
