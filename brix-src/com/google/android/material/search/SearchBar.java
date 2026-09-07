@@ -64,7 +64,7 @@ public class SearchBar extends Toolbar {
     private final AccessibilityManagerCompat.TouchExplorationStateChangeListener touchExplorationStateChangeListener;
 
     /* JADX INFO: renamed from: lambda$new$0$com-google-android-material-search-SearchBar, reason: not valid java name */
-    /* synthetic */ void m416lambda$new$0$comgoogleandroidmaterialsearchSearchBar(boolean enabled) {
+    /* synthetic */ void m484lambda$new$0$comgoogleandroidmaterialsearchSearchBar(boolean enabled) {
         setFocusableInTouchMode(enabled);
     }
 
@@ -82,7 +82,7 @@ public class SearchBar extends Toolbar {
         this.touchExplorationStateChangeListener = new AccessibilityManagerCompat.TouchExplorationStateChangeListener() { // from class: com.google.android.material.search.SearchBar$$ExternalSyntheticLambda1
             @Override // androidx.core.view.accessibility.AccessibilityManagerCompat.TouchExplorationStateChangeListener
             public final void onTouchExplorationStateChanged(boolean z) {
-                this.f$0.m416lambda$new$0$comgoogleandroidmaterialsearchSearchBar(z);
+                this.f$0.m484lambda$new$0$comgoogleandroidmaterialsearchSearchBar(z);
             }
         };
         Context context2 = getContext();
@@ -476,7 +476,7 @@ public class SearchBar extends Toolbar {
     }
 
     /* JADX INFO: renamed from: lambda$startOnLoadAnimation$1$com-google-android-material-search-SearchBar, reason: not valid java name */
-    /* synthetic */ void m417x58362b63() {
+    /* synthetic */ void m485x58362b63() {
         this.searchBarAnimationHelper.startOnLoadAnimation(this);
     }
 
@@ -484,7 +484,7 @@ public class SearchBar extends Toolbar {
         post(new Runnable() { // from class: com.google.android.material.search.SearchBar$$ExternalSyntheticLambda0
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.m417x58362b63();
+                this.f$0.m485x58362b63();
             }
         });
     }
