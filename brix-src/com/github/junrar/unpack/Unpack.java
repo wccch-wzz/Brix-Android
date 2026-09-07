@@ -13,8 +13,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Vector;
-import kotlin.UByte;
-import org.apache.commons.compress.compressors.bzip2.BZip2Constants;
+import org.lwjgl.system.macosx.ObjCRuntime;
+import org.lwjgl.util.spvc.Spv;
 
 /* JADX INFO: loaded from: classes.dex */
 public final class Unpack extends Unpack20 {
@@ -393,8 +393,9 @@ public final class Unpack extends Unpack20 {
                             }
                             int i9 = 0;
                             while (true) {
-                                c = '@';
-                                if (i9 >= NextPrg.getGlobalData().size() - 64) {
+                                int size = NextPrg.getGlobalData().size();
+                                c = ObjCRuntime._C_ID;
+                                if (i9 >= size - 64) {
                                     break;
                                 }
                                 int i10 = i9;
@@ -656,9 +657,9 @@ public final class Unpack extends Unpack20 {
         if (this.inAddr > this.readTop) {
             return false;
         }
-        makeDecodeTables(table, 0, this.LD, Compress.NC);
-        makeDecodeTables(table, Compress.NC, this.DD, 60);
-        makeDecodeTables(table, 359, this.LDD, 17);
+        makeDecodeTables(table, 0, this.LD, 299);
+        makeDecodeTables(table, 299, this.DD, 60);
+        makeDecodeTables(table, Spv.SpvOpGroupNonUniformBitwiseAnd, this.LDD, 17);
         makeDecodeTables(table, 376, this.RD, 28);
         System.arraycopy(table, 0, this.unpOldTable, 0, this.unpOldTable.length);
         return true;
@@ -760,7 +761,7 @@ public final class Unpack extends Unpack20 {
             StackFilter.setExecCount(Filter.getExecCount());
             int BlockStart = RarVM.ReadData(Inp);
             if ((firstByte & 64) != 0) {
-                BlockStart += BZip2Constants.MAX_ALPHA_SIZE;
+                BlockStart += 258;
             }
             StackFilter.setBlockStart((this.unpPtr + BlockStart) & Compress.MAXWINMASK);
             if ((firstByte & 32) != 0) {
@@ -885,7 +886,7 @@ public final class Unpack extends Unpack20 {
         byte[] bArr = this.inBuf;
         int i = this.inAddr;
         this.inAddr = i + 1;
-        return bArr[i] & UByte.MAX_VALUE;
+        return bArr[i] & 255;
     }
 
     public int getPpmEscChar() {
