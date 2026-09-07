@@ -30,7 +30,7 @@ public final class Excluder implements TypeAdapterFactory, Cloneable {
 
     /* JADX INFO: Access modifiers changed from: protected */
     /* JADX INFO: renamed from: clone, reason: merged with bridge method [inline-methods] */
-    public Excluder m454clone() {
+    public Excluder m522clone() {
         try {
             return (Excluder) super.clone();
         } catch (CloneNotSupportedException e) {
@@ -39,13 +39,13 @@ public final class Excluder implements TypeAdapterFactory, Cloneable {
     }
 
     public Excluder withVersion(double ignoreVersionsAfter) {
-        Excluder result = m454clone();
+        Excluder result = m522clone();
         result.version = ignoreVersionsAfter;
         return result;
     }
 
     public Excluder withModifiers(int... modifiers) {
-        Excluder result = m454clone();
+        Excluder result = m522clone();
         result.modifiers = 0;
         for (int modifier : modifiers) {
             result.modifiers |= modifier;
@@ -54,19 +54,19 @@ public final class Excluder implements TypeAdapterFactory, Cloneable {
     }
 
     public Excluder disableInnerClassSerialization() {
-        Excluder result = m454clone();
+        Excluder result = m522clone();
         result.serializeInnerClasses = false;
         return result;
     }
 
     public Excluder excludeFieldsWithoutExposeAnnotation() {
-        Excluder result = m454clone();
+        Excluder result = m522clone();
         result.requireExpose = true;
         return result;
     }
 
     public Excluder withExclusionStrategy(ExclusionStrategy exclusionStrategy, boolean serialization, boolean deserialization) {
-        Excluder result = m454clone();
+        Excluder result = m522clone();
         if (serialization) {
             result.serializationStrategies = new ArrayList(this.serializationStrategies);
             result.serializationStrategies.add(exclusionStrategy);
