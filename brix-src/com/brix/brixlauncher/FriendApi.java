@@ -9,10 +9,10 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.jsoup.helper.HttpConnection;
 
-/* JADX INFO: loaded from: classes18.dex */
+/* JADX INFO: loaded from: classes19.dex */
 public class FriendApi {
-    private static final String BASE_URL = "https://brix.zdyfkj.work/api/v1";
     private static final String TAG = "FriendApi";
+    private final String baseUrl = BrixNative.getApiBaseUrl();
     private final String token;
 
     public FriendApi(String token) {
@@ -21,10 +21,11 @@ public class FriendApi {
 
     private String get(String path) throws FriendException {
         try {
-            String response = HttpRequest.GET(BASE_URL + path).header("Authorization", this.token).header(HttpConnection.CONTENT_TYPE, "application/json; charset=utf-8").retry(3).getString();
+            String url = this.baseUrl + path;
+            String response = HttpRequest.GET(url).header("Authorization", this.token).header(HttpConnection.CONTENT_TYPE, "application/json; charset=utf-8").retry(3).getString();
             return parseResponse(response);
         } catch (IOException e) {
-            throw new FriendException("网络错误: " + e.getMessage(), e);
+            throw new FriendException("网络错误", e);
         }
     }
 
@@ -34,14 +35,15 @@ public class FriendApi {
 
     private String post(String path, Map<String, String> body) throws FriendException {
         try {
-            HttpRequest.HttpPostRequest builder = (HttpRequest.HttpPostRequest) HttpRequest.POST(BASE_URL + path).header("Authorization", this.token).header(HttpConnection.CONTENT_TYPE, "application/json; charset=utf-8").retry(3);
+            String url = this.baseUrl + path;
+            HttpRequest.HttpPostRequest builder = (HttpRequest.HttpPostRequest) HttpRequest.POST(url).header("Authorization", this.token).header(HttpConnection.CONTENT_TYPE, "application/json; charset=utf-8").retry(3);
             if (body != null && !body.isEmpty()) {
                 builder.string(new JSONObject(body).toString(), "application/json; charset=utf-8");
             }
             String response = builder.getString();
             return parseResponse(response);
         } catch (IOException e) {
-            throw new FriendException("网络错误: " + e.getMessage(), e);
+            throw new FriendException("网络错误", e);
         }
     }
 
@@ -54,8 +56,11 @@ public class FriendApi {
                 throw new FriendException(msg.isEmpty() ? "操作失败" : msg);
             }
             Object data = json.opt("data");
-            if (data instanceof String) {
-                return (String) data;
+            if (data instanceof JSONArray) {
+                return ((JSONArray) data).toString();
+            }
+            if (data instanceof JSONObject) {
+                return ((JSONObject) data).toString();
             }
             if (data == null) {
                 return "";
@@ -64,7 +69,7 @@ public class FriendApi {
         } catch (FriendException e) {
             throw e;
         } catch (Exception e2) {
-            throw new FriendException("解析响应失败: " + e2.getMessage(), e2);
+            throw new FriendException("解析响应失败", e2);
         }
     }
 
@@ -89,7 +94,7 @@ public class FriendApi {
         try {
             return new JSONArray(data);
         } catch (Exception e) {
-            throw new FriendException("解析好友列表失败: " + e.getMessage(), e);
+            throw new FriendException("解析好友列表失败", e);
         }
     }
 
@@ -98,7 +103,7 @@ public class FriendApi {
         try {
             return new JSONArray(data);
         } catch (Exception e) {
-            throw new FriendException("解析待处理请求失败: " + e.getMessage(), e);
+            throw new FriendException("解析待处理请求失败", e);
         }
     }
 
@@ -128,7 +133,7 @@ public class FriendApi {
         try {
             return new JSONArray(data);
         } catch (Exception e) {
-            throw new FriendException("解析消息列表失败: " + e.getMessage(), e);
+            throw new FriendException("解析消息列表失败", e);
         }
     }
 
