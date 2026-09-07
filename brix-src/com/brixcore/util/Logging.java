@@ -23,6 +23,7 @@ import java.util.logging.Logger;
 import java.util.logging.StreamHandler;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.CharEncoding;
+import org.lwjgl.system.macosx.ObjCRuntime;
 
 /* JADX INFO: loaded from: classes11.dex */
 public final class Logging {
@@ -123,9 +124,9 @@ public final class Logging {
     private static String format(LogRecord record) {
         String message = filterForbiddenToken(record.getMessage());
         StringBuilder builder = new StringBuilder(message.length() + 128);
-        builder.append('[');
+        builder.append(ObjCRuntime._C_ARY_B);
         TIME_FORMATTER.formatTo(Instant.ofEpochMilli(record.getMillis()), builder);
-        builder.append(']');
+        builder.append(ObjCRuntime._C_ARY_E);
         builder.append(" [").append(record.getSourceClassName()).append('.').append(record.getSourceMethodName()).append(IOUtils.DIR_SEPARATOR_UNIX).append(record.getLevel().getName()).append("] ").append(message).append('\n');
         Throwable thrown = record.getThrown();
         if (thrown == null) {
