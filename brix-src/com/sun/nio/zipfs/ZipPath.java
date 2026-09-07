@@ -35,9 +35,9 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Set;
-import kotlin.UByte;
 import org.antlr.v4.runtime.tree.xpath.XPath;
 import org.apache.commons.io.IOUtils;
+import org.lwjgl.system.linux.liburing.LibIOURing;
 
 /* JADX INFO: loaded from: classes2.dex */
 public class ZipPath implements Path {
@@ -185,7 +185,7 @@ public class ZipPath implements Path {
         }
         System.arraycopy(defaultdir, 0, t, 0, defaultlen);
         if (!endsWith) {
-            t[defaultlen] = 47;
+            t[defaultlen] = LibIOURing.IORING_OP_SEND_ZC;
             defaultlen++;
         }
         System.arraycopy(this.path, 0, t, defaultlen, this.path.length);
@@ -252,11 +252,11 @@ public class ZipPath implements Path {
         int pos = 0;
         while (dotdots > 0) {
             int pos2 = pos + 1;
-            result[pos] = 46;
+            result[pos] = LibIOURing.IORING_OP_URING_CMD;
             pos = pos2 + 1;
-            result[pos2] = 46;
+            result[pos2] = LibIOURing.IORING_OP_URING_CMD;
             if (pos < len) {
-                result[pos] = 47;
+                result[pos] = LibIOURing.IORING_OP_SEND_ZC;
                 pos++;
             }
             dotdots--;
@@ -291,7 +291,7 @@ public class ZipPath implements Path {
         } else {
             resolved = new byte[this.path.length + 1 + o.path.length];
             System.arraycopy(this.path, 0, resolved, 0, this.path.length);
-            resolved[this.path.length] = 47;
+            resolved[this.path.length] = LibIOURing.IORING_OP_SEND_ZC;
             System.arraycopy(o.path, 0, resolved, this.path.length + 1, o.path.length);
         }
         return new ZipPath(this.zfs, resolved);
@@ -482,7 +482,7 @@ public class ZipPath implements Path {
             n++;
             byte c = path[n];
             if (c == 92) {
-                c = 47;
+                c = LibIOURing.IORING_OP_SEND_ZC;
             }
             if (c != 47 || prevC != 47) {
                 if (c == 0) {
@@ -571,19 +571,19 @@ public class ZipPath implements Path {
             int len = i == this.offsets.length - 1 ? this.path.length - n : (this.offsets[i + 1] - n) - 1;
             if (len == 1 && this.path[n] == 46) {
                 if (m == 0 && this.path[0] == 47) {
-                    to[m] = 47;
+                    to[m] = LibIOURing.IORING_OP_SEND_ZC;
                     m++;
                 }
             } else if (len == 2 && this.path[n] == 46 && this.path[n + 1] == 46) {
                 if (lastMOff < 0) {
                     if (this.path[0] == 47) {
                         if (m == 0) {
-                            to[m] = 47;
+                            to[m] = LibIOURing.IORING_OP_SEND_ZC;
                             m++;
                         }
                     } else {
                         if (m != 0 && to[m - 1] != 47) {
-                            to[m] = 47;
+                            to[m] = LibIOURing.IORING_OP_SEND_ZC;
                             m++;
                         }
                         while (true) {
@@ -604,7 +604,7 @@ public class ZipPath implements Path {
                 }
             } else {
                 if ((m == 0 && this.path[0] == 47) || (m != 0 && to[m - 1] != 47)) {
-                    to[m] = 47;
+                    to[m] = LibIOURing.IORING_OP_SEND_ZC;
                     m++;
                 }
                 lastMOff++;
@@ -657,8 +657,8 @@ public class ZipPath implements Path {
         byte[] v1 = this.path;
         byte[] v2 = o.path;
         for (int k = 0; k < n; k++) {
-            int c1 = v1[k] & UByte.MAX_VALUE;
-            int c2 = v2[k] & UByte.MAX_VALUE;
+            int c1 = v1[k] & 255;
+            int c2 = v2[k] & 255;
             if (c1 != c2) {
                 return c1 - c2;
             }
