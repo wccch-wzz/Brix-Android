@@ -172,7 +172,7 @@ public class ShadowDrawableWrapper extends DrawableWrapperCompat {
         float shadowOffset = this.cornerRadius;
         boolean drawHorizontalEdges = this.contentBounds.width() - (shadowOffset * 2.0f) > 0.0f;
         boolean drawVerticalEdges = this.contentBounds.height() - (shadowOffset * 2.0f) > 0.0f;
-        float shadowOffsetTop = this.rawShadowSize - (this.rawShadowSize * SHADOW_TOP_SCALE);
+        float shadowOffsetTop = this.rawShadowSize - (this.rawShadowSize * 0.25f);
         float shadowOffsetHorizontal = this.rawShadowSize - (this.rawShadowSize * 0.5f);
         float shadowOffsetBottom = this.rawShadowSize - (this.rawShadowSize * 1.0f);
         float shadowScaleHorizontal2 = shadowOffset / (shadowOffset + shadowOffsetHorizontal);
