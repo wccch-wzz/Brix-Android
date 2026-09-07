@@ -1,5 +1,7 @@
 package com.brixcore.auth;
 
+import androidx.constraintlayout.core.motion.utils.TypedValues;
+import androidx.lifecycle.CoroutineLiveDataKt;
 import com.android.tools.r8.RecordTag;
 import com.brixcore.auth.yggdrasil.RemoteAuthenticationException;
 import com.brixcore.util.Lang;
@@ -101,7 +103,7 @@ public class OAuth {
             c = c;
             c2 = c2;
             c3 = c3;
-            if (TimeUnit.SECONDS.convert(estimatedTime, TimeUnit.NANOSECONDS) >= Math.min(deviceTokenResponse.expiresIn, 900)) {
+            if (TimeUnit.SECONDS.convert(estimatedTime, TimeUnit.NANOSECONDS) >= Math.min(deviceTokenResponse.expiresIn, TypedValues.Custom.TYPE_INT)) {
                 throw new NoSelectedCharacterException();
             }
             try {
@@ -116,7 +118,7 @@ public class OAuth {
                         throw new NoSelectedCharacterException();
                     }
                     if ("slow_down".equals(tokenResponse.error)) {
-                        interval += 5000;
+                        interval += CoroutineLiveDataKt.DEFAULT_TIMEOUT;
                     } else {
                         return new Result(tokenResponse.accessToken, tokenResponse.refreshToken);
                     }
