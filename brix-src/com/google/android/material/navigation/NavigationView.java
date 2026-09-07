@@ -33,7 +33,6 @@ import androidx.appcompat.view.SupportMenuInflater;
 import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.appcompat.view.menu.MenuItemImpl;
 import androidx.appcompat.widget.TintTypedArray;
-import androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.core.view.ViewCompat;
@@ -386,10 +385,10 @@ public class NavigationView extends ScrimInsetsFrameLayout implements MaterialBa
     protected void onMeasure(int widthSpec, int heightSpec) {
         switch (View.MeasureSpec.getMode(widthSpec)) {
             case Integer.MIN_VALUE:
-                widthSpec = View.MeasureSpec.makeMeasureSpec(Math.min(View.MeasureSpec.getSize(widthSpec), this.maxWidth), BasicMeasure.EXACTLY);
+                widthSpec = View.MeasureSpec.makeMeasureSpec(Math.min(View.MeasureSpec.getSize(widthSpec), this.maxWidth), 1073741824);
                 break;
             case 0:
-                widthSpec = View.MeasureSpec.makeMeasureSpec(this.maxWidth, BasicMeasure.EXACTLY);
+                widthSpec = View.MeasureSpec.makeMeasureSpec(this.maxWidth, 1073741824);
                 break;
         }
         super.onMeasure(widthSpec, heightSpec);
@@ -400,13 +399,13 @@ public class NavigationView extends ScrimInsetsFrameLayout implements MaterialBa
         this.shapeableDelegate.maybeClip(canvas, new CanvasCompat.CanvasOperation() { // from class: com.google.android.material.navigation.NavigationView$$ExternalSyntheticLambda0
             @Override // com.google.android.material.canvas.CanvasCompat.CanvasOperation
             public final void run(Canvas canvas2) {
-                this.f$0.m415xb790515(canvas2);
+                this.f$0.m483xb790515(canvas2);
             }
         });
     }
 
     /* JADX INFO: renamed from: lambda$dispatchDraw$0$com-google-android-material-navigation-NavigationView, reason: not valid java name */
-    /* synthetic */ void m415xb790515(Canvas x$0) {
+    /* synthetic */ void m483xb790515(Canvas x$0) {
         super.dispatchDraw(x$0);
     }
 
