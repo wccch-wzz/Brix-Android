@@ -22,12 +22,12 @@ public final class VersionLibraryBuilder {
     private final Version version;
 
     /* JADX INFO: renamed from: $r8$lambda$ZpmJ_VNnAu-jaI1Md1zDJiayPjU, reason: not valid java name */
-    public static /* synthetic */ ArrayList m263$r8$lambda$ZpmJ_VNnAujaI1Md1zDJiayPjU(Collection collection) {
+    public static /* synthetic */ ArrayList m331$r8$lambda$ZpmJ_VNnAujaI1Md1zDJiayPjU(Collection collection) {
         return new ArrayList(collection);
     }
 
     /* JADX INFO: renamed from: $r8$lambda$wBZ5N9SAmxJLRX-vx8hIUeo_fgc, reason: not valid java name */
-    public static /* synthetic */ ArrayList m265$r8$lambda$wBZ5N9SAmxJLRXvx8hIUeo_fgc() {
+    public static /* synthetic */ ArrayList m333$r8$lambda$wBZ5N9SAmxJLRXvx8hIUeo_fgc() {
         return new ArrayList();
     }
 
@@ -42,7 +42,7 @@ public final class VersionLibraryBuilder {
         }).map(new Function() { // from class: com.brixcore.game.VersionLibraryBuilder$$ExternalSyntheticLambda1
             @Override // java.util.function.Function
             public final Object apply(Object obj) {
-                return VersionLibraryBuilder.m263$r8$lambda$ZpmJ_VNnAujaI1Md1zDJiayPjU((List) obj);
+                return VersionLibraryBuilder.m331$r8$lambda$ZpmJ_VNnAujaI1Md1zDJiayPjU((List) obj);
             }
         }).orElse(null);
         this.game = (List) version.getArguments().map(new Function() { // from class: com.brixcore.game.VersionLibraryBuilder$$ExternalSyntheticLambda2
@@ -53,12 +53,12 @@ public final class VersionLibraryBuilder {
         }).map(new Function() { // from class: com.brixcore.game.VersionLibraryBuilder$$ExternalSyntheticLambda1
             @Override // java.util.function.Function
             public final Object apply(Object obj) {
-                return VersionLibraryBuilder.m263$r8$lambda$ZpmJ_VNnAujaI1Md1zDJiayPjU((List) obj);
+                return VersionLibraryBuilder.m331$r8$lambda$ZpmJ_VNnAujaI1Md1zDJiayPjU((List) obj);
             }
         }).orElseGet(new Supplier() { // from class: com.brixcore.game.VersionLibraryBuilder$$ExternalSyntheticLambda3
             @Override // java.util.function.Supplier
             public final Object get() {
-                return VersionLibraryBuilder.m265$r8$lambda$wBZ5N9SAmxJLRXvx8hIUeo_fgc();
+                return VersionLibraryBuilder.m333$r8$lambda$wBZ5N9SAmxJLRXvx8hIUeo_fgc();
             }
         });
         this.jvm = new ArrayList((Collection) version.getArguments().map(new Function() { // from class: com.brixcore.game.VersionLibraryBuilder$$ExternalSyntheticLambda4
