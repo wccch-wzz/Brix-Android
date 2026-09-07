@@ -11,7 +11,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-/* JADX INFO: loaded from: classes18.dex */
+/* JADX INFO: loaded from: classes19.dex */
 public class FriendManager {
     private static final String PREFS_NAME = "brix_friends";
     private static final String TAG = "FriendManager";
@@ -44,7 +44,7 @@ public class FriendManager {
             try {
                 this.friends = parseFriends(new JSONArray(cachedFriends));
             } catch (Exception e) {
-                Log.w(TAG, "解析缓存好友失败: " + e.getMessage());
+                Log.w(TAG, "解析缓存好友失败");
                 this.friends = new ArrayList();
             }
         }
@@ -53,7 +53,7 @@ public class FriendManager {
             try {
                 this.pendingRequests = parseRequests(new JSONArray(cachedPending));
             } catch (Exception e2) {
-                Log.w(TAG, "解析缓存请求失败: " + e2.getMessage());
+                Log.w(TAG, "解析缓存请求失败");
                 this.pendingRequests = new ArrayList();
             }
         }
@@ -63,7 +63,7 @@ public class FriendManager {
         try {
             this.prefs.put("friends_json", friendsToJson());
         } catch (Exception e) {
-            Log.w(TAG, "缓存好友失败: " + e.getMessage());
+            Log.w(TAG, "缓存好友失败");
         }
     }
 
@@ -71,7 +71,7 @@ public class FriendManager {
         try {
             this.prefs.put("pending_json", pendingToJson());
         } catch (Exception e) {
-            Log.w(TAG, "缓存请求失败: " + e.getMessage());
+            Log.w(TAG, "缓存请求失败");
         }
     }
 
@@ -101,9 +101,9 @@ public class FriendManager {
             if (onSuccess != null) {
                 onSuccess.run();
             }
-            Log.d(TAG, "好友列表刷新成功，共 " + this.friends.size() + " 个好友");
+            Log.d(TAG, "好友列表刷新成功");
         } catch (Exception e) {
-            Log.e(TAG, "获取好友列表失败: " + e.getMessage());
+            Log.e(TAG, "获取好友列表失败");
             if (onError != null) {
                 onError.onClick();
             }
@@ -136,9 +136,9 @@ public class FriendManager {
             if (onSuccess != null) {
                 onSuccess.run();
             }
-            Log.d(TAG, "待处理请求刷新成功，共 " + this.pendingRequests.size() + " 条");
+            Log.d(TAG, "待处理请求刷新成功");
         } catch (Exception e) {
-            Log.e(TAG, "获取待处理请求失败: " + e.getMessage());
+            Log.e(TAG, "获取待处理请求失败");
             if (onError != null) {
                 onError.onClick();
             }
@@ -166,7 +166,7 @@ public class FriendManager {
                 onSuccess.run();
             }
         } catch (Exception e) {
-            Log.e(TAG, "发送好友申请失败: " + e.getMessage());
+            Log.e(TAG, "发送好友申请失败");
             if (onError != null) {
                 onError.onClick();
             }
@@ -196,7 +196,7 @@ public class FriendManager {
                 onSuccess.run();
             }
         } catch (Exception e) {
-            Log.e(TAG, "接受好友申请失败: " + e.getMessage());
+            Log.e(TAG, "接受好友申请失败");
             if (onError != null) {
                 onError.onClick();
             }
@@ -225,7 +225,7 @@ public class FriendManager {
                 onSuccess.run();
             }
         } catch (Exception e) {
-            Log.e(TAG, "拒绝好友申请失败: " + e.getMessage());
+            Log.e(TAG, "拒绝好友申请失败");
             if (onError != null) {
                 onError.onClick();
             }
@@ -254,7 +254,7 @@ public class FriendManager {
                 onSuccess.run();
             }
         } catch (Exception e) {
-            Log.e(TAG, "删除好友失败: " + e.getMessage());
+            Log.e(TAG, "删除好友失败");
             if (onError != null) {
                 onError.onClick();
             }
@@ -282,7 +282,7 @@ public class FriendManager {
                 onSuccess.run();
             }
         } catch (Exception e) {
-            Log.e(TAG, "拉黑用户失败: " + e.getMessage());
+            Log.e(TAG, "拉黑用户失败");
             if (onError != null) {
                 onError.onClick();
             }
@@ -310,7 +310,7 @@ public class FriendManager {
                 onSuccess.run();
             }
         } catch (Exception e) {
-            Log.e(TAG, "解除拉黑失败: " + e.getMessage());
+            Log.e(TAG, "解除拉黑失败");
             if (onError != null) {
                 onError.onClick();
             }
