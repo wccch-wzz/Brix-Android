@@ -10,7 +10,6 @@ import com.sun.nio.zipfs.ZipFileSystemProvider;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.nio.ByteBuffer;
 import java.nio.CharBuffer;
 import java.nio.charset.Charset;
@@ -341,60 +340,79 @@ public final class CompressingUtils {
         }
     }
 
+    /* JADX WARN: Bottom block not found for handler: all -> 0x0069 */
     /* JADX WARN: Multi-variable type inference failed */
-    public static void extractZip(File zipFile, File destination) throws Throwable {
-        ZipFile zf = ((ZipFile.Builder) ZipFile.builder().setFile(zipFile)).get();
-        try {
-            Enumeration<ZipArchiveEntry> entries = zf.getEntries();
-            while (entries.hasMoreElements()) {
-                ZipArchiveEntry entry = entries.nextElement();
-                File out = new File(destination, entry.getName());
-                if (entry.isDirectory()) {
-                    out.mkdirs();
-                } else {
-                    out.getParentFile().mkdirs();
-                    InputStream is = zf.getInputStream(entry);
-                    try {
-                        FileOutputStream os = new FileOutputStream(out);
-                        try {
-                            IOUtils.copyTo(is, os);
-                            os.close();
-                            if (is != null) {
-                                is.close();
-                            }
-                        } catch (Throwable th) {
-                            try {
-                                os.close();
-                            } catch (Throwable th2) {
-                                th.addSuppressed(th2);
-                            }
-                            throw th;
-                        }
-                    } catch (Throwable th3) {
-                        if (is != null) {
-                            try {
-                                is.close();
-                            } catch (Throwable th4) {
-                                th3.addSuppressed(th4);
-                            }
-                        }
-                        throw th3;
-                    }
-                }
-            }
-            if (zf != null) {
-                zf.close();
-            }
-        } catch (Throwable th5) {
-            if (zf != null) {
-                try {
-                    zf.close();
-                } catch (Throwable th6) {
-                    th5.addSuppressed(th6);
-                }
-            }
-            throw th5;
-        }
+    /*
+        Code decompiled incorrectly, please refer to instructions dump.
+        To view partially-correct add '--show-bad-code' argument
+    */
+    public static void extractZip(java.io.File r8, java.io.File r9) throws java.lang.Throwable {
+        /*
+            org.apache.commons.compress.archivers.zip.ZipFile$Builder r0 = org.apache.commons.compress.archivers.zip.ZipFile.builder()
+            org.apache.commons.io.build.AbstractOriginSupplier r0 = r0.setFile(r8)
+            org.apache.commons.compress.archivers.zip.ZipFile$Builder r0 = (org.apache.commons.compress.archivers.zip.ZipFile.Builder) r0
+            org.apache.commons.compress.archivers.zip.ZipFile r0 = r0.get()
+            java.util.Enumeration r1 = r0.getEntries()     // Catch: java.lang.Throwable -> L69
+        L12:
+            boolean r2 = r1.hasMoreElements()     // Catch: java.lang.Throwable -> L69
+            if (r2 == 0) goto L63
+            java.lang.Object r2 = r1.nextElement()     // Catch: java.lang.Throwable -> L69
+            org.apache.commons.compress.archivers.zip.ZipArchiveEntry r2 = (org.apache.commons.compress.archivers.zip.ZipArchiveEntry) r2     // Catch: java.lang.Throwable -> L69
+            java.io.File r3 = new java.io.File     // Catch: java.lang.Throwable -> L69
+            java.lang.String r4 = r2.getName()     // Catch: java.lang.Throwable -> L69
+            r3.<init>(r9, r4)     // Catch: java.lang.Throwable -> L69
+            boolean r4 = r2.isDirectory()     // Catch: java.lang.Throwable -> L69
+            if (r4 == 0) goto L31
+            r3.mkdirs()     // Catch: java.lang.Throwable -> L69
+            goto L4c
+        L31:
+            java.io.File r4 = r3.getParentFile()     // Catch: java.lang.Throwable -> L69
+            r4.mkdirs()     // Catch: java.lang.Throwable -> L69
+            java.io.InputStream r4 = r0.getInputStream(r2)     // Catch: java.lang.Throwable -> L69
+            java.io.FileOutputStream r5 = new java.io.FileOutputStream     // Catch: java.lang.Throwable -> L57
+            r5.<init>(r3)     // Catch: java.lang.Throwable -> L57
+            com.brixcore.util.io.IOUtils.copyTo(r4, r5)     // Catch: java.lang.Throwable -> L4d
+            r5.close()     // Catch: java.lang.Throwable -> L57
+            if (r4 == 0) goto L4c
+            r4.close()     // Catch: java.lang.Throwable -> L69
+        L4c:
+            goto L12
+        L4d:
+            r6 = move-exception
+            r5.close()     // Catch: java.lang.Throwable -> L52
+            goto L56
+        L52:
+            r7 = move-exception
+            r6.addSuppressed(r7)     // Catch: java.lang.Throwable -> L57
+        L56:
+            throw r6     // Catch: java.lang.Throwable -> L57
+        L57:
+            r5 = move-exception
+            if (r4 == 0) goto L62
+            r4.close()     // Catch: java.lang.Throwable -> L5e
+            goto L62
+        L5e:
+            r6 = move-exception
+            r5.addSuppressed(r6)     // Catch: java.lang.Throwable -> L69
+        L62:
+            throw r5     // Catch: java.lang.Throwable -> L69
+        L63:
+            if (r0 == 0) goto L68
+            r0.close()
+        L68:
+            return
+        L69:
+            r1 = move-exception
+            if (r0 == 0) goto L74
+            r0.close()     // Catch: java.lang.Throwable -> L70
+            goto L74
+        L70:
+            r2 = move-exception
+            r1.addSuppressed(r2)
+        L74:
+            throw r1
+        */
+        throw new UnsupportedOperationException("Method not decompiled: com.brixcore.util.io.CompressingUtils.extractZip(java.io.File, java.io.File):void");
     }
 
     /* JADX WARN: Code duplicated, block: B:39:0x005b A[EXC_TOP_SPLITTER, SYNTHETIC] */
