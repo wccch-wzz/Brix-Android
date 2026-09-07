@@ -1,5 +1,7 @@
 package com.google.android.material.color.utilities;
 
+import org.lwjgl.util.spvc.Spv;
+
 /* JADX INFO: loaded from: classes.dex */
 public class MathUtils {
     private MathUtils() {
@@ -40,9 +42,9 @@ public class MathUtils {
     }
 
     public static int sanitizeDegreesInt(int degrees) {
-        int degrees2 = degrees % 360;
+        int degrees2 = degrees % Spv.SpvOpGroupNonUniformBitwiseOr;
         if (degrees2 < 0) {
-            return degrees2 + 360;
+            return degrees2 + Spv.SpvOpGroupNonUniformBitwiseOr;
         }
         return degrees2;
     }
