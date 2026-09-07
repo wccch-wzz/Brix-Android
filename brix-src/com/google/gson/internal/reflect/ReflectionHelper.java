@@ -5,6 +5,7 @@ import java.lang.reflect.AccessibleObject;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import org.lwjgl.system.macosx.ObjCRuntime;
 
 /* JADX INFO: loaded from: classes.dex */
 public class ReflectionHelper {
@@ -65,7 +66,7 @@ public class ReflectionHelper {
 
     private static void appendExecutableParameters(AccessibleObject executable, StringBuilder stringBuilder) {
         Class<?>[] parameters;
-        stringBuilder.append('(');
+        stringBuilder.append(ObjCRuntime._C_UNION_B);
         if (executable instanceof Method) {
             parameters = ((Method) executable).getParameterTypes();
         } else {
@@ -77,7 +78,7 @@ public class ReflectionHelper {
             }
             stringBuilder.append(parameters[i].getSimpleName());
         }
-        stringBuilder.append(')');
+        stringBuilder.append(ObjCRuntime._C_UNION_E);
     }
 
     public static String tryMakeAccessible(Constructor<?> constructor) {
