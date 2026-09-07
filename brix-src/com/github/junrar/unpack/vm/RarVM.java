@@ -1,13 +1,13 @@
 package com.github.junrar.unpack.vm;
 
 import androidx.core.view.InputDeviceCompat;
-import androidx.core.view.ViewCompat;
 import com.github.junrar.crc.RarCRC;
 import com.github.junrar.io.Raw;
 import java.util.List;
 import java.util.Vector;
-import kotlin.UByte;
-import org.tomlj.internal.TomlParser;
+import org.lwjgl.opengl.GL11;
+import org.lwjgl.system.linux.liburing.LibIOURing;
+import org.lwjgl.util.spvc.Spv;
 
 /* JADX INFO: loaded from: classes.dex */
 public class RarVM extends BitInput {
@@ -40,7 +40,7 @@ public class RarVM extends BitInput {
             if (isVMMem(mem)) {
                 return mem[offset];
             }
-            return mem[offset] & UByte.MAX_VALUE;
+            return mem[offset] & 255;
         }
         if (isVMMem(mem)) {
             return Raw.readIntLittleEndian(mem, offset);
@@ -168,17 +168,17 @@ public class RarVM extends BitInput {
             VMPreparedCommand cmd = preparedCode.get(this.IP);
             int op1 = getOperand(cmd.getOp1());
             int op2 = getOperand(cmd.getOp2());
-            switch (AnonymousClass1.$SwitchMap$com$github$junrar$unpack$vm$VMCommands[cmd.getOpCode().ordinal()]) {
-                case 1:
+            switch (cmd.getOpCode()) {
+                case VM_MOV:
                     setValue(cmd.isByteMode(), this.mem, op1, getValue(cmd.isByteMode(), this.mem, op2));
                     break;
-                case 2:
+                case VM_MOVB:
                     setValue(true, this.mem, op1, getValue(true, this.mem, op2));
                     break;
-                case 3:
+                case VM_MOVD:
                     setValue(false, this.mem, op1, getValue(false, this.mem, op2));
                     break;
-                case 4:
+                case VM_CMP:
                     int value1 = getValue(cmd.isByteMode(), this.mem, op1);
                     int result = value1 - getValue(cmd.isByteMode(), this.mem, op2);
                     if (result == 0) {
@@ -187,7 +187,7 @@ public class RarVM extends BitInput {
                         this.flags = result > value1 ? 1 : (VMFlags.VM_FS.getFlag() & result) | 0;
                     }
                     break;
-                case 5:
+                case VM_CMPB:
                     int value2 = getValue(true, this.mem, op1);
                     int result2 = value2 - getValue(true, this.mem, op2);
                     if (result2 == 0) {
@@ -196,7 +196,7 @@ public class RarVM extends BitInput {
                         this.flags = result2 > value2 ? 1 : (VMFlags.VM_FS.getFlag() & result2) | 0;
                     }
                     break;
-                case 6:
+                case VM_CMPD:
                     int value3 = getValue(false, this.mem, op1);
                     int result3 = value3 - getValue(false, this.mem, op2);
                     if (result3 == 0) {
@@ -205,7 +205,7 @@ public class RarVM extends BitInput {
                         this.flags = result3 > value3 ? 1 : (VMFlags.VM_FS.getFlag() & result3) | 0;
                     }
                     break;
-                case 7:
+                case VM_ADD:
                     int value4 = getValue(cmd.isByteMode(), this.mem, op1);
                     int result4 = (int) ((((long) value4) + ((long) getValue(cmd.isByteMode(), this.mem, op2))) & (-1));
                     if (cmd.isByteMode()) {
@@ -238,13 +238,13 @@ public class RarVM extends BitInput {
                     }
                     setValue(cmd.isByteMode(), this.mem, op1, result4);
                     break;
-                case 8:
+                case VM_ADDB:
                     setValue(true, this.mem, op1, (int) (((long) getValue(true, this.mem, op1)) & (((long) getValue(true, this.mem, op2)) - 1) & (-1)));
                     break;
-                case 9:
+                case VM_ADDD:
                     setValue(false, this.mem, op1, (int) (((long) getValue(false, this.mem, op1)) & (((long) getValue(false, this.mem, op2)) - 1) & (-1)));
                     break;
-                case 10:
+                case VM_SUB:
                     int value5 = getValue(cmd.isByteMode(), this.mem, op1);
                     int result5 = (int) (((long) value5) & ((-1) - ((long) getValue(cmd.isByteMode(), this.mem, op2))) & (-1));
                     if (result5 == 0) {
@@ -255,23 +255,23 @@ public class RarVM extends BitInput {
                     this.flags = flag3;
                     setValue(cmd.isByteMode(), this.mem, op1, result5);
                     break;
-                case 11:
+                case VM_SUBB:
                     setValue(true, this.mem, op1, (int) (((long) getValue(true, this.mem, op1)) & ((-1) - ((long) getValue(true, this.mem, op2))) & (-1)));
                     break;
-                case 12:
+                case VM_SUBD:
                     setValue(false, this.mem, op1, (int) (((long) getValue(false, this.mem, op1)) & ((-1) - ((long) getValue(false, this.mem, op2))) & (-1)));
                     break;
-                case 13:
+                case VM_JZ:
                     if ((this.flags & VMFlags.VM_FZ.getFlag()) != 0) {
                         setIP(getValue(false, this.mem, op1));
                     }
                     break;
-                case 14:
+                case VM_JNZ:
                     if ((this.flags & VMFlags.VM_FZ.getFlag()) == 0) {
                         setIP(getValue(false, this.mem, op1));
                     }
                     break;
-                case 15:
+                case VM_INC:
                     int result6 = (int) (((long) getValue(cmd.isByteMode(), this.mem, op1)) & 0);
                     if (cmd.isByteMode()) {
                         result6 &= 255;
@@ -279,95 +279,95 @@ public class RarVM extends BitInput {
                     setValue(cmd.isByteMode(), this.mem, op1, result6);
                     this.flags = result6 == 0 ? VMFlags.VM_FZ.getFlag() : VMFlags.VM_FS.getFlag() & result6;
                     break;
-                case 16:
+                case VM_INCB:
                     setValue(true, this.mem, op1, (int) (((long) getValue(true, this.mem, op1)) & 0));
                     break;
-                case 17:
+                case VM_INCD:
                     setValue(false, this.mem, op1, (int) (((long) getValue(false, this.mem, op1)) & 0));
                     break;
-                case 18:
+                case VM_DEC:
                     int result7 = (int) (((long) getValue(cmd.isByteMode(), this.mem, op1)) & (-2));
                     setValue(cmd.isByteMode(), this.mem, op1, result7);
                     this.flags = result7 == 0 ? VMFlags.VM_FZ.getFlag() : VMFlags.VM_FS.getFlag() & result7;
                     break;
-                case 19:
+                case VM_DECB:
                     setValue(true, this.mem, op1, (int) (((long) getValue(true, this.mem, op1)) & (-2)));
                     break;
-                case 20:
+                case VM_DECD:
                     setValue(false, this.mem, op1, (int) (((long) getValue(false, this.mem, op1)) & (-2)));
                     break;
-                case 21:
+                case VM_JMP:
                     setIP(getValue(false, this.mem, op1));
                     continue;
-                case 22:
+                case VM_XOR:
                     int result8 = getValue(cmd.isByteMode(), this.mem, op1) ^ getValue(cmd.isByteMode(), this.mem, op2);
                     this.flags = result8 == 0 ? VMFlags.VM_FZ.getFlag() : VMFlags.VM_FS.getFlag() & result8;
                     setValue(cmd.isByteMode(), this.mem, op1, result8);
                     break;
-                case 23:
+                case VM_AND:
                     int result9 = getValue(cmd.isByteMode(), this.mem, op1) & getValue(cmd.isByteMode(), this.mem, op2);
                     this.flags = result9 == 0 ? VMFlags.VM_FZ.getFlag() : VMFlags.VM_FS.getFlag() & result9;
                     setValue(cmd.isByteMode(), this.mem, op1, result9);
                     break;
-                case 24:
+                case VM_OR:
                     int result10 = getValue(cmd.isByteMode(), this.mem, op1) | getValue(cmd.isByteMode(), this.mem, op2);
                     this.flags = result10 == 0 ? VMFlags.VM_FZ.getFlag() : VMFlags.VM_FS.getFlag() & result10;
                     setValue(cmd.isByteMode(), this.mem, op1, result10);
                     break;
-                case 25:
+                case VM_TEST:
                     int result11 = getValue(cmd.isByteMode(), this.mem, op1) & getValue(cmd.isByteMode(), this.mem, op2);
                     this.flags = result11 == 0 ? VMFlags.VM_FZ.getFlag() : VMFlags.VM_FS.getFlag() & result11;
                     break;
-                case 26:
+                case VM_JS:
                     if ((this.flags & VMFlags.VM_FS.getFlag()) != 0) {
                         setIP(getValue(false, this.mem, op1));
                     }
                     break;
-                case 27:
+                case VM_JNS:
                     if ((this.flags & VMFlags.VM_FS.getFlag()) == 0) {
                         setIP(getValue(false, this.mem, op1));
                     }
                     break;
-                case 28:
+                case VM_JB:
                     if ((this.flags & VMFlags.VM_FC.getFlag()) != 0) {
                         setIP(getValue(false, this.mem, op1));
                     }
                     break;
-                case 29:
+                case VM_JBE:
                     if ((this.flags & (VMFlags.VM_FC.getFlag() | VMFlags.VM_FZ.getFlag())) != 0) {
                         setIP(getValue(false, this.mem, op1));
                     }
                     break;
-                case 30:
+                case VM_JA:
                     if ((this.flags & (VMFlags.VM_FC.getFlag() | VMFlags.VM_FZ.getFlag())) == 0) {
                         setIP(getValue(false, this.mem, op1));
                     }
                     break;
-                case 31:
+                case VM_JAE:
                     if ((this.flags & VMFlags.VM_FC.getFlag()) == 0) {
                         setIP(getValue(false, this.mem, op1));
                     }
                     break;
-                case 32:
+                case VM_PUSH:
                     int[] iArr = this.R;
                     iArr[7] = iArr[7] - 4;
                     setValue(false, this.mem, this.R[7] & VM_MEMMASK, getValue(false, this.mem, op1));
                     break;
-                case 33:
+                case VM_POP:
                     setValue(false, this.mem, op1, getValue(false, this.mem, this.R[7] & VM_MEMMASK));
                     int[] iArr2 = this.R;
                     iArr2[7] = iArr2[7] + 4;
                     break;
-                case 34:
+                case VM_CALL:
                     int[] iArr3 = this.R;
                     iArr3[7] = iArr3[7] - 4;
                     setValue(false, this.mem, this.R[7] & VM_MEMMASK, this.IP + 1);
                     setIP(getValue(false, this.mem, op1));
                     continue;
-                case 35:
+                case VM_NOT:
                     setValue(cmd.isByteMode(), this.mem, op1, ~getValue(cmd.isByteMode(), this.mem, op1));
                     break;
-                case 36:
+                case VM_SHL:
                     int value6 = getValue(cmd.isByteMode(), this.mem, op1);
                     int value7 = getValue(cmd.isByteMode(), this.mem, op2);
                     int result12 = value6 << value7;
@@ -380,32 +380,32 @@ public class RarVM extends BitInput {
                     this.flags = flag7 | flag4;
                     setValue(cmd.isByteMode(), this.mem, op1, result12);
                     break;
-                case 37:
+                case VM_SHR:
                     int value8 = getValue(cmd.isByteMode(), this.mem, op1);
                     int value9 = getValue(cmd.isByteMode(), this.mem, op2);
                     int result13 = value8 >>> value9;
                     this.flags = (result13 == 0 ? VMFlags.VM_FZ.getFlag() : VMFlags.VM_FS.getFlag() & result13) | ((value8 >>> (value9 - 1)) & VMFlags.VM_FC.getFlag());
                     setValue(cmd.isByteMode(), this.mem, op1, result13);
                     break;
-                case 38:
+                case VM_SAR:
                     int value10 = getValue(cmd.isByteMode(), this.mem, op1);
                     int value11 = getValue(cmd.isByteMode(), this.mem, op2);
                     int result14 = value10 >>> value11;
                     this.flags = (result14 == 0 ? VMFlags.VM_FZ.getFlag() : VMFlags.VM_FS.getFlag() & result14) | ((value10 >>> (value11 - 1)) & VMFlags.VM_FC.getFlag());
                     setValue(cmd.isByteMode(), this.mem, op1, result14);
                     break;
-                case 39:
+                case VM_NEG:
                     int result15 = -getValue(cmd.isByteMode(), this.mem, op1);
                     this.flags = result15 == 0 ? VMFlags.VM_FZ.getFlag() : VMFlags.VM_FC.getFlag() | (VMFlags.VM_FS.getFlag() & result15);
                     setValue(cmd.isByteMode(), this.mem, op1, result15);
                     break;
-                case 40:
+                case VM_NEGB:
                     setValue(true, this.mem, op1, -getValue(true, this.mem, op1));
                     break;
-                case 41:
+                case VM_NEGD:
                     setValue(false, this.mem, op1, -getValue(false, this.mem, op1));
                     break;
-                case 42:
+                case VM_PUSHA:
                     int i5 = 0;
                     int SP = this.R[7] - 4;
                     while (i5 < 8) {
@@ -416,7 +416,7 @@ public class RarVM extends BitInput {
                     int[] iArr4 = this.R;
                     iArr4[7] = iArr4[7] - 32;
                     break;
-                case 43:
+                case VM_POPA:
                     int i6 = 0;
                     int SP2 = this.R[7];
                     while (i6 < 8) {
@@ -425,37 +425,37 @@ public class RarVM extends BitInput {
                         SP2 += 4;
                     }
                     break;
-                case 44:
+                case VM_PUSHF:
                     int[] iArr5 = this.R;
                     iArr5[7] = iArr5[7] - 4;
                     setValue(false, this.mem, this.R[7] & VM_MEMMASK, this.flags);
                     break;
-                case 45:
+                case VM_POPF:
                     this.flags = getValue(false, this.mem, this.R[7] & VM_MEMMASK);
                     int[] iArr6 = this.R;
                     iArr6[7] = iArr6[7] + 4;
                     break;
-                case 46:
+                case VM_MOVZX:
                     setValue(false, this.mem, op1, getValue(true, this.mem, op2));
                     break;
-                case 47:
+                case VM_MOVSX:
                     setValue(false, this.mem, op1, (byte) getValue(true, this.mem, op2));
                     break;
-                case 48:
+                case VM_XCHG:
                     int value12 = getValue(cmd.isByteMode(), this.mem, op1);
                     setValue(cmd.isByteMode(), this.mem, op1, getValue(cmd.isByteMode(), this.mem, op2));
                     setValue(cmd.isByteMode(), this.mem, op2, value12);
                     break;
-                case 49:
+                case VM_MUL:
                     setValue(cmd.isByteMode(), this.mem, op1, (int) (((long) getValue(cmd.isByteMode(), this.mem, op1)) & (((long) getValue(cmd.isByteMode(), this.mem, op2)) * (-1)) & (-1) & (-1)));
                     break;
-                case 50:
+                case VM_DIV:
                     int divider = getValue(cmd.isByteMode(), this.mem, op2);
                     if (divider != 0) {
                         setValue(cmd.isByteMode(), this.mem, op1, getValue(cmd.isByteMode(), this.mem, op1) / divider);
                     }
                     break;
-                case 51:
+                case VM_ADC:
                     int value13 = getValue(cmd.isByteMode(), this.mem, op1);
                     int FC = this.flags & VMFlags.VM_FC.getFlag();
                     int result16 = (int) (((long) value13) & (((long) getValue(cmd.isByteMode(), this.mem, op2)) - 1) & (((long) FC) - 1) & (-1));
@@ -475,7 +475,7 @@ public class RarVM extends BitInput {
                     this.flags = i3;
                     setValue(cmd.isByteMode(), this.mem, op1, result16);
                     break;
-                case TomlParser.RULE_arrayValue /* 52 */:
+                case VM_SBB:
                     int value14 = getValue(cmd.isByteMode(), this.mem, op1);
                     int FC2 = this.flags & VMFlags.VM_FC.getFlag();
                     int result17 = (int) (((long) value14) & ((-1) - ((long) getValue(cmd.isByteMode(), this.mem, op2))) & ((-1) - ((long) FC2)) & (-1));
@@ -495,7 +495,7 @@ public class RarVM extends BitInput {
                     this.flags = i4;
                     setValue(cmd.isByteMode(), this.mem, op1, result17);
                     break;
-                case TomlParser.RULE_table /* 53 */:
+                case VM_RET:
                     if (this.R[7] >= 262144) {
                         return true;
                     }
@@ -504,7 +504,7 @@ public class RarVM extends BitInput {
                     iArr7[7] = iArr7[7] + 4;
                     continue;
                     break;
-                case TomlParser.RULE_standardTable /* 54 */:
+                case VM_STANDARD:
                     ExecuteStandardFilter(VMStandardFilters.findFilter(cmd.getOp1().getData()));
                     break;
             }
@@ -850,7 +850,7 @@ public class RarVM extends BitInput {
                 int dataSize2 = this.R[4];
                 long fileOffset = this.R[6] & (-1);
                 if (dataSize2 < 245760) {
-                    byte cmpByte2 = (byte) (filterType == VMStandardFilters.VMSF_E8E9 ? 233 : 232);
+                    byte cmpByte2 = (byte) (filterType == VMStandardFilters.VMSF_E8E9 ? 233 : Spv.SpvOpAtomicIIncrement);
                     int curPos = 0;
                     while (curPos < dataSize2 - 4) {
                         int curPos2 = curPos + 1;
@@ -883,7 +883,7 @@ public class RarVM extends BitInput {
                     byte[] Masks = {4, 4, 6, 6, 0, 0, 7, 7, 4, 4, 0, 0, 4, 4, 0, 0};
                     long fileOffset3 = fileOffset2 >>> 4;
                     while (curPos3 < dataSize3 - 21) {
-                        int Byte = (this.mem[curPos3] & 31) - 16;
+                        int Byte = (this.mem[curPos3] & LibIOURing.IORING_OP_PROVIDE_BUFFERS) - 16;
                         if (Byte >= 0 && (cmdMask = Masks[Byte]) != 0) {
                             int i6 = 0;
                             while (i6 <= i3) {
@@ -894,7 +894,7 @@ public class RarVM extends BitInput {
                                     int opType = filterItanium_GetBits(curPos3, startPos + 37, i4);
                                     i = i5;
                                     if (opType == i) {
-                                        filterItanium_SetBits(curPos3, ((int) (((long) filterItanium_GetBits(curPos3, startPos + 13, 20)) - fileOffset3)) & 1048575, startPos + 13, 20);
+                                        filterItanium_SetBits(curPos3, ((int) (((long) filterItanium_GetBits(curPos3, startPos + 13, 20)) - fileOffset3)) & GL11.GL_ALL_ATTRIB_BITS, startPos + 13, 20);
                                     }
                                 }
                                 i6++;
@@ -950,8 +950,8 @@ public class RarVM extends BitInput {
                             int upperPos = i8 - srcPos4;
                             if (upperPos >= i7) {
                                 int upperDataPos = dataSize5 + upperPos;
-                                int upperByte = this.mem[upperDataPos] & UByte.MAX_VALUE;
-                                int upperLeftByte = this.mem[upperDataPos - 3] & UByte.MAX_VALUE;
+                                int upperByte = this.mem[upperDataPos] & 255;
+                                int upperLeftByte = this.mem[upperDataPos - 3] & 255;
                                 dataSize = dataSize5;
                                 width = srcPos4;
                                 long predicted2 = (((long) upperByte) + prevByte) - ((long) upperLeftByte);
@@ -1147,7 +1147,7 @@ public class RarVM extends BitInput {
             byte[] bArr2 = this.mem;
             int i3 = curPos + inAddr + i;
             bArr2[i3] = (byte) (bArr2[i3] | bitField2);
-            andMask2 = (andMask2 >>> 8) | ViewCompat.MEASURED_STATE_MASK;
+            andMask2 = (andMask2 >>> 8) | (-16777216);
             bitField2 >>>= 8;
         }
     }
@@ -1156,9 +1156,9 @@ public class RarVM extends BitInput {
         int inAddr = bitPos / 8;
         int inBit = bitPos & 7;
         int inAddr2 = inAddr + 1;
-        int bitField = this.mem[inAddr + curPos] & UByte.MAX_VALUE;
+        int bitField = this.mem[inAddr + curPos] & 255;
         int inAddr3 = inAddr2 + 1;
-        return ((-1) >>> (32 - bitCount)) & ((((bitField | ((this.mem[inAddr2 + curPos] & UByte.MAX_VALUE) << 8)) | ((this.mem[inAddr3 + curPos] & UByte.MAX_VALUE) << 16)) | ((this.mem[curPos + (inAddr3 + 1)] & UByte.MAX_VALUE) << 24)) >>> inBit);
+        return ((-1) >>> (32 - bitCount)) & ((((bitField | ((this.mem[inAddr2 + curPos] & 255) << 8)) | ((this.mem[inAddr3 + curPos] & 255) << 16)) | ((this.mem[curPos + (inAddr3 + 1)] & 255) << 24)) >>> inBit);
     }
 
     public void setMemory(int pos, byte[] data, int offset, int dataSize) {
