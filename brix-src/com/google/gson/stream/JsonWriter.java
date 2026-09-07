@@ -11,6 +11,7 @@ import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.regex.Pattern;
+import org.lwjgl.system.macosx.ObjCRuntime;
 
 /* JADX INFO: loaded from: classes.dex */
 public class JsonWriter implements Closeable, Flushable {
@@ -89,20 +90,20 @@ public class JsonWriter implements Closeable, Flushable {
 
     public JsonWriter beginArray() throws IOException {
         writeDeferredName();
-        return open(1, '[');
+        return open(1, ObjCRuntime._C_ARY_B);
     }
 
     public JsonWriter endArray() throws IOException {
-        return close(1, 2, ']');
+        return close(1, 2, ObjCRuntime._C_ARY_E);
     }
 
     public JsonWriter beginObject() throws IOException {
         writeDeferredName();
-        return open(3, '{');
+        return open(3, ObjCRuntime._C_STRUCT_B);
     }
 
     public JsonWriter endObject() throws IOException {
-        return close(3, 5, '}');
+        return close(3, 5, ObjCRuntime._C_STRUCT_E);
     }
 
     private JsonWriter open(int empty, char openBracket) throws IOException {
