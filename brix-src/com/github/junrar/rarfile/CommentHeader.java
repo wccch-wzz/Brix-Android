@@ -1,7 +1,6 @@
 package com.github.junrar.rarfile;
 
 import com.github.junrar.io.Raw;
-import kotlin.UByte;
 
 /* JADX INFO: loaded from: classes.dex */
 public class CommentHeader extends BaseBlock {
@@ -15,9 +14,9 @@ public class CommentHeader extends BaseBlock {
         super(bb);
         this.unpSize = Raw.readShortLittleEndian(commentHeader, 0);
         int pos = 0 + 2;
-        this.unpVersion = (byte) (this.unpVersion | (commentHeader[pos] & UByte.MAX_VALUE));
+        this.unpVersion = (byte) (this.unpVersion | (commentHeader[pos] & 255));
         int pos2 = pos + 1;
-        this.unpMethod = (byte) (this.unpMethod | (commentHeader[pos2] & UByte.MAX_VALUE));
+        this.unpMethod = (byte) (this.unpMethod | (commentHeader[pos2] & 255));
         this.commCRC = Raw.readShortLittleEndian(commentHeader, pos2 + 1);
     }
 
