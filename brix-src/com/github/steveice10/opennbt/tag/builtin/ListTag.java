@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import org.lwjgl.system.macosx.ObjCRuntime;
 
 /* JADX INFO: loaded from: classes.dex */
 public class ListTag extends Tag implements Iterable<Tag> {
@@ -131,7 +132,7 @@ public class ListTag extends Tag implements Iterable<Tag> {
 
     @Override // com.github.steveice10.opennbt.tag.builtin.Tag
     public void stringify(SNBTIO.StringifiedNBTWriter out, boolean linebreak, int depth) throws IOException {
-        out.append('[');
+        out.append(ObjCRuntime._C_ARY_B);
         boolean first = true;
         for (Tag t : this.value) {
             if (first) {
@@ -148,15 +149,15 @@ public class ListTag extends Tag implements Iterable<Tag> {
             out.append('\n');
             out.indent(depth);
         }
-        out.append(']');
+        out.append(ObjCRuntime._C_ARY_E);
     }
 
     @Override // com.github.steveice10.opennbt.tag.builtin.Tag
     /* JADX INFO: renamed from: clone */
-    public ListTag mo360clone() {
+    public ListTag mo428clone() {
         List<Tag> newList = new ArrayList<>();
         for (Tag value : this.value) {
-            newList.add(value.mo360clone());
+            newList.add(value.mo428clone());
         }
         return new ListTag(getName(), newList);
     }
