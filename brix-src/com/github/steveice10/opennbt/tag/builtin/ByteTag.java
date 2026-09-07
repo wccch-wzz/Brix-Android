@@ -4,6 +4,7 @@ import com.github.steveice10.opennbt.SNBTIO;
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
+import org.lwjgl.system.macosx.ObjCRuntime;
 
 /* JADX INFO: loaded from: classes.dex */
 public class ByteTag extends Tag {
@@ -47,13 +48,13 @@ public class ByteTag extends Tag {
     public void stringify(SNBTIO.StringifiedNBTWriter out, boolean linebreak, int depth) throws IOException {
         StringBuilder sb = new StringBuilder();
         sb.append((int) this.value);
-        sb.append('b');
+        sb.append(ObjCRuntime._C_BFLD);
         out.append((CharSequence) sb.toString());
     }
 
     @Override // com.github.steveice10.opennbt.tag.builtin.Tag
     /* JADX INFO: renamed from: clone */
-    public ByteTag mo360clone() {
+    public ByteTag mo428clone() {
         return new ByteTag(getName(), getValue().byteValue());
     }
 }
