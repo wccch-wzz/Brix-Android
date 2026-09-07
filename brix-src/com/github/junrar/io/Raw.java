@@ -1,31 +1,29 @@
 package com.github.junrar.io;
 
-import kotlin.UByte;
-
 /* JADX INFO: loaded from: classes.dex */
 public class Raw {
     public static short readShortBigEndian(byte[] array, int pos) {
-        short temp = (short) ((array[pos] & UByte.MAX_VALUE) | 0);
-        return (short) ((array[pos + 1] & UByte.MAX_VALUE) | ((short) (temp << 8)));
+        short temp = (short) ((array[pos] & 255) | 0);
+        return (short) ((array[pos + 1] & 255) | ((short) (temp << 8)));
     }
 
     public static int readIntBigEndian(byte[] array, int pos) {
-        int temp = 0 | (array[pos] & UByte.MAX_VALUE);
-        return (((((temp << 8) | (array[pos + 1] & UByte.MAX_VALUE)) << 8) | (array[pos + 2] & UByte.MAX_VALUE)) << 8) | (array[pos + 3] & UByte.MAX_VALUE);
+        int temp = 0 | (array[pos] & 255);
+        return (((((temp << 8) | (array[pos + 1] & 255)) << 8) | (array[pos + 2] & 255)) << 8) | (array[pos + 3] & 255);
     }
 
     public static long readLongBigEndian(byte[] array, int pos) {
-        int temp = 0 | (array[pos] & UByte.MAX_VALUE);
-        return (((((((((((((temp << 8) | (array[pos + 1] & UByte.MAX_VALUE)) << 8) | (array[pos + 2] & UByte.MAX_VALUE)) << 8) | (array[pos + 3] & UByte.MAX_VALUE)) << 8) | (array[pos + 4] & UByte.MAX_VALUE)) << 8) | (array[pos + 5] & UByte.MAX_VALUE)) << 8) | (array[pos + 6] & UByte.MAX_VALUE)) << 8) | (array[pos + 7] & UByte.MAX_VALUE);
+        int temp = 0 | (array[pos] & 255);
+        return (((((((((((((temp << 8) | (array[pos + 1] & 255)) << 8) | (array[pos + 2] & 255)) << 8) | (array[pos + 3] & 255)) << 8) | (array[pos + 4] & 255)) << 8) | (array[pos + 5] & 255)) << 8) | (array[pos + 6] & 255)) << 8) | (array[pos + 7] & 255);
     }
 
     public static short readShortLittleEndian(byte[] array, int pos) {
-        short result = (short) ((array[pos + 1] & UByte.MAX_VALUE) + 0);
-        return (short) ((array[pos] & UByte.MAX_VALUE) + ((short) (result << 8)));
+        short result = (short) ((array[pos + 1] & 255) + 0);
+        return (short) ((array[pos] & 255) + ((short) (result << 8)));
     }
 
     public static int readIntLittleEndian(byte[] array, int pos) {
-        return ((array[pos + 3] & UByte.MAX_VALUE) << 24) | ((array[pos + 2] & UByte.MAX_VALUE) << 16) | ((array[pos + 1] & UByte.MAX_VALUE) << 8) | (array[pos] & UByte.MAX_VALUE);
+        return ((array[pos + 3] & 255) << 24) | ((array[pos + 2] & 255) << 16) | ((array[pos + 1] & 255) << 8) | (array[pos] & 255);
     }
 
     public static long readIntLittleEndianAsLong(byte[] array, int pos) {
@@ -33,8 +31,8 @@ public class Raw {
     }
 
     public static long readLongLittleEndian(byte[] array, int pos) {
-        long temp = 0 | ((long) (array[pos + 7] & UByte.MAX_VALUE));
-        return (((((((((((((temp << 8) | ((long) (array[pos + 6] & UByte.MAX_VALUE))) << 8) | ((long) (array[pos + 5] & UByte.MAX_VALUE))) << 8) | ((long) (array[pos + 4] & UByte.MAX_VALUE))) << 8) | ((long) (array[pos + 3] & UByte.MAX_VALUE))) << 8) | ((long) (array[pos + 2] & UByte.MAX_VALUE))) << 8) | ((long) (array[pos + 1] & UByte.MAX_VALUE))) << 8) | ((long) (array[pos] & UByte.MAX_VALUE));
+        long temp = 0 | ((long) (array[pos + 7] & 255));
+        return (((((((((((((temp << 8) | ((long) (array[pos + 6] & 255))) << 8) | ((long) (array[pos + 5] & 255))) << 8) | ((long) (array[pos + 4] & 255))) << 8) | ((long) (array[pos + 3] & 255))) << 8) | ((long) (array[pos + 2] & 255))) << 8) | ((long) (array[pos + 1] & 255))) << 8) | ((long) (array[pos] & 255));
     }
 
     public static void writeShortBigEndian(byte[] array, int pos, short value) {
