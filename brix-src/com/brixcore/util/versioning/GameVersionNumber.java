@@ -15,7 +15,6 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import org.glavo.chardet.prober.CharsetProber;
 
 /* JADX INFO: loaded from: classes11.dex */
 public abstract class GameVersionNumber implements Comparable<GameVersionNumber> {
@@ -49,7 +48,7 @@ public abstract class GameVersionNumber implements Comparable<GameVersionNumber>
             if (!version.isEmpty()) {
                 char ch = version.charAt(0);
                 switch (ch) {
-                    case CharsetProber.ASCII_A /* 97 */:
+                    case 'a':
                     case 'b':
                     case 'c':
                     case 'i':
@@ -214,7 +213,7 @@ public abstract class GameVersionNumber implements Comparable<GameVersionNumber>
             }
             int prefixLength = 1;
             switch (value.charAt(0)) {
-                case CharsetProber.ASCII_A /* 97 */:
+                case 'a':
                     type = Type.ALPHA;
                     break;
                 case 'b':
