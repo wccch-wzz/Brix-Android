@@ -13,6 +13,7 @@ import java.io.Reader;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Map;
+import org.lwjgl.system.macosx.ObjCRuntime;
 
 /* JADX INFO: loaded from: classes.dex */
 public final class JsonTreeReader extends JsonReader {
@@ -336,7 +337,7 @@ public final class JsonTreeReader extends JsonReader {
                     if (usePreviousPath && pathIndex > 0 && (i == this.stackSize - 1 || i == this.stackSize - 2)) {
                         pathIndex--;
                     }
-                    result.append('[').append(pathIndex).append(']');
+                    result.append(ObjCRuntime._C_ARY_B).append(pathIndex).append(ObjCRuntime._C_ARY_E);
                 }
             } else if ((this.stack[i] instanceof JsonObject) && (i = i + 1) < this.stackSize && (this.stack[i] instanceof Iterator)) {
                 result.append('.');
