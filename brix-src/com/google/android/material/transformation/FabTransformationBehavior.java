@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import androidx.constraintlayout.core.motion.utils.TypedValues;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.view.ViewCompat;
 import com.google.android.material.R;
@@ -293,7 +294,7 @@ public abstract class FabTransformationBehavior extends ExpandableTransformation
             animator = ObjectAnimator.ofInt(circularRevealChild, CircularRevealWidget.CircularRevealScrimColorProperty.CIRCULAR_REVEAL_SCRIM_COLOR, tint);
         }
         animator.setEvaluator(ArgbEvaluatorCompat.getInstance());
-        MotionTiming timing = spec.timings.getTiming("color");
+        MotionTiming timing = spec.timings.getTiming(TypedValues.Custom.S_COLOR);
         timing.apply(animator);
         animations.add(animator);
     }
