@@ -23,6 +23,7 @@ import com.google.android.material.math.MathUtils;
 import com.google.android.material.motion.MotionUtils;
 import java.util.ArrayList;
 import java.util.List;
+import org.lwjgl.util.spvc.Spv;
 
 /* JADX INFO: loaded from: classes.dex */
 class ClockHandView extends View {
@@ -116,7 +117,7 @@ class ClockHandView extends View {
         this.rotationAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() { // from class: com.google.android.material.timepicker.ClockHandView$$ExternalSyntheticLambda0
             @Override // android.animation.ValueAnimator.AnimatorUpdateListener
             public final void onAnimationUpdate(ValueAnimator valueAnimator) {
-                this.f$0.m450xb17f7076(valueAnimator);
+                this.f$0.m518xb17f7076(valueAnimator);
             }
         });
         this.rotationAnimator.addListener(new AnimatorListenerAdapter() { // from class: com.google.android.material.timepicker.ClockHandView.1
@@ -129,7 +130,7 @@ class ClockHandView extends View {
     }
 
     /* JADX INFO: renamed from: lambda$setHandRotation$0$com-google-android-material-timepicker-ClockHandView, reason: not valid java name */
-    /* synthetic */ void m450xb17f7076(ValueAnimator animation) {
+    /* synthetic */ void m518xb17f7076(ValueAnimator animation) {
         float animatedValue = ((Float) animation.getAnimatedValue()).floatValue();
         setHandRotationInternal(animatedValue, true);
     }
@@ -301,7 +302,7 @@ class ClockHandView extends View {
         double dY = y - yCenter;
         int degrees = ((int) Math.toDegrees(Math.atan2(dY, dX))) + 90;
         if (degrees < 0) {
-            return degrees + 360;
+            return degrees + Spv.SpvOpGroupNonUniformBitwiseOr;
         }
         return degrees;
     }
