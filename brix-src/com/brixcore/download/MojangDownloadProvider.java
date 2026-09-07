@@ -20,7 +20,7 @@ public class MojangDownloadProvider implements DownloadProvider {
     private final CleanroomVersionList cleanroom = new CleanroomVersionList(this);
     private final NeoForgeOfficialVersionList neoforge = new NeoForgeOfficialVersionList(this);
     private final LiteLoaderVersionList liteLoader = new LiteLoaderVersionList(this);
-    private final OptiFine302VersionList optifine = new OptiFine302VersionList("https://hmcl-dev.github.io/metadata/optifine/");
+    private final OptiFine302VersionList optifine = new OptiFine302VersionList("https://raw.githubusercontent.com/OptiFine/legacy-optifine/master/optifine.md");
     private final QuiltVersionList quilt = new QuiltVersionList(this);
     private final QuiltAPIVersionList quiltApi = new QuiltAPIVersionList(this);
 
