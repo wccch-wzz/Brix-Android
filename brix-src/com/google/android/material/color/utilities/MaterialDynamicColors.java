@@ -106,13 +106,13 @@ public final class MaterialDynamicColors {
         }, false, new Function() { // from class: com.google.android.material.color.utilities.MaterialDynamicColors$$ExternalSyntheticLambda106
             @Override // java.util.function.Function
             public final Object apply(Object obj) {
-                return this.f$0.m373x24678954((DynamicScheme) obj);
+                return this.f$0.m441x24678954((DynamicScheme) obj);
             }
         }, null, new ContrastCurve(3.0d, 3.0d, 4.5d, 7.0d), null);
     }
 
     /* JADX INFO: renamed from: lambda$onBackground$14$com-google-android-material-color-utilities-MaterialDynamicColors, reason: not valid java name */
-    /* synthetic */ DynamicColor m373x24678954(DynamicScheme s) {
+    /* synthetic */ DynamicColor m441x24678954(DynamicScheme s) {
         return background();
     }
 
@@ -298,13 +298,13 @@ public final class MaterialDynamicColors {
         }, false, new Function() { // from class: com.google.android.material.color.utilities.MaterialDynamicColors$$ExternalSyntheticLambda20
             @Override // java.util.function.Function
             public final Object apply(Object obj) {
-                return this.f$0.m371xcbcaf83d((DynamicScheme) obj);
+                return this.f$0.m439xcbcaf83d((DynamicScheme) obj);
             }
         }, null, new ContrastCurve(4.5d, 7.0d, 11.0d, 21.0d), null);
     }
 
     /* JADX INFO: renamed from: lambda$inverseOnSurface$41$com-google-android-material-color-utilities-MaterialDynamicColors, reason: not valid java name */
-    /* synthetic */ DynamicColor m371xcbcaf83d(DynamicScheme s) {
+    /* synthetic */ DynamicColor m439xcbcaf83d(DynamicScheme s) {
         return inverseSurface();
     }
 
@@ -392,7 +392,7 @@ public final class MaterialDynamicColors {
         }, true, new MaterialDynamicColors$$ExternalSyntheticLambda162(this), null, new ContrastCurve(3.0d, 4.5d, 7.0d, 11.0d), new Function() { // from class: com.google.android.material.color.utilities.MaterialDynamicColors$$ExternalSyntheticLambda59
             @Override // java.util.function.Function
             public final Object apply(Object obj) {
-                return this.f$0.m397x39203b5((DynamicScheme) obj);
+                return this.f$0.m465x39203b5((DynamicScheme) obj);
             }
         });
     }
@@ -405,7 +405,7 @@ public final class MaterialDynamicColors {
     }
 
     /* JADX INFO: renamed from: lambda$primary$54$com-google-android-material-color-utilities-MaterialDynamicColors, reason: not valid java name */
-    /* synthetic */ ToneDeltaPair m397x39203b5(DynamicScheme s) {
+    /* synthetic */ ToneDeltaPair m465x39203b5(DynamicScheme s) {
         return new ToneDeltaPair(primaryContainer(), primary(), 15.0d, TonePolarity.NEARER, false);
     }
 
@@ -423,7 +423,7 @@ public final class MaterialDynamicColors {
         }, false, new Function() { // from class: com.google.android.material.color.utilities.MaterialDynamicColors$$ExternalSyntheticLambda114
             @Override // java.util.function.Function
             public final Object apply(Object obj) {
-                return this.f$0.m376x16f20f37((DynamicScheme) obj);
+                return this.f$0.m444x16f20f37((DynamicScheme) obj);
             }
         }, null, new ContrastCurve(4.5d, 7.0d, 11.0d, 21.0d), null);
     }
@@ -436,7 +436,7 @@ public final class MaterialDynamicColors {
     }
 
     /* JADX INFO: renamed from: lambda$onPrimary$57$com-google-android-material-color-utilities-MaterialDynamicColors, reason: not valid java name */
-    /* synthetic */ DynamicColor m376x16f20f37(DynamicScheme s) {
+    /* synthetic */ DynamicColor m444x16f20f37(DynamicScheme s) {
         return primary();
     }
 
@@ -454,7 +454,7 @@ public final class MaterialDynamicColors {
         }, true, new MaterialDynamicColors$$ExternalSyntheticLambda162(this), null, new ContrastCurve(1.0d, 1.0d, 3.0d, 7.0d), new Function() { // from class: com.google.android.material.color.utilities.MaterialDynamicColors$$ExternalSyntheticLambda99
             @Override // java.util.function.Function
             public final Object apply(Object obj) {
-                return this.f$0.m398x8277b1b9((DynamicScheme) obj);
+                return this.f$0.m466x8277b1b9((DynamicScheme) obj);
             }
         });
     }
@@ -470,7 +470,7 @@ public final class MaterialDynamicColors {
     }
 
     /* JADX INFO: renamed from: lambda$primaryContainer$60$com-google-android-material-color-utilities-MaterialDynamicColors, reason: not valid java name */
-    /* synthetic */ ToneDeltaPair m398x8277b1b9(DynamicScheme s) {
+    /* synthetic */ ToneDeltaPair m466x8277b1b9(DynamicScheme s) {
         return new ToneDeltaPair(primaryContainer(), primary(), 15.0d, TonePolarity.NEARER, false);
     }
 
@@ -483,18 +483,18 @@ public final class MaterialDynamicColors {
         }, new Function() { // from class: com.google.android.material.color.utilities.MaterialDynamicColors$$ExternalSyntheticLambda136
             @Override // java.util.function.Function
             public final Object apply(Object obj) {
-                return this.f$0.m377x617ce7dc((DynamicScheme) obj);
+                return this.f$0.m445x617ce7dc((DynamicScheme) obj);
             }
         }, false, new Function() { // from class: com.google.android.material.color.utilities.MaterialDynamicColors$$ExternalSyntheticLambda137
             @Override // java.util.function.Function
             public final Object apply(Object obj) {
-                return this.f$0.m378x3d3e639d((DynamicScheme) obj);
+                return this.f$0.m446x3d3e639d((DynamicScheme) obj);
             }
         }, null, new ContrastCurve(4.5d, 7.0d, 11.0d, 21.0d), null);
     }
 
     /* JADX INFO: renamed from: lambda$onPrimaryContainer$62$com-google-android-material-color-utilities-MaterialDynamicColors, reason: not valid java name */
-    /* synthetic */ Double m377x617ce7dc(DynamicScheme s) {
+    /* synthetic */ Double m445x617ce7dc(DynamicScheme s) {
         if (isFidelity(s)) {
             return Double.valueOf(DynamicColor.foregroundTone(primaryContainer().tone.apply(s).doubleValue(), 4.5d));
         }
@@ -505,7 +505,7 @@ public final class MaterialDynamicColors {
     }
 
     /* JADX INFO: renamed from: lambda$onPrimaryContainer$63$com-google-android-material-color-utilities-MaterialDynamicColors, reason: not valid java name */
-    /* synthetic */ DynamicColor m378x3d3e639d(DynamicScheme s) {
+    /* synthetic */ DynamicColor m446x3d3e639d(DynamicScheme s) {
         return primaryContainer();
     }
 
@@ -523,13 +523,13 @@ public final class MaterialDynamicColors {
         }, false, new Function() { // from class: com.google.android.material.color.utilities.MaterialDynamicColors$$ExternalSyntheticLambda117
             @Override // java.util.function.Function
             public final Object apply(Object obj) {
-                return this.f$0.m372x6f94cccc((DynamicScheme) obj);
+                return this.f$0.m440x6f94cccc((DynamicScheme) obj);
             }
         }, null, new ContrastCurve(3.0d, 4.5d, 7.0d, 11.0d), null);
     }
 
     /* JADX INFO: renamed from: lambda$inversePrimary$66$com-google-android-material-color-utilities-MaterialDynamicColors, reason: not valid java name */
-    /* synthetic */ DynamicColor m372x6f94cccc(DynamicScheme s) {
+    /* synthetic */ DynamicColor m440x6f94cccc(DynamicScheme s) {
         return inverseSurface();
     }
 
@@ -547,13 +547,13 @@ public final class MaterialDynamicColors {
         }, true, new MaterialDynamicColors$$ExternalSyntheticLambda162(this), null, new ContrastCurve(3.0d, 4.5d, 7.0d, 11.0d), new Function() { // from class: com.google.android.material.color.utilities.MaterialDynamicColors$$ExternalSyntheticLambda6
             @Override // java.util.function.Function
             public final Object apply(Object obj) {
-                return this.f$0.m401x991d7367((DynamicScheme) obj);
+                return this.f$0.m469x991d7367((DynamicScheme) obj);
             }
         });
     }
 
     /* JADX INFO: renamed from: lambda$secondary$69$com-google-android-material-color-utilities-MaterialDynamicColors, reason: not valid java name */
-    /* synthetic */ ToneDeltaPair m401x991d7367(DynamicScheme s) {
+    /* synthetic */ ToneDeltaPair m469x991d7367(DynamicScheme s) {
         return new ToneDeltaPair(secondaryContainer(), secondary(), 15.0d, TonePolarity.NEARER, false);
     }
 
@@ -571,7 +571,7 @@ public final class MaterialDynamicColors {
         }, false, new Function() { // from class: com.google.android.material.color.utilities.MaterialDynamicColors$$ExternalSyntheticLambda3
             @Override // java.util.function.Function
             public final Object apply(Object obj) {
-                return this.f$0.m383x1ad791fe((DynamicScheme) obj);
+                return this.f$0.m451x1ad791fe((DynamicScheme) obj);
             }
         }, null, new ContrastCurve(4.5d, 7.0d, 11.0d, 21.0d), null);
     }
@@ -584,7 +584,7 @@ public final class MaterialDynamicColors {
     }
 
     /* JADX INFO: renamed from: lambda$onSecondary$72$com-google-android-material-color-utilities-MaterialDynamicColors, reason: not valid java name */
-    /* synthetic */ DynamicColor m383x1ad791fe(DynamicScheme s) {
+    /* synthetic */ DynamicColor m451x1ad791fe(DynamicScheme s) {
         return secondary();
     }
 
@@ -602,7 +602,7 @@ public final class MaterialDynamicColors {
         }, true, new MaterialDynamicColors$$ExternalSyntheticLambda162(this), null, new ContrastCurve(1.0d, 1.0d, 3.0d, 7.0d), new Function() { // from class: com.google.android.material.color.utilities.MaterialDynamicColors$$ExternalSyntheticLambda86
             @Override // java.util.function.Function
             public final Object apply(Object obj) {
-                return this.f$0.m402x485cd00f((DynamicScheme) obj);
+                return this.f$0.m470x485cd00f((DynamicScheme) obj);
             }
         });
     }
@@ -620,7 +620,7 @@ public final class MaterialDynamicColors {
     }
 
     /* JADX INFO: renamed from: lambda$secondaryContainer$75$com-google-android-material-color-utilities-MaterialDynamicColors, reason: not valid java name */
-    /* synthetic */ ToneDeltaPair m402x485cd00f(DynamicScheme s) {
+    /* synthetic */ ToneDeltaPair m470x485cd00f(DynamicScheme s) {
         return new ToneDeltaPair(secondaryContainer(), secondary(), 15.0d, TonePolarity.NEARER, false);
     }
 
@@ -633,18 +633,18 @@ public final class MaterialDynamicColors {
         }, new Function() { // from class: com.google.android.material.color.utilities.MaterialDynamicColors$$ExternalSyntheticLambda26
             @Override // java.util.function.Function
             public final Object apply(Object obj) {
-                return this.f$0.m384x4fcce1f2((DynamicScheme) obj);
+                return this.f$0.m452x4fcce1f2((DynamicScheme) obj);
             }
         }, false, new Function() { // from class: com.google.android.material.color.utilities.MaterialDynamicColors$$ExternalSyntheticLambda27
             @Override // java.util.function.Function
             public final Object apply(Object obj) {
-                return this.f$0.m385x2b8e5db3((DynamicScheme) obj);
+                return this.f$0.m453x2b8e5db3((DynamicScheme) obj);
             }
         }, null, new ContrastCurve(4.5d, 7.0d, 11.0d, 21.0d), null);
     }
 
     /* JADX INFO: renamed from: lambda$onSecondaryContainer$77$com-google-android-material-color-utilities-MaterialDynamicColors, reason: not valid java name */
-    /* synthetic */ Double m384x4fcce1f2(DynamicScheme s) {
+    /* synthetic */ Double m452x4fcce1f2(DynamicScheme s) {
         if (isFidelity(s)) {
             return Double.valueOf(DynamicColor.foregroundTone(secondaryContainer().tone.apply(s).doubleValue(), 4.5d));
         }
@@ -652,7 +652,7 @@ public final class MaterialDynamicColors {
     }
 
     /* JADX INFO: renamed from: lambda$onSecondaryContainer$78$com-google-android-material-color-utilities-MaterialDynamicColors, reason: not valid java name */
-    /* synthetic */ DynamicColor m385x2b8e5db3(DynamicScheme s) {
+    /* synthetic */ DynamicColor m453x2b8e5db3(DynamicScheme s) {
         return secondaryContainer();
     }
 
@@ -670,7 +670,7 @@ public final class MaterialDynamicColors {
         }, true, new MaterialDynamicColors$$ExternalSyntheticLambda162(this), null, new ContrastCurve(3.0d, 4.5d, 7.0d, 11.0d), new Function() { // from class: com.google.android.material.color.utilities.MaterialDynamicColors$$ExternalSyntheticLambda69
             @Override // java.util.function.Function
             public final Object apply(Object obj) {
-                return this.f$0.m405x1f6aa165((DynamicScheme) obj);
+                return this.f$0.m473x1f6aa165((DynamicScheme) obj);
             }
         });
     }
@@ -683,7 +683,7 @@ public final class MaterialDynamicColors {
     }
 
     /* JADX INFO: renamed from: lambda$tertiary$81$com-google-android-material-color-utilities-MaterialDynamicColors, reason: not valid java name */
-    /* synthetic */ ToneDeltaPair m405x1f6aa165(DynamicScheme s) {
+    /* synthetic */ ToneDeltaPair m473x1f6aa165(DynamicScheme s) {
         return new ToneDeltaPair(tertiaryContainer(), tertiary(), 15.0d, TonePolarity.NEARER, false);
     }
 
@@ -701,7 +701,7 @@ public final class MaterialDynamicColors {
         }, false, new Function() { // from class: com.google.android.material.color.utilities.MaterialDynamicColors$$ExternalSyntheticLambda129
             @Override // java.util.function.Function
             public final Object apply(Object obj) {
-                return this.f$0.m390x36068449((DynamicScheme) obj);
+                return this.f$0.m458x36068449((DynamicScheme) obj);
             }
         }, null, new ContrastCurve(4.5d, 7.0d, 11.0d, 21.0d), null);
     }
@@ -714,7 +714,7 @@ public final class MaterialDynamicColors {
     }
 
     /* JADX INFO: renamed from: lambda$onTertiary$84$com-google-android-material-color-utilities-MaterialDynamicColors, reason: not valid java name */
-    /* synthetic */ DynamicColor m390x36068449(DynamicScheme s) {
+    /* synthetic */ DynamicColor m458x36068449(DynamicScheme s) {
         return tertiary();
     }
 
@@ -732,7 +732,7 @@ public final class MaterialDynamicColors {
         }, true, new MaterialDynamicColors$$ExternalSyntheticLambda162(this), null, new ContrastCurve(1.0d, 1.0d, 3.0d, 7.0d), new Function() { // from class: com.google.android.material.color.utilities.MaterialDynamicColors$$ExternalSyntheticLambda161
             @Override // java.util.function.Function
             public final Object apply(Object obj) {
-                return this.f$0.m406x357de1a8((DynamicScheme) obj);
+                return this.f$0.m474x357de1a8((DynamicScheme) obj);
             }
         });
     }
@@ -750,7 +750,7 @@ public final class MaterialDynamicColors {
     }
 
     /* JADX INFO: renamed from: lambda$tertiaryContainer$87$com-google-android-material-color-utilities-MaterialDynamicColors, reason: not valid java name */
-    /* synthetic */ ToneDeltaPair m406x357de1a8(DynamicScheme s) {
+    /* synthetic */ ToneDeltaPair m474x357de1a8(DynamicScheme s) {
         return new ToneDeltaPair(tertiaryContainer(), tertiary(), 15.0d, TonePolarity.NEARER, false);
     }
 
@@ -763,18 +763,18 @@ public final class MaterialDynamicColors {
         }, new Function() { // from class: com.google.android.material.color.utilities.MaterialDynamicColors$$ExternalSyntheticLambda23
             @Override // java.util.function.Function
             public final Object apply(Object obj) {
-                return this.f$0.m391xb5c66ea9((DynamicScheme) obj);
+                return this.f$0.m459xb5c66ea9((DynamicScheme) obj);
             }
         }, false, new Function() { // from class: com.google.android.material.color.utilities.MaterialDynamicColors$$ExternalSyntheticLambda24
             @Override // java.util.function.Function
             public final Object apply(Object obj) {
-                return this.f$0.m392x9867113f((DynamicScheme) obj);
+                return this.f$0.m460x9867113f((DynamicScheme) obj);
             }
         }, null, new ContrastCurve(4.5d, 7.0d, 11.0d, 21.0d), null);
     }
 
     /* JADX INFO: renamed from: lambda$onTertiaryContainer$89$com-google-android-material-color-utilities-MaterialDynamicColors, reason: not valid java name */
-    /* synthetic */ Double m391xb5c66ea9(DynamicScheme s) {
+    /* synthetic */ Double m459xb5c66ea9(DynamicScheme s) {
         if (isMonochrome(s)) {
             return Double.valueOf(s.isDark ? 0.0d : 100.0d);
         }
@@ -785,7 +785,7 @@ public final class MaterialDynamicColors {
     }
 
     /* JADX INFO: renamed from: lambda$onTertiaryContainer$90$com-google-android-material-color-utilities-MaterialDynamicColors, reason: not valid java name */
-    /* synthetic */ DynamicColor m392x9867113f(DynamicScheme s) {
+    /* synthetic */ DynamicColor m460x9867113f(DynamicScheme s) {
         return tertiaryContainer();
     }
 
@@ -803,13 +803,13 @@ public final class MaterialDynamicColors {
         }, true, new MaterialDynamicColors$$ExternalSyntheticLambda162(this), null, new ContrastCurve(3.0d, 4.5d, 7.0d, 11.0d), new Function() { // from class: com.google.android.material.color.utilities.MaterialDynamicColors$$ExternalSyntheticLambda35
             @Override // java.util.function.Function
             public final Object apply(Object obj) {
-                return this.f$0.m369x590ec46a((DynamicScheme) obj);
+                return this.f$0.m437x590ec46a((DynamicScheme) obj);
             }
         });
     }
 
     /* JADX INFO: renamed from: lambda$error$93$com-google-android-material-color-utilities-MaterialDynamicColors, reason: not valid java name */
-    /* synthetic */ ToneDeltaPair m369x590ec46a(DynamicScheme s) {
+    /* synthetic */ ToneDeltaPair m437x590ec46a(DynamicScheme s) {
         return new ToneDeltaPair(errorContainer(), error(), 15.0d, TonePolarity.NEARER, false);
     }
 
@@ -827,13 +827,13 @@ public final class MaterialDynamicColors {
         }, false, new Function() { // from class: com.google.android.material.color.utilities.MaterialDynamicColors$$ExternalSyntheticLambda132
             @Override // java.util.function.Function
             public final Object apply(Object obj) {
-                return this.f$0.m374xb6a5d3ac((DynamicScheme) obj);
+                return this.f$0.m442xb6a5d3ac((DynamicScheme) obj);
             }
         }, null, new ContrastCurve(4.5d, 7.0d, 11.0d, 21.0d), null);
     }
 
     /* JADX INFO: renamed from: lambda$onError$96$com-google-android-material-color-utilities-MaterialDynamicColors, reason: not valid java name */
-    /* synthetic */ DynamicColor m374xb6a5d3ac(DynamicScheme s) {
+    /* synthetic */ DynamicColor m442xb6a5d3ac(DynamicScheme s) {
         return error();
     }
 
@@ -851,13 +851,13 @@ public final class MaterialDynamicColors {
         }, true, new MaterialDynamicColors$$ExternalSyntheticLambda162(this), null, new ContrastCurve(1.0d, 1.0d, 3.0d, 7.0d), new Function() { // from class: com.google.android.material.color.utilities.MaterialDynamicColors$$ExternalSyntheticLambda52
             @Override // java.util.function.Function
             public final Object apply(Object obj) {
-                return this.f$0.m370x33346ee5((DynamicScheme) obj);
+                return this.f$0.m438x33346ee5((DynamicScheme) obj);
             }
         });
     }
 
     /* JADX INFO: renamed from: lambda$errorContainer$99$com-google-android-material-color-utilities-MaterialDynamicColors, reason: not valid java name */
-    /* synthetic */ ToneDeltaPair m370x33346ee5(DynamicScheme s) {
+    /* synthetic */ ToneDeltaPair m438x33346ee5(DynamicScheme s) {
         return new ToneDeltaPair(errorContainer(), error(), 15.0d, TonePolarity.NEARER, false);
     }
 
@@ -875,13 +875,13 @@ public final class MaterialDynamicColors {
         }, false, new Function() { // from class: com.google.android.material.color.utilities.MaterialDynamicColors$$ExternalSyntheticLambda47
             @Override // java.util.function.Function
             public final Object apply(Object obj) {
-                return this.f$0.m375x2dffdbdb((DynamicScheme) obj);
+                return this.f$0.m443x2dffdbdb((DynamicScheme) obj);
             }
         }, null, new ContrastCurve(4.5d, 7.0d, 11.0d, 21.0d), null);
     }
 
     /* JADX INFO: renamed from: lambda$onErrorContainer$102$com-google-android-material-color-utilities-MaterialDynamicColors, reason: not valid java name */
-    /* synthetic */ DynamicColor m375x2dffdbdb(DynamicScheme s) {
+    /* synthetic */ DynamicColor m443x2dffdbdb(DynamicScheme s) {
         return errorContainer();
     }
 
@@ -899,13 +899,13 @@ public final class MaterialDynamicColors {
         }, true, new MaterialDynamicColors$$ExternalSyntheticLambda162(this), null, new ContrastCurve(1.0d, 1.0d, 3.0d, 7.0d), new Function() { // from class: com.google.android.material.color.utilities.MaterialDynamicColors$$ExternalSyntheticLambda155
             @Override // java.util.function.Function
             public final Object apply(Object obj) {
-                return this.f$0.m399xcb141198((DynamicScheme) obj);
+                return this.f$0.m467xcb141198((DynamicScheme) obj);
             }
         });
     }
 
     /* JADX INFO: renamed from: lambda$primaryFixed$105$com-google-android-material-color-utilities-MaterialDynamicColors, reason: not valid java name */
-    /* synthetic */ ToneDeltaPair m399xcb141198(DynamicScheme s) {
+    /* synthetic */ ToneDeltaPair m467xcb141198(DynamicScheme s) {
         return new ToneDeltaPair(primaryFixed(), primaryFixedDim(), 10.0d, TonePolarity.LIGHTER, true);
     }
 
@@ -923,13 +923,13 @@ public final class MaterialDynamicColors {
         }, true, new MaterialDynamicColors$$ExternalSyntheticLambda162(this), null, new ContrastCurve(1.0d, 1.0d, 3.0d, 7.0d), new Function() { // from class: com.google.android.material.color.utilities.MaterialDynamicColors$$ExternalSyntheticLambda158
             @Override // java.util.function.Function
             public final Object apply(Object obj) {
-                return this.f$0.m400x8f195ac5((DynamicScheme) obj);
+                return this.f$0.m468x8f195ac5((DynamicScheme) obj);
             }
         });
     }
 
     /* JADX INFO: renamed from: lambda$primaryFixedDim$108$com-google-android-material-color-utilities-MaterialDynamicColors, reason: not valid java name */
-    /* synthetic */ ToneDeltaPair m400x8f195ac5(DynamicScheme s) {
+    /* synthetic */ ToneDeltaPair m468x8f195ac5(DynamicScheme s) {
         return new ToneDeltaPair(primaryFixed(), primaryFixedDim(), 10.0d, TonePolarity.LIGHTER, true);
     }
 
@@ -947,23 +947,23 @@ public final class MaterialDynamicColors {
         }, false, new Function() { // from class: com.google.android.material.color.utilities.MaterialDynamicColors$$ExternalSyntheticLambda30
             @Override // java.util.function.Function
             public final Object apply(Object obj) {
-                return this.f$0.m379x702e4bf2((DynamicScheme) obj);
+                return this.f$0.m447x702e4bf2((DynamicScheme) obj);
             }
         }, new Function() { // from class: com.google.android.material.color.utilities.MaterialDynamicColors$$ExternalSyntheticLambda31
             @Override // java.util.function.Function
             public final Object apply(Object obj) {
-                return this.f$0.m380x4befc7b3((DynamicScheme) obj);
+                return this.f$0.m448x4befc7b3((DynamicScheme) obj);
             }
         }, new ContrastCurve(4.5d, 7.0d, 11.0d, 21.0d), null);
     }
 
     /* JADX INFO: renamed from: lambda$onPrimaryFixed$111$com-google-android-material-color-utilities-MaterialDynamicColors, reason: not valid java name */
-    /* synthetic */ DynamicColor m379x702e4bf2(DynamicScheme s) {
+    /* synthetic */ DynamicColor m447x702e4bf2(DynamicScheme s) {
         return primaryFixedDim();
     }
 
     /* JADX INFO: renamed from: lambda$onPrimaryFixed$112$com-google-android-material-color-utilities-MaterialDynamicColors, reason: not valid java name */
-    /* synthetic */ DynamicColor m380x4befc7b3(DynamicScheme s) {
+    /* synthetic */ DynamicColor m448x4befc7b3(DynamicScheme s) {
         return primaryFixed();
     }
 
@@ -981,23 +981,23 @@ public final class MaterialDynamicColors {
         }, false, new Function() { // from class: com.google.android.material.color.utilities.MaterialDynamicColors$$ExternalSyntheticLambda124
             @Override // java.util.function.Function
             public final Object apply(Object obj) {
-                return this.f$0.m381x19d0bbbf((DynamicScheme) obj);
+                return this.f$0.m449x19d0bbbf((DynamicScheme) obj);
             }
         }, new Function() { // from class: com.google.android.material.color.utilities.MaterialDynamicColors$$ExternalSyntheticLambda125
             @Override // java.util.function.Function
             public final Object apply(Object obj) {
-                return this.f$0.m382xf5923780((DynamicScheme) obj);
+                return this.f$0.m450xf5923780((DynamicScheme) obj);
             }
         }, new ContrastCurve(3.0d, 4.5d, 7.0d, 11.0d), null);
     }
 
     /* JADX INFO: renamed from: lambda$onPrimaryFixedVariant$115$com-google-android-material-color-utilities-MaterialDynamicColors, reason: not valid java name */
-    /* synthetic */ DynamicColor m381x19d0bbbf(DynamicScheme s) {
+    /* synthetic */ DynamicColor m449x19d0bbbf(DynamicScheme s) {
         return primaryFixedDim();
     }
 
     /* JADX INFO: renamed from: lambda$onPrimaryFixedVariant$116$com-google-android-material-color-utilities-MaterialDynamicColors, reason: not valid java name */
-    /* synthetic */ DynamicColor m382xf5923780(DynamicScheme s) {
+    /* synthetic */ DynamicColor m450xf5923780(DynamicScheme s) {
         return primaryFixed();
     }
 
@@ -1015,13 +1015,13 @@ public final class MaterialDynamicColors {
         }, true, new MaterialDynamicColors$$ExternalSyntheticLambda162(this), null, new ContrastCurve(1.0d, 1.0d, 3.0d, 7.0d), new Function() { // from class: com.google.android.material.color.utilities.MaterialDynamicColors$$ExternalSyntheticLambda121
             @Override // java.util.function.Function
             public final Object apply(Object obj) {
-                return this.f$0.m403x75ece309((DynamicScheme) obj);
+                return this.f$0.m471x75ece309((DynamicScheme) obj);
             }
         });
     }
 
     /* JADX INFO: renamed from: lambda$secondaryFixed$119$com-google-android-material-color-utilities-MaterialDynamicColors, reason: not valid java name */
-    /* synthetic */ ToneDeltaPair m403x75ece309(DynamicScheme s) {
+    /* synthetic */ ToneDeltaPair m471x75ece309(DynamicScheme s) {
         return new ToneDeltaPair(secondaryFixed(), secondaryFixedDim(), 10.0d, TonePolarity.LIGHTER, true);
     }
 
@@ -1039,13 +1039,13 @@ public final class MaterialDynamicColors {
         }, true, new MaterialDynamicColors$$ExternalSyntheticLambda162(this), null, new ContrastCurve(1.0d, 1.0d, 3.0d, 7.0d), new Function() { // from class: com.google.android.material.color.utilities.MaterialDynamicColors$$ExternalSyntheticLambda141
             @Override // java.util.function.Function
             public final Object apply(Object obj) {
-                return this.f$0.m404x801c242f((DynamicScheme) obj);
+                return this.f$0.m472x801c242f((DynamicScheme) obj);
             }
         });
     }
 
     /* JADX INFO: renamed from: lambda$secondaryFixedDim$122$com-google-android-material-color-utilities-MaterialDynamicColors, reason: not valid java name */
-    /* synthetic */ ToneDeltaPair m404x801c242f(DynamicScheme s) {
+    /* synthetic */ ToneDeltaPair m472x801c242f(DynamicScheme s) {
         return new ToneDeltaPair(secondaryFixed(), secondaryFixedDim(), 10.0d, TonePolarity.LIGHTER, true);
     }
 
@@ -1063,23 +1063,23 @@ public final class MaterialDynamicColors {
         }, false, new Function() { // from class: com.google.android.material.color.utilities.MaterialDynamicColors$$ExternalSyntheticLambda16
             @Override // java.util.function.Function
             public final Object apply(Object obj) {
-                return this.f$0.m386xf72fd9a3((DynamicScheme) obj);
+                return this.f$0.m454xf72fd9a3((DynamicScheme) obj);
             }
         }, new Function() { // from class: com.google.android.material.color.utilities.MaterialDynamicColors$$ExternalSyntheticLambda17
             @Override // java.util.function.Function
             public final Object apply(Object obj) {
-                return this.f$0.m387xd2f15564((DynamicScheme) obj);
+                return this.f$0.m455xd2f15564((DynamicScheme) obj);
             }
         }, new ContrastCurve(4.5d, 7.0d, 11.0d, 21.0d), null);
     }
 
     /* JADX INFO: renamed from: lambda$onSecondaryFixed$125$com-google-android-material-color-utilities-MaterialDynamicColors, reason: not valid java name */
-    /* synthetic */ DynamicColor m386xf72fd9a3(DynamicScheme s) {
+    /* synthetic */ DynamicColor m454xf72fd9a3(DynamicScheme s) {
         return secondaryFixedDim();
     }
 
     /* JADX INFO: renamed from: lambda$onSecondaryFixed$126$com-google-android-material-color-utilities-MaterialDynamicColors, reason: not valid java name */
-    /* synthetic */ DynamicColor m387xd2f15564(DynamicScheme s) {
+    /* synthetic */ DynamicColor m455xd2f15564(DynamicScheme s) {
         return secondaryFixed();
     }
 
@@ -1097,23 +1097,23 @@ public final class MaterialDynamicColors {
         }, false, new Function() { // from class: com.google.android.material.color.utilities.MaterialDynamicColors$$ExternalSyntheticLambda64
             @Override // java.util.function.Function
             public final Object apply(Object obj) {
-                return this.f$0.m388x26187114((DynamicScheme) obj);
+                return this.f$0.m456x26187114((DynamicScheme) obj);
             }
         }, new Function() { // from class: com.google.android.material.color.utilities.MaterialDynamicColors$$ExternalSyntheticLambda65
             @Override // java.util.function.Function
             public final Object apply(Object obj) {
-                return this.f$0.m389x8b913aa((DynamicScheme) obj);
+                return this.f$0.m457x8b913aa((DynamicScheme) obj);
             }
         }, new ContrastCurve(3.0d, 4.5d, 7.0d, 11.0d), null);
     }
 
     /* JADX INFO: renamed from: lambda$onSecondaryFixedVariant$129$com-google-android-material-color-utilities-MaterialDynamicColors, reason: not valid java name */
-    /* synthetic */ DynamicColor m388x26187114(DynamicScheme s) {
+    /* synthetic */ DynamicColor m456x26187114(DynamicScheme s) {
         return secondaryFixedDim();
     }
 
     /* JADX INFO: renamed from: lambda$onSecondaryFixedVariant$130$com-google-android-material-color-utilities-MaterialDynamicColors, reason: not valid java name */
-    /* synthetic */ DynamicColor m389x8b913aa(DynamicScheme s) {
+    /* synthetic */ DynamicColor m457x8b913aa(DynamicScheme s) {
         return secondaryFixed();
     }
 
@@ -1131,13 +1131,13 @@ public final class MaterialDynamicColors {
         }, true, new MaterialDynamicColors$$ExternalSyntheticLambda162(this), null, new ContrastCurve(1.0d, 1.0d, 3.0d, 7.0d), new Function() { // from class: com.google.android.material.color.utilities.MaterialDynamicColors$$ExternalSyntheticLambda56
             @Override // java.util.function.Function
             public final Object apply(Object obj) {
-                return this.f$0.m407x59237289((DynamicScheme) obj);
+                return this.f$0.m475x59237289((DynamicScheme) obj);
             }
         });
     }
 
     /* JADX INFO: renamed from: lambda$tertiaryFixed$133$com-google-android-material-color-utilities-MaterialDynamicColors, reason: not valid java name */
-    /* synthetic */ ToneDeltaPair m407x59237289(DynamicScheme s) {
+    /* synthetic */ ToneDeltaPair m475x59237289(DynamicScheme s) {
         return new ToneDeltaPair(tertiaryFixed(), tertiaryFixedDim(), 10.0d, TonePolarity.LIGHTER, true);
     }
 
@@ -1155,13 +1155,13 @@ public final class MaterialDynamicColors {
         }, true, new MaterialDynamicColors$$ExternalSyntheticLambda162(this), null, new ContrastCurve(1.0d, 1.0d, 3.0d, 7.0d), new Function() { // from class: com.google.android.material.color.utilities.MaterialDynamicColors$$ExternalSyntheticLambda128
             @Override // java.util.function.Function
             public final Object apply(Object obj) {
-                return this.f$0.m408x24c02d4a((DynamicScheme) obj);
+                return this.f$0.m476x24c02d4a((DynamicScheme) obj);
             }
         });
     }
 
     /* JADX INFO: renamed from: lambda$tertiaryFixedDim$136$com-google-android-material-color-utilities-MaterialDynamicColors, reason: not valid java name */
-    /* synthetic */ ToneDeltaPair m408x24c02d4a(DynamicScheme s) {
+    /* synthetic */ ToneDeltaPair m476x24c02d4a(DynamicScheme s) {
         return new ToneDeltaPair(tertiaryFixed(), tertiaryFixedDim(), 10.0d, TonePolarity.LIGHTER, true);
     }
 
@@ -1179,23 +1179,23 @@ public final class MaterialDynamicColors {
         }, false, new Function() { // from class: com.google.android.material.color.utilities.MaterialDynamicColors$$ExternalSyntheticLambda89
             @Override // java.util.function.Function
             public final Object apply(Object obj) {
-                return this.f$0.m393xfe3fcbf0((DynamicScheme) obj);
+                return this.f$0.m461xfe3fcbf0((DynamicScheme) obj);
             }
         }, new Function() { // from class: com.google.android.material.color.utilities.MaterialDynamicColors$$ExternalSyntheticLambda90
             @Override // java.util.function.Function
             public final Object apply(Object obj) {
-                return this.f$0.m394xe0e06e86((DynamicScheme) obj);
+                return this.f$0.m462xe0e06e86((DynamicScheme) obj);
             }
         }, new ContrastCurve(4.5d, 7.0d, 11.0d, 21.0d), null);
     }
 
     /* JADX INFO: renamed from: lambda$onTertiaryFixed$139$com-google-android-material-color-utilities-MaterialDynamicColors, reason: not valid java name */
-    /* synthetic */ DynamicColor m393xfe3fcbf0(DynamicScheme s) {
+    /* synthetic */ DynamicColor m461xfe3fcbf0(DynamicScheme s) {
         return tertiaryFixedDim();
     }
 
     /* JADX INFO: renamed from: lambda$onTertiaryFixed$140$com-google-android-material-color-utilities-MaterialDynamicColors, reason: not valid java name */
-    /* synthetic */ DynamicColor m394xe0e06e86(DynamicScheme s) {
+    /* synthetic */ DynamicColor m462xe0e06e86(DynamicScheme s) {
         return tertiaryFixed();
     }
 
@@ -1213,23 +1213,23 @@ public final class MaterialDynamicColors {
         }, false, new Function() { // from class: com.google.android.material.color.utilities.MaterialDynamicColors$$ExternalSyntheticLambda77
             @Override // java.util.function.Function
             public final Object apply(Object obj) {
-                return this.f$0.m395x702fc122((DynamicScheme) obj);
+                return this.f$0.m463x702fc122((DynamicScheme) obj);
             }
         }, new Function() { // from class: com.google.android.material.color.utilities.MaterialDynamicColors$$ExternalSyntheticLambda78
             @Override // java.util.function.Function
             public final Object apply(Object obj) {
-                return this.f$0.m396x4bf13ce3((DynamicScheme) obj);
+                return this.f$0.m464x4bf13ce3((DynamicScheme) obj);
             }
         }, new ContrastCurve(3.0d, 4.5d, 7.0d, 11.0d), null);
     }
 
     /* JADX INFO: renamed from: lambda$onTertiaryFixedVariant$143$com-google-android-material-color-utilities-MaterialDynamicColors, reason: not valid java name */
-    /* synthetic */ DynamicColor m395x702fc122(DynamicScheme s) {
+    /* synthetic */ DynamicColor m463x702fc122(DynamicScheme s) {
         return tertiaryFixedDim();
     }
 
     /* JADX INFO: renamed from: lambda$onTertiaryFixedVariant$144$com-google-android-material-color-utilities-MaterialDynamicColors, reason: not valid java name */
-    /* synthetic */ DynamicColor m396x4bf13ce3(DynamicScheme s) {
+    /* synthetic */ DynamicColor m464x4bf13ce3(DynamicScheme s) {
         return tertiaryFixed();
     }
 
