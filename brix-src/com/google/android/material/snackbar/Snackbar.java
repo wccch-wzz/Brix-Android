@@ -15,7 +15,6 @@ import android.view.accessibility.AccessibilityManager;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import com.google.android.material.R;
 
@@ -162,7 +161,7 @@ public class Snackbar extends BaseTransientBottomBar<Snackbar> {
             tv.setOnClickListener(new View.OnClickListener() { // from class: com.google.android.material.snackbar.Snackbar$$ExternalSyntheticLambda0
                 @Override // android.view.View.OnClickListener
                 public final void onClick(View view) {
-                    this.f$0.m435lambda$setAction$0$comgoogleandroidmaterialsnackbarSnackbar(listener, view);
+                    this.f$0.m503lambda$setAction$0$comgoogleandroidmaterialsnackbarSnackbar(listener, view);
                 }
             });
         }
@@ -170,7 +169,7 @@ public class Snackbar extends BaseTransientBottomBar<Snackbar> {
     }
 
     /* JADX INFO: renamed from: lambda$setAction$0$com-google-android-material-snackbar-Snackbar, reason: not valid java name */
-    /* synthetic */ void m435lambda$setAction$0$comgoogleandroidmaterialsnackbarSnackbar(View.OnClickListener listener, View view) {
+    /* synthetic */ void m503lambda$setAction$0$comgoogleandroidmaterialsnackbarSnackbar(View.OnClickListener listener, View view) {
         listener.onClick(view);
         dispatchDismiss(1);
     }
@@ -294,7 +293,7 @@ public class Snackbar extends BaseTransientBottomBar<Snackbar> {
             for (int i = 0; i < childCount; i++) {
                 View child = getChildAt(i);
                 if (child.getLayoutParams().width == -1) {
-                    child.measure(View.MeasureSpec.makeMeasureSpec(availableWidth, BasicMeasure.EXACTLY), View.MeasureSpec.makeMeasureSpec(child.getMeasuredHeight(), BasicMeasure.EXACTLY));
+                    child.measure(View.MeasureSpec.makeMeasureSpec(availableWidth, 1073741824), View.MeasureSpec.makeMeasureSpec(child.getMeasuredHeight(), 1073741824));
                 }
             }
         }
