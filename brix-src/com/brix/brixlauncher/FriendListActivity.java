@@ -19,7 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.brixcore.utils.BrixPath;
 import java.util.Random;
 
-/* JADX INFO: loaded from: classes18.dex */
+/* JADX INFO: loaded from: classes19.dex */
 public class FriendListActivity extends AppCompatActivity {
     private static final String TAG = "FriendListActivity";
     private FriendAdapter friendAdapter;
