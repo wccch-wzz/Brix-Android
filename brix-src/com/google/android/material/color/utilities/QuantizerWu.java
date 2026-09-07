@@ -1,6 +1,5 @@
 package com.google.android.material.color.utilities;
 
-import androidx.core.view.ViewCompat;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -175,7 +174,7 @@ public final class QuantizerWu implements Quantizer {
                 int r = volume(cube, this.momentsR) / weight;
                 int g = volume(cube, this.momentsG) / weight;
                 int b = volume(cube, this.momentsB) / weight;
-                int color = ((r & 255) << 16) | ViewCompat.MEASURED_STATE_MASK | ((g & 255) << 8) | (b & 255);
+                int color = ((r & 255) << 16) | (-16777216) | ((g & 255) << 8) | (b & 255);
                 colors.add(Integer.valueOf(color));
             }
         }
