@@ -13,8 +13,8 @@ import java.util.function.Consumer;
 
 /* JADX INFO: loaded from: classes5.dex */
 public final class CleanroomVersionList extends VersionList<CleanroomRemoteVersion> {
-    private static final String INSTALLER_URL = "https://hmcl.glavo.site/metadata/cleanroom/files/cleanroom-%s-installer.jar";
-    private static final String LOADER_LIST_URL = "https://hmcl.glavo.site/metadata/cleanroom/index.json";
+    private static final String INSTALLER_URL = "https://github.com/cleanroommc/Cleanroom/releases/download/%s/cleanroom-installer.jar";
+    private static final String LOADER_LIST_URL = "https://raw.githubusercontent.com/cleanroommc/cleanroom-mc-meta/main/index.json";
     private final DownloadProvider downloadProvider;
 
     public CleanroomVersionList(DownloadProvider downloadProvider) {
