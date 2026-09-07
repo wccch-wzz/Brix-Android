@@ -10,6 +10,7 @@ import java.util.TimeZone;
 import kotlin.text.Typography;
 import org.apache.commons.compress.archivers.tar.TarConstants;
 import org.apache.commons.lang3.time.TimeZones;
+import org.lwjgl.system.macosx.ObjCRuntime;
 
 /* JADX INFO: loaded from: classes.dex */
 public class ISO8601Utils {
@@ -36,9 +37,9 @@ public class ISO8601Utils {
         padInt(formatted, calendar.get(5), "dd".length());
         formatted.append('T');
         padInt(formatted, calendar.get(11), "hh".length());
-        formatted.append(':');
+        formatted.append(ObjCRuntime._C_SEL);
         padInt(formatted, calendar.get(12), "mm".length());
-        formatted.append(':');
+        formatted.append(ObjCRuntime._C_SEL);
         padInt(formatted, calendar.get(13), "ss".length());
         if (millis) {
             formatted.append('.');
@@ -50,7 +51,7 @@ public class ISO8601Utils {
             int minutes = Math.abs((offset / 60000) % 60);
             formatted.append(offset >= 0 ? '+' : '-');
             padInt(formatted, hours, "hh".length());
-            formatted.append(':');
+            formatted.append(ObjCRuntime._C_SEL);
             padInt(formatted, minutes, "mm".length());
         } else {
             formatted.append('Z');
@@ -138,12 +139,12 @@ public class ISO8601Utils {
                 int offset6 = offset5 + 1;
                 int offset7 = offset6 + 2;
                 hour = parseInt(date, offset6, offset7);
-                if (checkOffset(date, offset7, ':')) {
+                if (checkOffset(date, offset7, ObjCRuntime._C_SEL)) {
                     offset7++;
                 }
                 int offset8 = offset7 + 2;
                 minutes = parseInt(date, offset7, offset8);
-                if (!checkOffset(date, offset8, ':')) {
+                if (!checkOffset(date, offset8, ObjCRuntime._C_SEL)) {
                     offset5 = offset8;
                 } else {
                     offset5 = offset8 + 1;
