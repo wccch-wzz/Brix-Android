@@ -136,7 +136,7 @@ public class MaterialCheckBox extends AppCompatCheckBox {
     }
 
     /* JADX INFO: renamed from: lambda$new$0$com-google-android-material-checkbox-MaterialCheckBox, reason: not valid java name */
-    /* synthetic */ void m367xdf87d0bf() {
+    /* synthetic */ void m435xdf87d0bf() {
         this.buttonIconDrawable.jumpToCurrentState();
     }
 
