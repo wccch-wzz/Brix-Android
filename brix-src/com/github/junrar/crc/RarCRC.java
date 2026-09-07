@@ -1,7 +1,5 @@
 package com.github.junrar.crc;
 
-import kotlin.UByte;
-
 /* JADX INFO: loaded from: classes.dex */
 public class RarCRC {
     private static final int[] crcTab = new int[256];
@@ -34,7 +32,7 @@ public class RarCRC {
     public static short checkOldCrc(short startCrc, byte[] data, int count) {
         int n = Math.min(data.length, count);
         for (int i = 0; i < n; i++) {
-            short startCrc2 = (short) (((short) (((short) (data[i] & UByte.MAX_VALUE)) + startCrc)) & (-1));
+            short startCrc2 = (short) (((short) (((short) (data[i] & 255)) + startCrc)) & (-1));
             startCrc = (short) (((startCrc2 << 1) | (startCrc2 >>> 15)) & (-1));
         }
         return startCrc;
