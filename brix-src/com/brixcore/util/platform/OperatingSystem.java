@@ -4,11 +4,12 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.charset.UnsupportedCharsetException;
 import java.util.regex.Pattern;
+import org.lwjgl.LWJGLUtil;
 
 /* JADX INFO: loaded from: classes7.dex */
 public enum OperatingSystem {
-    WINDOWS("windows"),
-    LINUX("linux"),
+    WINDOWS(LWJGLUtil.PLATFORM_WINDOWS_NAME),
+    LINUX(LWJGLUtil.PLATFORM_LINUX_NAME),
     OSX("osx"),
     UNKNOWN("universal");
 
