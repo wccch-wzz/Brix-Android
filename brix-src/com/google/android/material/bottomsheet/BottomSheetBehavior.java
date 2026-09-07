@@ -22,7 +22,6 @@ import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.view.WindowInsets;
 import androidx.activity.BackEventCompat;
-import androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.graphics.Insets;
 import androidx.core.math.MathUtils;
@@ -544,8 +543,8 @@ public class BottomSheetBehavior<V extends View> extends CoordinatorLayout.Behav
         int mode = View.MeasureSpec.getMode(result);
         int size = View.MeasureSpec.getSize(result);
         switch (mode) {
-            case BasicMeasure.EXACTLY /* 1073741824 */:
-                return View.MeasureSpec.makeMeasureSpec(Math.min(size, maxSize), BasicMeasure.EXACTLY);
+            case 1073741824:
+                return View.MeasureSpec.makeMeasureSpec(Math.min(size, maxSize), 1073741824);
             default:
                 return View.MeasureSpec.makeMeasureSpec(size == 0 ? maxSize : Math.min(size, maxSize), Integer.MIN_VALUE);
         }
