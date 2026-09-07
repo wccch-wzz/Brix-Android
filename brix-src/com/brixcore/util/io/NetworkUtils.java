@@ -1,6 +1,5 @@
 package com.brixcore.util.io;
 
-import androidx.core.text.HtmlCompat;
 import com.brixcore.R;
 import com.brixcore.util.Pair;
 import com.brixcore.util.StringUtils;
@@ -29,6 +28,7 @@ import java.util.function.Consumer;
 import java.util.regex.Pattern;
 import org.apache.commons.lang3.CharEncoding;
 import org.jsoup.helper.HttpConnection;
+import org.lwjgl.system.macosx.ObjCRuntime;
 
 /* JADX INFO: loaded from: classes3.dex */
 public final class NetworkUtils {
@@ -56,7 +56,7 @@ public final class NetworkUtils {
             if (param.getValue() != null) {
                 if (first) {
                     if (!baseUrl.isEmpty()) {
-                        sb.append('?');
+                        sb.append(ObjCRuntime._C_UNDEF);
                     }
                     first = false;
                 } else {
@@ -143,7 +143,7 @@ public final class NetworkUtils {
                         sb.append('+');
                     }
                     break;
-                case HtmlCompat.FROM_HTML_MODE_COMPACT /* 63 */:
+                case '?':
                     left = false;
                     break;
             }
