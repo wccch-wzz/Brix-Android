@@ -793,7 +793,7 @@ public final class MaterialContainerTransform extends Transition {
         }
 
         private static float calculateElevationDxMultiplier(RectF bounds, float displayWidth) {
-            return ((bounds.centerX() / (displayWidth / 2.0f)) - 1.0f) * SHADOW_DX_MULTIPLIER_ADJUSTMENT;
+            return ((bounds.centerX() / (displayWidth / 2.0f)) - 1.0f) * 0.3f;
         }
 
         private static float calculateElevationDyMultiplier(RectF bounds, float displayHeight) {
