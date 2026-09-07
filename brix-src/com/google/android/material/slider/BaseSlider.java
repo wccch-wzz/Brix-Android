@@ -34,7 +34,6 @@ import android.view.ViewTreeObserver;
 import android.view.accessibility.AccessibilityManager;
 import android.widget.SeekBar;
 import androidx.appcompat.content.res.AppCompatResources;
-import androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure;
 import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.core.math.MathUtils;
 import androidx.core.view.ViewCompat;
@@ -63,7 +62,6 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
-import kotlinx.coroutines.internal.LockFreeTaskQueueCore;
 
 /* JADX INFO: loaded from: classes.dex */
 abstract class BaseSlider<S extends BaseSlider<S, L, T>, L extends BaseOnChangeListener<S>, T extends BaseOnSliderTouchListener<S>> extends View {
@@ -1029,7 +1027,7 @@ abstract class BaseSlider<S extends BaseSlider<S, L, T>, L extends BaseOnChangeL
 
     @Override // android.view.View
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        super.onMeasure(widthMeasureSpec, View.MeasureSpec.makeMeasureSpec(this.widgetHeight + ((this.labelBehavior == 1 || shouldAlwaysShowLabel()) ? this.labels.get(0).getIntrinsicHeight() : 0), BasicMeasure.EXACTLY));
+        super.onMeasure(widthMeasureSpec, View.MeasureSpec.makeMeasureSpec(this.widgetHeight + ((this.labelBehavior == 1 || shouldAlwaysShowLabel()) ? this.labels.get(0).getIntrinsicHeight() : 0), 1073741824));
     }
 
     @Override // android.view.View
@@ -1527,10 +1525,10 @@ abstract class BaseSlider<S extends BaseSlider<S, L, T>, L extends BaseOnChangeL
         float endFraction = enter ? 1.0f : 0.0f;
         ValueAnimator animator = ValueAnimator.ofFloat(startFraction2, endFraction);
         if (enter) {
-            duration = MotionUtils.resolveThemeDuration(getContext(), LABEL_ANIMATION_ENTER_DURATION_ATTR, DEFAULT_LABEL_ANIMATION_ENTER_DURATION);
+            duration = MotionUtils.resolveThemeDuration(getContext(), LABEL_ANIMATION_ENTER_DURATION_ATTR, 83);
             interpolator = MotionUtils.resolveThemeInterpolator(getContext(), LABEL_ANIMATION_ENTER_EASING_ATTR, AnimationUtils.DECELERATE_INTERPOLATOR);
         } else {
-            duration = MotionUtils.resolveThemeDuration(getContext(), LABEL_ANIMATION_EXIT_DURATION_ATTR, DEFAULT_LABEL_ANIMATION_EXIT_DURATION);
+            duration = MotionUtils.resolveThemeDuration(getContext(), LABEL_ANIMATION_EXIT_DURATION_ATTR, 117);
             interpolator = MotionUtils.resolveThemeInterpolator(getContext(), LABEL_ANIMATION_EXIT_EASING_ATTR, AnimationUtils.FAST_OUT_LINEAR_IN_INTERPOLATOR);
         }
         animator.setDuration(duration);
@@ -1755,7 +1753,7 @@ abstract class BaseSlider<S extends BaseSlider<S, L, T>, L extends BaseOnChangeL
                 this.activeThumbIdx = -1;
                 postInvalidate();
                 return true;
-            case LockFreeTaskQueueCore.CLOSED_SHIFT /* 61 */:
+            case 61:
                 if (event.hasNoModifiers()) {
                     return moveFocus(1);
                 }
@@ -1781,7 +1779,7 @@ abstract class BaseSlider<S extends BaseSlider<S, L, T>, L extends BaseOnChangeL
                 this.activeThumbIdx = this.focusedThumbIdx;
                 postInvalidate();
                 return true;
-            case LockFreeTaskQueueCore.CLOSED_SHIFT /* 61 */:
+            case 61:
                 if (event.hasNoModifiers()) {
                     return Boolean.valueOf(moveFocus(1));
                 }
