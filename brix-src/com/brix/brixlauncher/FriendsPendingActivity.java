@@ -16,7 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.brixcore.utils.BrixPath;
 import java.util.Random;
 
-/* JADX INFO: loaded from: classes18.dex */
+/* JADX INFO: loaded from: classes19.dex */
 public class FriendsPendingActivity extends AppCompatActivity {
     private static final String TAG = "FriendsPendingActivity";
     private PendingAdapter adapter;
