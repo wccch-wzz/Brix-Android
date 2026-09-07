@@ -828,8 +828,10 @@ public abstract class BidirectionalBinding implements InvalidationListener, Weak
                             property.getValue2();
                         }
                     }
-                } finally {
                     this.updating = false;
+                } catch (Throwable th) {
+                    this.updating = false;
+                    throw th;
                 }
             }
         }
