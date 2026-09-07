@@ -2,7 +2,7 @@ package com.brix.brixlauncher;
 
 import android.content.Context;
 
-/* JADX INFO: loaded from: classes18.dex */
+/* JADX INFO: loaded from: classes19.dex */
 public class BrixConfig {
     private final String[] commandLine;
     private final Context context;
