@@ -1,6 +1,5 @@
 package com.google.gson.stream;
 
-import androidx.core.location.LocationRequestCompat;
 import com.google.gson.internal.JsonReaderInternalAccess;
 import com.google.gson.internal.bind.JsonTreeReader;
 import java.io.Closeable;
@@ -10,8 +9,8 @@ import java.io.Reader;
 import java.util.Arrays;
 import java.util.Objects;
 import kotlin.text.Typography;
-import kotlinx.coroutines.internal.LockFreeTaskQueueCore;
 import org.apache.commons.lang3.CharUtils;
+import org.lwjgl.system.macosx.ObjCRuntime;
 
 /* JADX INFO: loaded from: classes.dex */
 public class JsonReader implements Closeable {
@@ -248,7 +247,7 @@ public class JsonReader implements Closeable {
                 switch (nextNonWhitespace(true)) {
                     case 58:
                         break;
-                    case LockFreeTaskQueueCore.CLOSED_SHIFT /* 61 */:
+                    case 61:
                         checkLenient();
                         if ((this.pos < this.limit || fillBuffer(1)) && this.buffer[this.pos] == '>') {
                             this.pos++;
@@ -563,7 +562,7 @@ public class JsonReader implements Closeable {
             case '#':
             case '/':
             case ';':
-            case LockFreeTaskQueueCore.CLOSED_SHIFT /* 61 */:
+            case '=':
             case '\\':
                 checkLenient();
                 return false;
@@ -812,7 +811,7 @@ public class JsonReader implements Closeable {
                     case '#':
                     case '/':
                     case ';':
-                    case LockFreeTaskQueueCore.CLOSED_SHIFT /* 61 */:
+                    case '=':
                     case '\\':
                         checkLenient();
                         break;
@@ -890,7 +889,7 @@ public class JsonReader implements Closeable {
                     case '#':
                     case '/':
                     case ';':
-                    case LockFreeTaskQueueCore.CLOSED_SHIFT /* 61 */:
+                    case '=':
                     case '\\':
                         checkLenient();
                         break;
@@ -1208,7 +1207,7 @@ public class JsonReader implements Closeable {
                     if (usePreviousPath && pathIndex > 0 && i == this.stackSize - 1) {
                         pathIndex--;
                     }
-                    result.append('[').append(pathIndex).append(']');
+                    result.append(ObjCRuntime._C_ARY_B).append(pathIndex).append(ObjCRuntime._C_ARY_E);
                     break;
                 case 3:
                 case 4:
@@ -1251,7 +1250,7 @@ public class JsonReader implements Closeable {
                 return escaped;
             case 'b':
                 return '\b';
-            case LocationRequestCompat.QUALITY_BALANCED_POWER_ACCURACY /* 102 */:
+            case 'f':
                 return '\f';
             case 'n':
                 return '\n';
