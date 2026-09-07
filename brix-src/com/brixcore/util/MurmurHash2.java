@@ -1,7 +1,6 @@
 package com.brixcore.util;
 
 import java.nio.charset.StandardCharsets;
-import kotlin.UByte;
 
 /* JADX INFO: loaded from: classes11.dex */
 public final class MurmurHash2 {
@@ -92,7 +91,7 @@ public final class MurmurHash2 {
     }
 
     private static int getLittleEndianInt(byte[] data, int index) {
-        return (data[index] & UByte.MAX_VALUE) | ((data[index + 1] & UByte.MAX_VALUE) << 8) | ((data[index + 2] & UByte.MAX_VALUE) << 16) | ((data[index + 3] & UByte.MAX_VALUE) << 24);
+        return (data[index] & 255) | ((data[index + 1] & 255) << 8) | ((data[index + 2] & 255) << 16) | ((data[index + 3] & 255) << 24);
     }
 
     private static long getLittleEndianLong(byte[] data, int index) {
