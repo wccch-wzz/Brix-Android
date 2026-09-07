@@ -4,6 +4,7 @@ import com.github.steveice10.opennbt.SNBTIO;
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
+import org.lwjgl.system.macosx.ObjCRuntime;
 
 /* JADX INFO: loaded from: classes.dex */
 public class ShortTag extends Tag {
@@ -47,13 +48,13 @@ public class ShortTag extends Tag {
     public void stringify(SNBTIO.StringifiedNBTWriter out, boolean linebreak, int depth) throws IOException {
         StringBuilder sb = new StringBuilder();
         sb.append((int) this.value);
-        sb.append('s');
+        sb.append(ObjCRuntime._C_SHT);
         out.append((CharSequence) sb.toString());
     }
 
     @Override // com.github.steveice10.opennbt.tag.builtin.Tag
     /* JADX INFO: renamed from: clone */
-    public ShortTag mo360clone() {
+    public ShortTag mo428clone() {
         return new ShortTag(getName(), getValue().shortValue());
     }
 }
