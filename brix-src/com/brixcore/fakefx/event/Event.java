@@ -1,5 +1,6 @@
 package com.brixcore.fakefx.event;
 
+import androidx.constraintlayout.core.motion.utils.TypedValues;
 import com.brixcore.fakefx.beans.NamedArg;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -27,7 +28,7 @@ public class Event extends EventObject implements Cloneable {
         this(null, null, eventType);
     }
 
-    public Event(@NamedArg("source") Object source, @NamedArg("target") EventTarget target, @NamedArg("eventType") EventType<? extends Event> eventType) {
+    public Event(@NamedArg("source") Object source, @NamedArg(TypedValues.AttributesType.S_TARGET) EventTarget target, @NamedArg("eventType") EventType<? extends Event> eventType) {
         super(source != null ? source : NULL_SOURCE_TARGET);
         this.target = target != null ? target : NULL_SOURCE_TARGET;
         this.eventType = eventType;
