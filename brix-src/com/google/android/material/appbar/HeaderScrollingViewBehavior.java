@@ -4,7 +4,6 @@ import android.content.Context;
 import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.View;
-import androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.math.MathUtils;
 import androidx.core.view.GravityCompat;
@@ -68,7 +67,7 @@ abstract class HeaderScrollingViewBehavior extends ViewOffsetBehavior<View> {
                     height = height2 - headerHeight;
                 }
                 if (childLpHeight == -1) {
-                    i = BasicMeasure.EXACTLY;
+                    i = 1073741824;
                 } else {
                     i = Integer.MIN_VALUE;
                 }
