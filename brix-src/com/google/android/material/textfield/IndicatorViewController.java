@@ -72,8 +72,8 @@ final class IndicatorViewController {
         this.textInputView = textInputView;
         this.captionTranslationYPx = this.context.getResources().getDimensionPixelSize(R.dimen.design_textinput_caption_translate_y);
         this.captionTranslationYAnimationDuration = MotionUtils.resolveThemeDuration(this.context, R.attr.motionDurationShort4, DEFAULT_CAPTION_TRANSLATION_Y_ANIMATION_DURATION);
-        this.captionFadeInAnimationDuration = MotionUtils.resolveThemeDuration(this.context, R.attr.motionDurationMedium4, DEFAULT_CAPTION_FADE_ANIMATION_DURATION);
-        this.captionFadeOutAnimationDuration = MotionUtils.resolveThemeDuration(this.context, R.attr.motionDurationShort4, DEFAULT_CAPTION_FADE_ANIMATION_DURATION);
+        this.captionFadeInAnimationDuration = MotionUtils.resolveThemeDuration(this.context, R.attr.motionDurationMedium4, 167);
+        this.captionFadeOutAnimationDuration = MotionUtils.resolveThemeDuration(this.context, R.attr.motionDurationShort4, 167);
         this.captionTranslationYAnimationInterpolator = MotionUtils.resolveThemeInterpolator(this.context, R.attr.motionEasingEmphasizedDecelerateInterpolator, AnimationUtils.LINEAR_OUT_SLOW_IN_INTERPOLATOR);
         this.captionFadeInAnimationInterpolator = MotionUtils.resolveThemeInterpolator(this.context, R.attr.motionEasingEmphasizedDecelerateInterpolator, AnimationUtils.LINEAR_INTERPOLATOR);
         this.captionFadeOutAnimationInterpolator = MotionUtils.resolveThemeInterpolator(this.context, R.attr.motionEasingLinearInterpolator, AnimationUtils.LINEAR_INTERPOLATOR);
