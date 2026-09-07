@@ -9,7 +9,6 @@ import java.time.Instant;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
-import kotlin.UByte;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -53,8 +52,8 @@ public class FileHeader extends BlockHeader {
         this.fileCRC = Raw.readIntLittleEndian(fileHeader, position);
         int position2 = position + 4;
         int fileTime = Raw.readIntLittleEndian(fileHeader, position2);
-        this.unpVersion = (byte) (this.unpVersion | (fileHeader[13] & UByte.MAX_VALUE));
-        this.unpMethod = (byte) (this.unpMethod | (fileHeader[14] & UByte.MAX_VALUE));
+        this.unpVersion = (byte) (this.unpVersion | (fileHeader[13] & 255));
+        this.unpMethod = (byte) (this.unpMethod | (fileHeader[14] & 255));
         int position3 = position2 + 4 + 1 + 1;
         this.nameSize = Raw.readShortLittleEndian(fileHeader, position3);
         int position4 = position3 + 2;
@@ -116,7 +115,7 @@ public class FileHeader extends BlockHeader {
                 }
             }
             if (NewSubHeaderType.SUBHEAD_TYPE_RR.byteEquals(this.fileNameBytes)) {
-                this.recoverySectors = (this.subData[8] & UByte.MAX_VALUE) + ((this.subData[9] & UByte.MAX_VALUE) << 8) + ((this.subData[10] & UByte.MAX_VALUE) << 16) + ((this.subData[11] & UByte.MAX_VALUE) << 24);
+                this.recoverySectors = (this.subData[8] & 255) + ((this.subData[9] & 255) << 8) + ((this.subData[10] & 255) << 16) + ((this.subData[11] & 255) << 24);
             }
         }
         if (hasSalt()) {
@@ -183,7 +182,7 @@ public class FileHeader extends BlockHeader {
             int count = flag & 3;
             long remainder = 0;
             for (int i = 0; i < count; i++) {
-                int b = fileHeader[position2] & UByte.MAX_VALUE;
+                int b = fileHeader[position2] & 255;
                 remainder = ((long) (b << 16)) | (remainder >>> 8);
                 position2++;
             }
