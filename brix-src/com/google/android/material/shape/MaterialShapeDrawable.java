@@ -445,7 +445,7 @@ public class MaterialShapeDrawable extends Drawable implements TintAwareDrawable
     private void updateZ() {
         float z = getZ();
         this.drawableState.shadowCompatRadius = (int) Math.ceil(0.75f * z);
-        this.drawableState.shadowCompatOffset = (int) Math.ceil(SHADOW_OFFSET_MULTIPLIER * z);
+        this.drawableState.shadowCompatOffset = (int) Math.ceil(0.25f * z);
         updateTintFilter();
         invalidateSelfIgnoreShape();
     }
