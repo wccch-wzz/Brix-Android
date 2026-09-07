@@ -1,7 +1,6 @@
 package com.github.junrar.unpack.ppm;
 
 import com.github.junrar.io.Raw;
-import kotlin.UByte;
 
 /* JADX INFO: loaded from: classes.dex */
 public class State extends Pointer {
@@ -18,7 +17,7 @@ public class State extends Pointer {
     }
 
     public int getSymbol() {
-        return this.mem[this.pos] & UByte.MAX_VALUE;
+        return this.mem[this.pos] & 255;
     }
 
     public void setSymbol(int symbol) {
@@ -26,7 +25,7 @@ public class State extends Pointer {
     }
 
     public int getFreq() {
-        return this.mem[this.pos + 1] & UByte.MAX_VALUE;
+        return this.mem[this.pos + 1] & 255;
     }
 
     public void setFreq(int freq) {
