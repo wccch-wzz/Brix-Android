@@ -1,7 +1,6 @@
 package com.github.junrar.rarfile;
 
 import com.github.junrar.io.Raw;
-import kotlin.UByte;
 
 /* JADX INFO: loaded from: classes.dex */
 public class ProtectHeader extends BlockHeader {
@@ -13,11 +12,11 @@ public class ProtectHeader extends BlockHeader {
 
     public ProtectHeader(BlockHeader bh, byte[] protectHeader) {
         super(bh);
-        this.version = (byte) (this.version | (protectHeader[0] & UByte.MAX_VALUE));
+        this.version = (byte) (this.version | (protectHeader[0] & 255));
         this.recSectors = Raw.readShortLittleEndian(protectHeader, 0);
         int pos = 0 + 2;
         this.totalBlocks = Raw.readIntLittleEndian(protectHeader, pos);
-        this.mark = (byte) (this.mark | (protectHeader[pos + 4] & UByte.MAX_VALUE));
+        this.mark = (byte) (this.mark | (protectHeader[pos + 4] & 255));
     }
 
     public byte getMark() {
