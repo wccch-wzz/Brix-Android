@@ -1,7 +1,5 @@
 package com.brixcore.util;
 
-import androidx.appcompat.app.AppCompatDelegate;
-import androidx.core.location.LocationRequestCompat;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.lang.reflect.Array;
@@ -15,8 +13,6 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.apache.commons.lang3.CharUtils;
-import org.glavo.chardet.prober.CharsetProber;
-import org.tomlj.internal.TomlParser;
 
 /* JADX INFO: loaded from: classes11.dex */
 public final class StringUtils {
@@ -345,13 +341,13 @@ public final class StringUtils {
                         i = i3 + 1;
                         char c3 = str.charAt(i3);
                         switch (c3) {
-                            case CharsetProber.ASCII_A /* 97 */:
+                            case 'a':
                                 c3 = 7;
                                 break;
                             case 'b':
                                 c3 = '\b';
                                 break;
-                            case LocationRequestCompat.QUALITY_BALANCED_POWER_ACCURACY /* 102 */:
+                            case 'f':
                                 c3 = '\f';
                                 break;
                             case 'n':
@@ -446,25 +442,25 @@ public final class StringUtils {
                 case '3':
                     newColor = "dark_aqua";
                     break;
-                case TomlParser.RULE_arrayValue /* 52 */:
+                case '4':
                     newColor = "dark_red";
                     break;
-                case TomlParser.RULE_table /* 53 */:
+                case '5':
                     newColor = "dark_purple";
                     break;
-                case TomlParser.RULE_standardTable /* 54 */:
+                case '6':
                     newColor = "gold";
                     break;
-                case TomlParser.RULE_inlineTable /* 55 */:
+                case '7':
                     newColor = "gray";
                     break;
-                case TomlParser.RULE_inlineTableValues /* 56 */:
+                case '8':
                     newColor = "dark_gray";
                     break;
-                case TomlParser.RULE_arrayTable /* 57 */:
+                case '9':
                     newColor = "blue";
                     break;
-                case CharsetProber.ASCII_A /* 97 */:
+                case 'a':
                     newColor = "green";
                     break;
                 case 'b':
@@ -479,12 +475,12 @@ public final class StringUtils {
                 case 'e':
                     newColor = "yellow";
                     break;
-                case LocationRequestCompat.QUALITY_BALANCED_POWER_ACCURACY /* 102 */:
+                case 'f':
                     newColor = "white";
                     break;
                 case 'k':
-                case AppCompatDelegate.FEATURE_SUPPORT_ACTION_BAR /* 108 */:
-                case AppCompatDelegate.FEATURE_SUPPORT_ACTION_BAR_OVERLAY /* 109 */:
+                case 'l':
+                case 'm':
                 case 'n':
                 case 'o':
                     newColor = FORMAT_CODE;
