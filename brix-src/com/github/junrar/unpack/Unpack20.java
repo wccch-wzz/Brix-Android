@@ -12,10 +12,11 @@ import com.github.junrar.unpack.decode.LitDecode;
 import com.github.junrar.unpack.decode.LowDistDecode;
 import com.github.junrar.unpack.decode.MultDecode;
 import com.github.junrar.unpack.decode.RepDecode;
-import com.google.android.material.internal.ViewUtils;
 import java.io.IOException;
 import java.util.Arrays;
-import org.apache.commons.compress.archivers.cpio.CpioConstants;
+import org.lwjgl.glfw.GLFW;
+import org.lwjgl.system.jni.JNINativeInterface;
+import org.lwjgl.system.windows.User32;
 
 /* JADX INFO: loaded from: classes.dex */
 public abstract class Unpack20 extends Unpack15 {
@@ -25,7 +26,7 @@ public abstract class Unpack20 extends Unpack15 {
     protected int UnpCurChannel;
     public static final int[] LDecode = {0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 14, 16, 20, 24, 28, 32, 40, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224};
     public static final byte[] LBits = {0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5};
-    public static final int[] DDecode = {0, 1, 2, 3, 4, 6, 8, 12, 16, 24, 32, 48, 64, 96, 128, 192, 256, 384, 512, ViewUtils.EDGE_TO_EDGE_FLAGS, 1024, 1536, 2048, 3072, 4096, 6144, 8192, 12288, 16384, CpioConstants.C_ISBLK, 32768, CpioConstants.C_ISSOCK, 65536, 98304, 131072, ProfileVerifier.CompilationStatus.RESULT_CODE_ERROR_CANT_WRITE_PROFILE_VERIFICATION_RESULT_CACHE_FILE, 262144, 327680, 393216, 458752, 524288, 589824, 655360, 720896, 786432, 851968, 917504, 983040};
+    public static final int[] DDecode = {0, 1, 2, 3, 4, 6, 8, 12, 16, 24, 32, 48, 64, 96, 128, 192, 256, 384, 512, 768, 1024, 1536, 2048, 3072, 4096, 6144, 8192, 12288, 16384, 24576, 32768, 49152, 65536, 98304, 131072, ProfileVerifier.CompilationStatus.RESULT_CODE_ERROR_CANT_WRITE_PROFILE_VERIFICATION_RESULT_CACHE_FILE, 262144, ProfileVerifier.CompilationStatus.RESULT_CODE_ERROR_NO_PROFILE_EMBEDDED, GLFW.GLFW_ANY_PLATFORM, 458752, 524288, JNINativeInterface.JNI_VERSION_9, JNINativeInterface.JNI_VERSION_10, 720896, 786432, 851968, 917504, 983040};
     public static final int[] DBits = {0, 0, 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 11, 11, 12, 12, 13, 13, 14, 14, 15, 15, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16};
     public static final int[] SDDecode = {0, 4, 8, 16, 32, 64, 128, 192};
     public static final int[] SDBits = {2, 2, 3, 4, 5, 6, 6, 6};
@@ -217,8 +218,8 @@ public abstract class Unpack20 extends Unpack15 {
         for (int i3 = 1; i3 < 16; i3++) {
             N = (((long) lenCount[i3]) + N) * 2;
             long M = N << (15 - i3);
-            if (M > 65535) {
-                M = 65535;
+            if (M > User32.HWND_BROADCAST) {
+                M = User32.HWND_BROADCAST;
             }
             dec.getDecodeLen()[i3] = (int) M;
             int[] decodePos = dec.getDecodePos();
@@ -371,8 +372,8 @@ public abstract class Unpack20 extends Unpack15 {
                 makeDecodeTables(Table, I4 * 257, this.MD[I4], 257);
             }
         } else {
-            makeDecodeTables(Table, 0, this.LD, Compress.NC20);
-            makeDecodeTables(Table, Compress.NC20, this.DD, 48);
+            makeDecodeTables(Table, 0, this.LD, 298);
+            makeDecodeTables(Table, 298, this.DD, 48);
             makeDecodeTables(Table, 346, this.RD, 28);
         }
         System.arraycopy(Table, 0, this.UnpOldTable20, 0, this.UnpOldTable20.length);
