@@ -1,7 +1,5 @@
 package com.github.junrar.unpack.vm;
 
-import kotlin.UByte;
-
 /* JADX INFO: loaded from: classes.dex */
 public class BitInput {
     public static final int MAX_SIZE = 32768;
@@ -21,7 +19,7 @@ public class BitInput {
     }
 
     public int getbits() {
-        return (((((this.inBuf[this.inAddr] & UByte.MAX_VALUE) << 16) + ((this.inBuf[this.inAddr + 1] & UByte.MAX_VALUE) << 8)) + (this.inBuf[this.inAddr + 2] & UByte.MAX_VALUE)) >>> (8 - this.inBit)) & 65535;
+        return (((((this.inBuf[this.inAddr] & 255) << 16) + ((this.inBuf[this.inAddr + 1] & 255) << 8)) + (this.inBuf[this.inAddr + 2] & 255)) >>> (8 - this.inBit)) & 65535;
     }
 
     public void faddbits(int Bits) {
