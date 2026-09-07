@@ -62,11 +62,11 @@ import java.util.zip.Inflater;
 import java.util.zip.InflaterInputStream;
 import java.util.zip.ZipError;
 import java.util.zip.ZipException;
-import kotlin.UByte;
 import org.apache.commons.compress.archivers.ArchiveStreamFactory;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.CharEncoding;
 import org.apache.commons.lang3.SystemProperties;
+import org.lwjgl.system.linux.liburing.LibIOURing;
 
 /* JADX INFO: loaded from: classes2.dex */
 public class ZipFileSystem extends FileSystem {
@@ -174,7 +174,7 @@ public class ZipFileSystem extends FileSystem {
     @Override // java.nio.file.FileSystem
     public Iterable<Path> getRootDirectories() {
         ArrayList<Path> pathArr = new ArrayList<>();
-        pathArr.add(new ZipPath(this, new byte[]{47}));
+        pathArr.add(new ZipPath(this, new byte[]{LibIOURing.IORING_OP_SEND_ZC}));
         return pathArr;
     }
 
@@ -220,7 +220,7 @@ public class ZipFileSystem extends FileSystem {
     @Override // java.nio.file.FileSystem
     public Iterable<FileStore> getFileStores() {
         ArrayList<FileStore> list = new ArrayList<>(1);
-        list.add(new ZipFileStore(new ZipPath(this, new byte[]{47})));
+        list.add(new ZipFileStore(new ZipPath(this, new byte[]{LibIOURing.IORING_OP_SEND_ZC})));
         return list;
     }
 
@@ -403,7 +403,7 @@ public class ZipFileSystem extends FileSystem {
 
     private ZipPath toZipPath(byte[] path) {
         byte[] p = new byte[path.length + 1];
-        p[0] = 47;
+        p[0] = LibIOURing.IORING_OP_SEND_ZC;
         System.arraycopy(path, 0, p, 1, path.length);
         return new ZipPath(this, p);
     }
@@ -1475,7 +1475,7 @@ public class ZipFileSystem extends FileSystem {
         }
         if (path.length == 0 || path[path.length - 1] != 47) {
             byte[] path2 = Arrays.copyOf(path, path.length + 1);
-            path2[path2.length - 1] = 47;
+            path2[path2.length - 1] = LibIOURing.IORING_OP_SEND_ZC;
             return this.inodes.get(key.as(path2));
         }
         return inode;
@@ -1749,7 +1749,7 @@ public class ZipFileSystem extends FileSystem {
         public int read() throws IOException {
             byte[] b = new byte[1];
             if (read(b, 0, 1) == 1) {
-                return b[0] & UByte.MAX_VALUE;
+                return b[0] & 255;
             }
             return -1;
         }
@@ -2519,7 +2519,7 @@ public class ZipFileSystem extends FileSystem {
         /* JADX WARN: Code duplicated, block: B:66:0x0188  */
         /* JADX WARN: Code duplicated, block: B:69:0x018d  */
         /* JADX WARN: Code duplicated, block: B:70:0x0197 A[PHI: r4
-  0x0197: PHI (r4v9 'pos' int) = (r4v8 'pos' int), (r4v11 'pos' int) binds: [B:65:0x0186, B:69:0x018d] A[DONT_GENERATE, DONT_INLINE]] */
+          0x0197: PHI (r4v9 'pos' int) = (r4v8 'pos' int), (r4v11 'pos' int) binds: [B:65:0x0186, B:69:0x018d] A[DONT_GENERATE, DONT_INLINE]] */
         /* JADX WARN: Code duplicated, block: B:72:0x019d  */
         /* JADX WARN: Code duplicated, block: B:95:0x01ac A[ADDED_TO_REGION, REMOVE, SYNTHETIC] */
         void readExtra(ZipFileSystem zipfs) throws IOException {
