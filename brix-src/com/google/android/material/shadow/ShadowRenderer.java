@@ -10,7 +10,6 @@ import android.graphics.RectF;
 import android.graphics.Region;
 import android.graphics.Shader;
 import androidx.core.graphics.ColorUtils;
-import androidx.core.view.ViewCompat;
 
 /* JADX INFO: loaded from: classes.dex */
 public class ShadowRenderer {
@@ -31,7 +30,7 @@ public class ShadowRenderer {
     private static final float[] cornerPositions = {0.0f, 0.0f, 0.5f, 1.0f};
 
     public ShadowRenderer() {
-        this(ViewCompat.MEASURED_STATE_MASK);
+        this(-16777216);
     }
 
     public ShadowRenderer(int color) {
@@ -46,7 +45,7 @@ public class ShadowRenderer {
     }
 
     public void setShadowColor(int color) {
-        this.shadowStartColor = ColorUtils.setAlphaComponent(color, COLOR_ALPHA_START);
+        this.shadowStartColor = ColorUtils.setAlphaComponent(color, 68);
         this.shadowMiddleColor = ColorUtils.setAlphaComponent(color, 20);
         this.shadowEndColor = ColorUtils.setAlphaComponent(color, 0);
         this.shadowPaint.setColor(this.shadowStartColor);
