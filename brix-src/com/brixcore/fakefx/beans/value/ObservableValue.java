@@ -10,8 +10,7 @@ import java.util.function.Function;
 public interface ObservableValue<T> extends Observable {
     void addListener(ChangeListener<? super T> changeListener);
 
-    /* JADX INFO: renamed from: getValue */
-    T getValue2();
+    T getValue();
 
     void removeListener(ChangeListener<? super T> changeListener);
 
