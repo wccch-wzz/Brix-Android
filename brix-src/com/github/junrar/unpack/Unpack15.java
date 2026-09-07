@@ -7,9 +7,7 @@ import com.github.junrar.unpack.decode.Compress;
 import com.github.junrar.unpack.vm.BitInput;
 import java.io.IOException;
 import java.util.Arrays;
-import org.apache.commons.compress.archivers.cpio.CpioConstants;
-import org.apache.commons.compress.archivers.tar.TarConstants;
-import org.glavo.chardet.prober.HebrewProber;
+import org.lwjgl.openal.AL10;
 
 /* JADX INFO: loaded from: classes.dex */
 public abstract class Unpack15 extends BitInput {
@@ -47,24 +45,24 @@ public abstract class Unpack15 extends BitInput {
     protected boolean unpSomeRead;
     protected byte[] window;
     protected int wrPtr;
-    private static final int[] DecL1 = {32768, 40960, CpioConstants.C_ISSOCK, 53248, 57344, 59904, 60928, 61440, 61952, 61952, 65535};
+    private static final int[] DecL1 = {32768, 40960, 49152, AL10.AL_DISTANCE_MODEL, 57344, 59904, 60928, 61440, 61952, 61952, 65535};
     private static final int[] PosL1 = {0, 0, 0, 2, 3, 5, 7, 11, 16, 20, 24, 32, 32};
-    private static final int[] DecL2 = {40960, CpioConstants.C_ISSOCK, 53248, 57344, 59904, 60928, 61440, 61952, 62016, 65535};
+    private static final int[] DecL2 = {40960, 49152, AL10.AL_DISTANCE_MODEL, 57344, 59904, 60928, 61440, 61952, 62016, 65535};
     private static final int[] PosL2 = {0, 0, 0, 0, 5, 7, 9, 13, 18, 22, 26, 34, 36};
-    private static final int[] DecHf0 = {32768, CpioConstants.C_ISSOCK, 57344, 61952, 61952, 61952, 61952, 61952, 65535};
+    private static final int[] DecHf0 = {32768, 49152, 57344, 61952, 61952, 61952, 61952, 61952, 65535};
     private static final int[] PosHf0 = {0, 0, 0, 0, 0, 8, 16, 24, 33, 33, 33, 33, 33};
-    private static final int[] DecHf1 = {8192, CpioConstants.C_ISSOCK, 57344, 61440, 61952, 61952, 63456, 65535};
+    private static final int[] DecHf1 = {8192, 49152, 57344, 61440, 61952, 61952, 63456, 65535};
     private static final int[] PosHf1 = {0, 0, 0, 0, 0, 0, 4, 44, 60, 76, 80, 80, 127};
-    private static final int[] DecHf2 = {4096, 9216, 32768, CpioConstants.C_ISSOCK, 64000, 65535, 65535, 65535};
+    private static final int[] DecHf2 = {4096, 9216, 32768, 49152, 64000, 65535, 65535, 65535};
     private static final int[] PosHf2 = {0, 0, 0, 0, 0, 0, 2, 7, 53, 117, 233, 0, 0};
     private static final int[] DecHf3 = {2048, 9216, 60928, 65152, 65535, 65535, 65535};
     private static final int[] PosHf3 = {0, 0, 0, 0, 0, 0, 0, 2, 16, 218, 251, 0, 0};
     private static final int[] DecHf4 = {MotionEventCompat.ACTION_POINTER_INDEX_MASK, 65535, 65535, 65535, 65535, 65535};
     private static final int[] PosHf4 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 0, 0, 0};
     static int[] ShortLen1 = {1, 3, 4, 4, 5, 6, 7, 8, 8, 4, 4, 5, 6, 6, 4, 0};
-    static int[] ShortXor1 = {0, 160, 208, 224, HebrewProber.NORMAL_NUN, 248, 252, 254, 255, 192, 128, 144, 152, TarConstants.LF_OFFSET, 176};
+    static int[] ShortXor1 = {0, 160, 208, 224, 240, 248, 252, 254, 255, 192, 128, 144, 152, 156, 176};
     static int[] ShortLen2 = {2, 3, 3, 3, 4, 4, 5, 6, 6, 4, 4, 5, 6, 6, 4, 0};
-    static int[] ShortXor2 = {0, 64, 96, 160, 208, 224, HebrewProber.NORMAL_NUN, 248, 252, 192, 128, 144, 152, TarConstants.LF_OFFSET, 176};
+    static int[] ShortXor2 = {0, 64, 96, 160, 208, 224, 240, 248, 252, 192, 128, 144, 152, 156, 176};
     protected int[] oldDist = new int[4];
     protected int[] ChSet = new int[256];
     protected int[] ChSetA = new int[256];
