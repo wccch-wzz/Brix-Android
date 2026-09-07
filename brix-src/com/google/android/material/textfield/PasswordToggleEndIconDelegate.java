@@ -12,7 +12,7 @@ class PasswordToggleEndIconDelegate extends EndIconDelegate {
     private final View.OnClickListener onIconClickListener;
 
     /* JADX INFO: renamed from: lambda$new$0$com-google-android-material-textfield-PasswordToggleEndIconDelegate, reason: not valid java name */
-    /* synthetic */ void m448x4cc26475(View view) {
+    /* synthetic */ void m516x4cc26475(View view) {
         if (this.editText == null) {
             return;
         }
@@ -34,7 +34,7 @@ class PasswordToggleEndIconDelegate extends EndIconDelegate {
         this.onIconClickListener = new View.OnClickListener() { // from class: com.google.android.material.textfield.PasswordToggleEndIconDelegate$$ExternalSyntheticLambda0
             @Override // android.view.View.OnClickListener
             public final void onClick(View view) {
-                this.f$0.m448x4cc26475(view);
+                this.f$0.m516x4cc26475(view);
             }
         };
         if (overrideIconResId != 0) {
