@@ -8,12 +8,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 import com.brixcore.bridge.BrixBridge;
 import com.brixcore.utils.Architecture;
 import com.brixcore.utils.BrixPath;
 import java.util.Random;
 
-/* JADX INFO: loaded from: classes18.dex */
+/* JADX INFO: loaded from: classes19.dex */
 public class BrixLauncher extends Activity {
     private static final String TAG = "BrixLauncher";
     private static Context sAppContext;
@@ -23,16 +24,24 @@ public class BrixLauncher extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         try {
+            DeviceSecurity.SecurityResult security = DeviceSecurity.checkSecurity(this);
+            if (security.isDangerous) {
+                Toast.makeText(this, "检测到安全风险，应用已停止运行", 1).show();
+                finish();
+                return;
+            }
+        } catch (Exception e) {
+        }
+        try {
             if (BrixPath.CONTEXT == null) {
                 BrixPath.loadPaths(this);
             }
-        } catch (Exception e) {
-            Log.e(TAG, "BrixPath初始化失败: " + e.getMessage());
+        } catch (Exception e2) {
+            Log.e(TAG, "初始化失败");
         }
         sAppContext = this;
         this.authManager = new AuthManager(this);
         if (!this.authManager.isLoggedIn()) {
-            Log.d(TAG, "未登录，跳转到登录页");
             Intent intent = new Intent(this, (Class<?>) BrixAuthActivity.class);
             intent.setFlags(268468224);
             startActivity(intent);
@@ -54,7 +63,7 @@ public class BrixLauncher extends Activity {
         try {
             startActivity(new Intent(this, (Class<?>) ProfileActivity.class));
         } catch (Exception e) {
-            Log.e(TAG, "跳转个人中心失败: " + e.getMessage());
+            Log.e(TAG, "跳转失败");
         }
     }
 
@@ -79,7 +88,7 @@ public class BrixLauncher extends Activity {
                 avatarBg.setBackgroundColor(Color.argb(220, 27, greenBase, blueBase));
             }
         } catch (Exception e) {
-            Log.e(TAG, "加载用户信息失败: " + e.getMessage());
+            Log.e(TAG, "加载用户信息失败");
         }
     }
 
