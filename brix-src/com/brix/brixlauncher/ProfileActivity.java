@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.brixcore.utils.BrixPath;
 import java.util.Random;
 
-/* JADX INFO: loaded from: classes18.dex */
+/* JADX INFO: loaded from: classes19.dex */
 public class ProfileActivity extends AppCompatActivity {
     private static final String TAG = "ProfileActivity";
     private AuthManager authManager;
@@ -32,7 +32,7 @@ public class ProfileActivity extends AppCompatActivity {
                 BrixPath.loadPaths(this);
             }
         } catch (Exception e) {
-            Log.e(TAG, "BrixPath初始化失败: " + e.getMessage());
+            Log.e(TAG, "BrixPath初始化失败");
         }
         setContentView(R.layout.activity_profile);
         this.authManager = new AuthManager(this);
@@ -61,7 +61,7 @@ public class ProfileActivity extends AppCompatActivity {
             this.cbRemember = (CheckBox) findViewById(R.id.cb_remember);
             this.btnLogout = (Button) findViewById(R.id.btn_logout);
         } catch (Exception e) {
-            Log.e(TAG, "初始化视图失败: " + e.getMessage());
+            Log.e(TAG, "初始化视图失败");
         }
     }
 
@@ -95,7 +95,7 @@ public class ProfileActivity extends AppCompatActivity {
                 this.avatarBg.setBackgroundColor(Color.argb(220, 27, greenBase, blueBase));
             }
         } catch (Exception e) {
-            Log.e(TAG, "加载用户信息失败: " + e.getMessage());
+            Log.e(TAG, "加载用户信息失败");
         }
     }
 
@@ -133,7 +133,7 @@ public class ProfileActivity extends AppCompatActivity {
         try {
             startActivity(new Intent(this, (Class<?>) FriendListActivity.class));
         } catch (Exception e) {
-            Log.e(TAG, "跳转好友页面失败: " + e.getMessage());
+            Log.e(TAG, "跳转好友页面失败");
         }
     }
 
@@ -153,7 +153,7 @@ public class ProfileActivity extends AppCompatActivity {
             Toast.makeText(this, "已退出登录", 0).show();
             goToLogin();
         } catch (Exception e) {
-            Log.e(TAG, "退出登录失败: " + e.getMessage());
+            Log.e(TAG, "退出登录失败");
         }
     }
 
@@ -164,7 +164,7 @@ public class ProfileActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         } catch (Exception e) {
-            Log.e(TAG, "跳转登录页失败: " + e.getMessage());
+            Log.e(TAG, "跳转登录页失败");
             finish();
         }
     }
