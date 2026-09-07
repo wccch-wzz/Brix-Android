@@ -671,7 +671,7 @@ public class BadgeDrawable extends Drawable implements TextDrawableHelper.TextDr
             vOffset = this.state.getVerticalOffsetWithText();
             Context context = this.contextRef.get();
             if (context != null) {
-                float progress = AnimationUtils.lerp(0.0f, 1.0f, FONT_SCALE_THRESHOLD, 1.0f, MaterialResources.getFontScale(context) - 1.0f);
+                float progress = AnimationUtils.lerp(0.0f, 1.0f, 0.3f, 1.0f, MaterialResources.getFontScale(context) - 1.0f);
                 vOffset = AnimationUtils.lerp(vOffset, vOffset - this.state.getLargeFontVerticalOffsetAdjustment(), progress);
             }
         }
