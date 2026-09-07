@@ -45,6 +45,7 @@ import org.jenkinsci.constant_pool_scanner.ConstantPool;
 import org.jenkinsci.constant_pool_scanner.ConstantPoolScanner;
 import org.jenkinsci.constant_pool_scanner.ConstantType;
 import org.jenkinsci.constant_pool_scanner.Utf8Constant;
+import org.lwjgl.opengl.CGL;
 
 /* JADX INFO: loaded from: classes11.dex */
 public final class OptiFineInstallTask extends Task<Version> {
@@ -206,7 +207,7 @@ public final class OptiFineInstallTask extends Task<Version> {
                             String[] strArr = new String[2];
                             strArr[0] = "--tweakClass";
                             strArr[c] = "optifine.OptiFineTweaker";
-                            setResult(new Version(patchId, selfVersion, 10000, arguments.addGameArguments(strArr), LibraryAnalyzer.LAUNCH_WRAPPER_MAIN, libraries));
+                            setResult(new Version(patchId, selfVersion, CGL.kCGLBadAttribute, arguments.addGameArguments(strArr), LibraryAnalyzer.LAUNCH_WRAPPER_MAIN, libraries));
                             this.dependencies.add(this.dependencyManager.checkLibraryCompletionAsync(getResult(), c));
                             return;
                         }
@@ -230,7 +231,7 @@ public final class OptiFineInstallTask extends Task<Version> {
                         String[] strArr2 = new String[2];
                         strArr2[0] = "--tweakClass";
                         strArr2[c] = "optifine.OptiFineTweaker";
-                        setResult(new Version(patchId2, selfVersion2, 10000, arguments2.addGameArguments(strArr2), LibraryAnalyzer.LAUNCH_WRAPPER_MAIN, libraries));
+                        setResult(new Version(patchId2, selfVersion2, CGL.kCGLBadAttribute, arguments2.addGameArguments(strArr2), LibraryAnalyzer.LAUNCH_WRAPPER_MAIN, libraries));
                         this.dependencies.add(this.dependencyManager.checkLibraryCompletionAsync(getResult(), c));
                         return;
                     } catch (Throwable th2) {
