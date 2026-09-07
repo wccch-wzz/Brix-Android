@@ -294,7 +294,7 @@ public class SearchView extends FrameLayout implements CoordinatorLayout.Attache
         this.toolbar.setNavigationOnClickListener(new View.OnClickListener() { // from class: com.google.android.material.search.SearchView$$ExternalSyntheticLambda9
             @Override // android.view.View.OnClickListener
             public final void onClick(View view) {
-                this.f$0.m421x40e9b054(view);
+                this.f$0.m489x40e9b054(view);
             }
         });
         if (useDrawerArrowDrawable) {
@@ -305,7 +305,7 @@ public class SearchView extends FrameLayout implements CoordinatorLayout.Attache
     }
 
     /* JADX INFO: renamed from: lambda$setUpBackButton$1$com-google-android-material-search-SearchView, reason: not valid java name */
-    /* synthetic */ void m421x40e9b054(View v) {
+    /* synthetic */ void m489x40e9b054(View v) {
         hide();
     }
 
@@ -313,7 +313,7 @@ public class SearchView extends FrameLayout implements CoordinatorLayout.Attache
         this.clearButton.setOnClickListener(new View.OnClickListener() { // from class: com.google.android.material.search.SearchView$$ExternalSyntheticLambda1
             @Override // android.view.View.OnClickListener
             public final void onClick(View view) {
-                this.f$0.m422xf4a71c3b(view);
+                this.f$0.m490xf4a71c3b(view);
             }
         });
         this.editText.addTextChangedListener(new TextWatcher() { // from class: com.google.android.material.search.SearchView.1
@@ -333,7 +333,7 @@ public class SearchView extends FrameLayout implements CoordinatorLayout.Attache
     }
 
     /* JADX INFO: renamed from: lambda$setUpClearButton$2$com-google-android-material-search-SearchView, reason: not valid java name */
-    /* synthetic */ void m422xf4a71c3b(View v) {
+    /* synthetic */ void m490xf4a71c3b(View v) {
         clearText();
         requestFocusAndShowKeyboardIfNeeded();
     }
@@ -342,13 +342,13 @@ public class SearchView extends FrameLayout implements CoordinatorLayout.Attache
         this.contentContainer.setOnTouchListener(new View.OnTouchListener() { // from class: com.google.android.material.search.SearchView$$ExternalSyntheticLambda8
             @Override // android.view.View.OnTouchListener
             public final boolean onTouch(View view, MotionEvent motionEvent) {
-                return this.f$0.m423x1cd2d198(view, motionEvent);
+                return this.f$0.m491x1cd2d198(view, motionEvent);
             }
         });
     }
 
     /* JADX INFO: renamed from: lambda$setUpContentOnTouchListener$3$com-google-android-material-search-SearchView, reason: not valid java name */
-    /* synthetic */ boolean m423x1cd2d198(View v, MotionEvent event) {
+    /* synthetic */ boolean m491x1cd2d198(View v, MotionEvent event) {
         if (isAdjustNothingSoftInputMode()) {
             clearFocusAndHideKeyboard();
             return false;
@@ -402,13 +402,13 @@ public class SearchView extends FrameLayout implements CoordinatorLayout.Attache
         ViewUtils.doOnApplyWindowInsets(this.toolbar, new ViewUtils.OnApplyWindowInsetsListener() { // from class: com.google.android.material.search.SearchView$$ExternalSyntheticLambda3
             @Override // com.google.android.material.internal.ViewUtils.OnApplyWindowInsetsListener
             public final WindowInsetsCompat onApplyWindowInsets(View view, WindowInsetsCompat windowInsetsCompat, ViewUtils.RelativePadding relativePadding) {
-                return this.f$0.m425x7371bf54(view, windowInsetsCompat, relativePadding);
+                return this.f$0.m493x7371bf54(view, windowInsetsCompat, relativePadding);
             }
         });
     }
 
     /* JADX INFO: renamed from: lambda$setUpToolbarInsetListener$4$com-google-android-material-search-SearchView, reason: not valid java name */
-    /* synthetic */ WindowInsetsCompat m425x7371bf54(View view, WindowInsetsCompat insets, ViewUtils.RelativePadding initialPadding) {
+    /* synthetic */ WindowInsetsCompat m493x7371bf54(View view, WindowInsetsCompat insets, ViewUtils.RelativePadding initialPadding) {
         boolean isRtl = ViewUtils.isLayoutRtl(this.toolbar);
         int paddingLeft = isRtl ? initialPadding.end : initialPadding.start;
         int paddingRight = isRtl ? initialPadding.start : initialPadding.end;
@@ -421,13 +421,13 @@ public class SearchView extends FrameLayout implements CoordinatorLayout.Attache
         ViewCompat.setOnApplyWindowInsetsListener(this.statusBarSpacer, new OnApplyWindowInsetsListener() { // from class: com.google.android.material.search.SearchView$$ExternalSyntheticLambda4
             @Override // androidx.core.view.OnApplyWindowInsetsListener
             public final WindowInsetsCompat onApplyWindowInsets(View view, WindowInsetsCompat windowInsetsCompat) {
-                return this.f$0.m424x941b8403(view, windowInsetsCompat);
+                return this.f$0.m492x941b8403(view, windowInsetsCompat);
             }
         });
     }
 
     /* JADX INFO: renamed from: lambda$setUpStatusBarSpacerInsetListener$5$com-google-android-material-search-SearchView, reason: not valid java name */
-    /* synthetic */ WindowInsetsCompat m424x941b8403(View v, WindowInsetsCompat insets) {
+    /* synthetic */ WindowInsetsCompat m492x941b8403(View v, WindowInsetsCompat insets) {
         int systemWindowInsetTop = insets.getSystemWindowInsetTop();
         setUpStatusBarSpacer(systemWindowInsetTop);
         if (!this.statusBarSpacerEnabledOverride) {
@@ -465,7 +465,7 @@ public class SearchView extends FrameLayout implements CoordinatorLayout.Attache
             searchBar.setOnClickListener(new View.OnClickListener() { // from class: com.google.android.material.search.SearchView$$ExternalSyntheticLambda5
                 @Override // android.view.View.OnClickListener
                 public final void onClick(View view) {
-                    this.f$0.m426x986696e6(view);
+                    this.f$0.m494x986696e6(view);
                 }
             });
             if (Build.VERSION.SDK_INT >= 34) {
@@ -487,7 +487,7 @@ public class SearchView extends FrameLayout implements CoordinatorLayout.Attache
     }
 
     /* JADX INFO: renamed from: lambda$setupWithSearchBar$7$com-google-android-material-search-SearchView, reason: not valid java name */
-    /* synthetic */ void m426x986696e6(View v) {
+    /* synthetic */ void m494x986696e6(View v) {
         show();
     }
 
@@ -713,13 +713,13 @@ public class SearchView extends FrameLayout implements CoordinatorLayout.Attache
         this.editText.postDelayed(new Runnable() { // from class: com.google.android.material.search.SearchView$$ExternalSyntheticLambda2
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.m420x2b2700d7();
+                this.f$0.m488x2b2700d7();
             }
         }, TALKBACK_FOCUS_CHANGE_DELAY_MS);
     }
 
     /* JADX INFO: renamed from: lambda$requestFocusAndShowKeyboard$8$com-google-android-material-search-SearchView, reason: not valid java name */
-    /* synthetic */ void m420x2b2700d7() {
+    /* synthetic */ void m488x2b2700d7() {
         if (this.editText.requestFocus()) {
             this.editText.sendAccessibilityEvent(8);
         }
@@ -730,13 +730,13 @@ public class SearchView extends FrameLayout implements CoordinatorLayout.Attache
         this.editText.post(new Runnable() { // from class: com.google.android.material.search.SearchView$$ExternalSyntheticLambda10
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.m419xff5aa7db();
+                this.f$0.m487xff5aa7db();
             }
         });
     }
 
     /* JADX INFO: renamed from: lambda$clearFocusAndHideKeyboard$9$com-google-android-material-search-SearchView, reason: not valid java name */
-    /* synthetic */ void m419xff5aa7db() {
+    /* synthetic */ void m487xff5aa7db() {
         this.editText.clearFocus();
         if (this.searchBar != null) {
             this.searchBar.requestFocus();
