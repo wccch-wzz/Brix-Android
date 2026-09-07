@@ -49,7 +49,7 @@ public class ExtendableSavedState extends AbsSavedState {
     @Override // androidx.customview.view.AbsSavedState, android.os.Parcelable
     public void writeToParcel(Parcel out, int flags) {
         super.writeToParcel(out, flags);
-        int size = this.extendableStates.size();
+        int size = this.extendableStates.getSize();
         out.writeInt(size);
         String[] keys = new String[size];
         Bundle[] states = new Bundle[size];
