@@ -1,5 +1,6 @@
 package com.brixcore.mod.modrinth;
 
+import androidx.constraintlayout.core.motion.utils.TypedValues;
 import com.android.tools.r8.RecordTag;
 import com.brixcore.auth.offline.Skin$$ExternalSyntheticRecord1;
 import com.brixcore.auth.offline.Skin$LoadedSkin$$ExternalSyntheticRecord0;
@@ -84,7 +85,7 @@ public final class ModrinthRemoteModRepository implements RemoteModRepository {
         if (category != null && StringUtils.isNotBlank(category.id())) {
             facets.add(Collections.singletonList("categories:" + category.id()));
         }
-        Map<String, String> query = Lang.mapOf(Pair.pair("query", searchFilter), Pair.pair("facets", JsonUtils.UGLY_GSON.toJson(facets)), Pair.pair("offset", Integer.toString(pageOffset * pageSize)), Pair.pair("limit", Integer.toString(pageSize)), Pair.pair("index", convertSortType(sort)));
+        Map<String, String> query = Lang.mapOf(Pair.pair("query", searchFilter), Pair.pair("facets", JsonUtils.UGLY_GSON.toJson(facets)), Pair.pair(TypedValues.CycleType.S_WAVE_OFFSET, Integer.toString(pageOffset * pageSize)), Pair.pair("limit", Integer.toString(pageSize)), Pair.pair("index", convertSortType(sort)));
         List<URL> candidates = downloadProvider.injectURLWithCandidates(NetworkUtils.withQuery("https://api.modrinth.com/v2/search", query));
         IOException exception = null;
         for (URL candidate : candidates) {
