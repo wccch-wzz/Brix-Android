@@ -11,7 +11,6 @@ import android.os.Parcelable;
 import android.transition.Transition;
 import android.view.View;
 import android.view.Window;
-import androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure;
 import androidx.core.graphics.BlendModeColorFilterCompat;
 import androidx.core.graphics.BlendModeCompat;
 import com.google.android.material.R;
@@ -84,8 +83,8 @@ public class MaterialContainerTransformSharedElementCallback extends SharedEleme
         }
         if (!this.entering && !sharedElements.isEmpty() && this.returnEndBounds != null) {
             View sharedElement = sharedElements.get(0);
-            int widthSpec = View.MeasureSpec.makeMeasureSpec(this.returnEndBounds.width(), BasicMeasure.EXACTLY);
-            int heightSpec = View.MeasureSpec.makeMeasureSpec(this.returnEndBounds.height(), BasicMeasure.EXACTLY);
+            int widthSpec = View.MeasureSpec.makeMeasureSpec(this.returnEndBounds.width(), 1073741824);
+            int heightSpec = View.MeasureSpec.makeMeasureSpec(this.returnEndBounds.height(), 1073741824);
             sharedElement.measure(widthSpec, heightSpec);
             sharedElement.layout(this.returnEndBounds.left, this.returnEndBounds.top, this.returnEndBounds.right, this.returnEndBounds.bottom);
         }
