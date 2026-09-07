@@ -162,13 +162,13 @@ public class MaskableFrameLayout extends FrameLayout implements Maskable, Shapea
         this.shapeableDelegate.maybeClip(canvas, new CanvasCompat.CanvasOperation() { // from class: com.google.android.material.carousel.MaskableFrameLayout$$ExternalSyntheticLambda1
             @Override // com.google.android.material.canvas.CanvasCompat.CanvasOperation
             public final void run(Canvas canvas2) {
-                this.f$0.m366x418c47c0(canvas2);
+                this.f$0.m434x418c47c0(canvas2);
             }
         });
     }
 
     /* JADX INFO: renamed from: lambda$dispatchDraw$1$com-google-android-material-carousel-MaskableFrameLayout, reason: not valid java name */
-    /* synthetic */ void m366x418c47c0(Canvas x$0) {
+    /* synthetic */ void m434x418c47c0(Canvas x$0) {
         super.dispatchDraw(x$0);
     }
 }
