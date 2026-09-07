@@ -27,7 +27,7 @@ public final class CommandBuilder {
     private static final Pattern UNSTABLE_BOOLEAN_OPTION_PATTERN = Pattern.compile("-XX:(?<value>[+\\-])(?<key>[a-zA-Z0-9]+)");
 
     /* JADX INFO: renamed from: $r8$lambda$wBZ5N9SAmxJLRX-vx8hIUeo_fgc, reason: not valid java name */
-    public static /* synthetic */ ArrayList m349$r8$lambda$wBZ5N9SAmxJLRXvx8hIUeo_fgc() {
+    public static /* synthetic */ ArrayList m417$r8$lambda$wBZ5N9SAmxJLRXvx8hIUeo_fgc() {
         return new ArrayList();
     }
 
@@ -232,7 +232,7 @@ public final class CommandBuilder {
         }).collect(Collectors.toCollection(new Supplier() { // from class: com.brixcore.util.platform.CommandBuilder$$ExternalSyntheticLambda2
             @Override // java.util.function.Supplier
             public final Object get() {
-                return CommandBuilder.m349$r8$lambda$wBZ5N9SAmxJLRXvx8hIUeo_fgc();
+                return CommandBuilder.m417$r8$lambda$wBZ5N9SAmxJLRXvx8hIUeo_fgc();
             }
         }));
     }
