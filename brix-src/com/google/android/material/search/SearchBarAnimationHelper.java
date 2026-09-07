@@ -199,13 +199,13 @@ class SearchBarAnimationHelper {
         expandedView.post(new Runnable() { // from class: com.google.android.material.search.SearchBarAnimationHelper$$ExternalSyntheticLambda3
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.m418x1b96b119(searchBar, expandedView, appBarLayout, skipAnimation);
+                this.f$0.m486x1b96b119(searchBar, expandedView, appBarLayout, skipAnimation);
             }
         });
     }
 
     /* JADX INFO: renamed from: lambda$startExpandAnimation$0$com-google-android-material-search-SearchBarAnimationHelper, reason: not valid java name */
-    /* synthetic */ void m418x1b96b119(SearchBar searchBar, View expandedView, AppBarLayout appBarLayout, boolean skipAnimation) {
+    /* synthetic */ void m486x1b96b119(SearchBar searchBar, View expandedView, AppBarLayout appBarLayout, boolean skipAnimation) {
         AnimatorSet fadeAndExpandAnimatorSet = new AnimatorSet();
         Animator fadeOutChildrenAnimator = getFadeOutChildrenAnimator(searchBar, expandedView);
         Animator expandAnimator = getExpandAnimator(searchBar, expandedView, appBarLayout);
