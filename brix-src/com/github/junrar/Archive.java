@@ -582,7 +582,7 @@ public class Archive implements Closeable, Iterable<FileHeader> {
         Runnable r = new Runnable() { // from class: com.github.junrar.Archive$$ExternalSyntheticLambda3
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.m359lambda$getInputStream$0$comgithubjunrarArchive(hd, out);
+                this.f$0.m427lambda$getInputStream$0$comgithubjunrarArchive(hd, out);
             }
         };
         if (USE_EXECUTOR) {
@@ -594,7 +594,7 @@ public class Archive implements Closeable, Iterable<FileHeader> {
     }
 
     /* JADX INFO: renamed from: lambda$getInputStream$0$com-github-junrar-Archive, reason: not valid java name */
-    /* synthetic */ void m359lambda$getInputStream$0$comgithubjunrarArchive(FileHeader hd, PipedOutputStream out) {
+    /* synthetic */ void m427lambda$getInputStream$0$comgithubjunrarArchive(FileHeader hd, PipedOutputStream out) {
         try {
             extractFile(hd, out);
         } catch (RarException e) {
