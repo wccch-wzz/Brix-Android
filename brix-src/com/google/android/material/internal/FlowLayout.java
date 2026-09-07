@@ -5,7 +5,6 @@ import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
-import androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure;
 import androidx.core.view.MarginLayoutParamsCompat;
 import androidx.core.view.ViewCompat;
 import com.google.android.material.R;
@@ -137,7 +136,7 @@ public class FlowLayout extends ViewGroup {
         switch (mode) {
             case Integer.MIN_VALUE:
                 return Math.min(childrenEdge, size);
-            case BasicMeasure.EXACTLY /* 1073741824 */:
+            case 1073741824:
                 return size;
             default:
                 return childrenEdge;
