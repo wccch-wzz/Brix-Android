@@ -4,7 +4,6 @@ import java.io.EOFException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Vector;
-import kotlin.UByte;
 
 /* JADX INFO: loaded from: classes.dex */
 public final class RandomAccessInputStream extends InputStream {
@@ -37,7 +36,7 @@ public final class RandomAccessInputStream extends InputStream {
             byte[] abyte0 = (byte[]) this.data.elementAt((int) (this.pointer >>> 9));
             long j = this.pointer;
             this.pointer = 1 + j;
-            return abyte0[(int) (511 & j)] & UByte.MAX_VALUE;
+            return abyte0[(int) (511 & j)] & 255;
         }
         return -1;
     }
