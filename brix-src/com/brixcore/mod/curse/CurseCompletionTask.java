@@ -162,7 +162,7 @@ public final class CurseCompletionTask extends Task<Void> {
         String fileName = file.getFileName();
         switch (classID) {
             case 12:
-            case CurseForgeRemoteModRepository.SECTION_SHADER_PACK /* 6552 */:
+            case 6552:
                 File res = new File(classID == 12 ? resourcePacksRoot : shaderPacksRoot, fileName);
                 if (res.exists()) {
                     return null;
