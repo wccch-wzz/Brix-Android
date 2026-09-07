@@ -1,6 +1,5 @@
 package com.sun.nio.zipfs;
 
-import androidx.core.text.HtmlCompat;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Arrays;
@@ -8,6 +7,8 @@ import java.util.Date;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.PatternSyntaxException;
 import org.apache.commons.io.IOUtils;
+import org.lwjgl.system.linux.liburing.LibIOURing;
+import org.lwjgl.system.macosx.ObjCRuntime;
 
 /* JADX INFO: loaded from: classes2.dex */
 class ZipUtils {
@@ -53,7 +54,7 @@ class ZipUtils {
     public static byte[] toDirectoryPath(byte[] dir) {
         if (dir.length != 0 && dir[dir.length - 1] != 47) {
             byte[] dir2 = Arrays.copyOf(dir, dir.length + 1);
-            dir2[dir2.length - 1] = 47;
+            dir2[dir2.length - 1] = LibIOURing.IORING_OP_SEND_ZC;
             return dir2;
         }
         return dir;
@@ -132,7 +133,7 @@ class ZipUtils {
                 case '/':
                     regex.append(c);
                     break;
-                case HtmlCompat.FROM_HTML_MODE_COMPACT /* 63 */:
+                case '?':
                     regex.append("[^/]");
                     break;
                 case '[':
@@ -142,7 +143,7 @@ class ZipUtils {
                         i2++;
                     } else {
                         if (next(globPattern, i2) == '!') {
-                            regex.append('^');
+                            regex.append(ObjCRuntime._C_PTR);
                             i2++;
                         }
                         if (next(globPattern, i2) == '-') {
@@ -230,7 +231,7 @@ class ZipUtils {
                         inGroup = false;
                         i = i2;
                     } else {
-                        regex.append('}');
+                        regex.append(ObjCRuntime._C_STRUCT_E);
                     }
                     break;
                 default:
