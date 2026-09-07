@@ -5,6 +5,7 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 import org.apache.commons.lang3.StringUtils;
+import org.lwjgl.system.macosx.ObjCRuntime;
 
 /* JADX INFO: loaded from: classes.dex */
 public class ByteArrayTag extends Tag {
@@ -57,7 +58,7 @@ public class ByteArrayTag extends Tag {
 
     @Override // com.github.steveice10.opennbt.tag.builtin.Tag
     public void destringify(SNBTIO.StringifiedNBTReader in) throws IOException {
-        String s = in.readUntil(true, ']');
+        String s = in.readUntil(true, ObjCRuntime._C_ARY_E);
         String[] valueStrings = s.substring(s.indexOf(59) + 1, s.length() - 1).replaceAll(StringUtils.SPACE, "").split(",");
         this.value = new byte[valueStrings.length];
         for (int i = 0; i < this.value.length; i++) {
@@ -74,13 +75,13 @@ public class ByteArrayTag extends Tag {
             sb.append(' ');
         }
         sb.setLength(sb.length() - 2);
-        sb.append(']');
+        sb.append(ObjCRuntime._C_ARY_E);
         out.append((CharSequence) sb.toString());
     }
 
     @Override // com.github.steveice10.opennbt.tag.builtin.Tag
     /* JADX INFO: renamed from: clone */
-    public ByteArrayTag mo360clone() {
+    public ByteArrayTag mo428clone() {
         return new ByteArrayTag(getName(), getValue());
     }
 }
