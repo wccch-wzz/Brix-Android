@@ -63,7 +63,7 @@ public final class MaterialFade extends MaterialVisibility<FadeProvider> {
 
     private static FadeProvider createPrimaryAnimatorProvider() {
         FadeProvider fadeProvider = new FadeProvider();
-        fadeProvider.setIncomingEndThreshold(DEFAULT_FADE_END_THRESHOLD_ENTER);
+        fadeProvider.setIncomingEndThreshold(0.3f);
         return fadeProvider;
     }
 
