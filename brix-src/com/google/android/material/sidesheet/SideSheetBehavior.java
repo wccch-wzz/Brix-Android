@@ -18,7 +18,6 @@ import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.ViewParent;
 import androidx.activity.BackEventCompat;
-import androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.math.MathUtils;
 import androidx.core.view.GravityCompat;
@@ -314,8 +313,8 @@ public class SideSheetBehavior<V extends View> extends CoordinatorLayout.Behavio
         int mode = View.MeasureSpec.getMode(result);
         int size = View.MeasureSpec.getSize(result);
         switch (mode) {
-            case BasicMeasure.EXACTLY /* 1073741824 */:
-                return View.MeasureSpec.makeMeasureSpec(Math.min(size, maxSize), BasicMeasure.EXACTLY);
+            case 1073741824:
+                return View.MeasureSpec.makeMeasureSpec(Math.min(size, maxSize), 1073741824);
             default:
                 return View.MeasureSpec.makeMeasureSpec(size == 0 ? maxSize : Math.min(size, maxSize), Integer.MIN_VALUE);
         }
@@ -537,14 +536,14 @@ public class SideSheetBehavior<V extends View> extends CoordinatorLayout.Behavio
             runAfterLayout(this.viewRef.get(), new Runnable() { // from class: com.google.android.material.sidesheet.SideSheetBehavior$$ExternalSyntheticLambda0
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.m433xc0f1d0a9(state);
+                    this.f$0.m501xc0f1d0a9(state);
                 }
             });
         }
     }
 
     /* JADX INFO: renamed from: lambda$setState$0$com-google-android-material-sidesheet-SideSheetBehavior, reason: not valid java name */
-    /* synthetic */ void m433xc0f1d0a9(int finalState) {
+    /* synthetic */ void m501xc0f1d0a9(int finalState) {
         V child = this.viewRef.get();
         if (child != null) {
             startSettling(child, finalState, false);
@@ -805,13 +804,13 @@ public class SideSheetBehavior<V extends View> extends CoordinatorLayout.Behavio
         return new ValueAnimator.AnimatorUpdateListener() { // from class: com.google.android.material.sidesheet.SideSheetBehavior$$ExternalSyntheticLambda2
             @Override // android.animation.ValueAnimator.AnimatorUpdateListener
             public final void onAnimationUpdate(ValueAnimator valueAnimator) {
-                this.f$0.m432xc3af8fb4(coplanarSiblingLayoutParams, coplanarSiblingAdjacentMargin, coplanarSiblingView, valueAnimator);
+                this.f$0.m500xc3af8fb4(coplanarSiblingLayoutParams, coplanarSiblingAdjacentMargin, coplanarSiblingView, valueAnimator);
             }
         };
     }
 
     /* JADX INFO: renamed from: lambda$getCoplanarFinishAnimatorUpdateListener$1$com-google-android-material-sidesheet-SideSheetBehavior, reason: not valid java name */
-    /* synthetic */ void m432xc3af8fb4(ViewGroup.MarginLayoutParams coplanarSiblingLayoutParams, int coplanarSiblingAdjacentMargin, View coplanarSiblingView, ValueAnimator animation) {
+    /* synthetic */ void m500xc3af8fb4(ViewGroup.MarginLayoutParams coplanarSiblingLayoutParams, int coplanarSiblingAdjacentMargin, View coplanarSiblingView, ValueAnimator animation) {
         this.sheetDelegate.updateCoplanarSiblingAdjacentMargin(coplanarSiblingLayoutParams, AnimationUtils.lerp(coplanarSiblingAdjacentMargin, 0, animation.getAnimatedFraction()));
         coplanarSiblingView.requestLayout();
     }
@@ -832,7 +831,7 @@ public class SideSheetBehavior<V extends View> extends CoordinatorLayout.Behavio
         private final Runnable continueSettlingRunnable = new Runnable() { // from class: com.google.android.material.sidesheet.SideSheetBehavior$StateSettlingTracker$$ExternalSyntheticLambda0
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.m434xe5f914a3();
+                this.f$0.m502xe5f914a3();
             }
         };
         private boolean isContinueSettlingRunnablePosted;
@@ -842,7 +841,7 @@ public class SideSheetBehavior<V extends View> extends CoordinatorLayout.Behavio
         }
 
         /* JADX INFO: renamed from: lambda$new$0$com-google-android-material-sidesheet-SideSheetBehavior$StateSettlingTracker, reason: not valid java name */
-        /* synthetic */ void m434xe5f914a3() {
+        /* synthetic */ void m502xe5f914a3() {
             this.isContinueSettlingRunnablePosted = false;
             if (SideSheetBehavior.this.viewDragHelper == null || !SideSheetBehavior.this.viewDragHelper.continueSettling(true)) {
                 if (SideSheetBehavior.this.state == 2) {
@@ -942,13 +941,13 @@ public class SideSheetBehavior<V extends View> extends CoordinatorLayout.Behavio
         return new AccessibilityViewCommand() { // from class: com.google.android.material.sidesheet.SideSheetBehavior$$ExternalSyntheticLambda1
             @Override // androidx.core.view.accessibility.AccessibilityViewCommand
             public final boolean perform(View view, AccessibilityViewCommand.CommandArguments commandArguments) {
-                return this.f$0.m431x564aa398(state, view, commandArguments);
+                return this.f$0.m499x564aa398(state, view, commandArguments);
             }
         };
     }
 
     /* JADX INFO: renamed from: lambda$createAccessibilityViewCommandForState$2$com-google-android-material-sidesheet-SideSheetBehavior, reason: not valid java name */
-    /* synthetic */ boolean m431x564aa398(int state, View view, AccessibilityViewCommand.CommandArguments arguments) {
+    /* synthetic */ boolean m499x564aa398(int state, View view, AccessibilityViewCommand.CommandArguments arguments) {
         setState(state);
         return true;
     }
