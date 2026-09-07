@@ -168,14 +168,14 @@ public class AppBarLayout extends LinearLayout implements CoordinatorLayout.Atta
         this.liftOnScrollColorUpdateListener = new ValueAnimator.AnimatorUpdateListener() { // from class: com.google.android.material.appbar.AppBarLayout$$ExternalSyntheticLambda0
             @Override // android.animation.ValueAnimator.AnimatorUpdateListener
             public final void onAnimationUpdate(ValueAnimator valueAnimator) {
-                this.f$0.m361x91f594d8(originalBackgroundColor, liftOnScrollColor, background, colorSurface, valueAnimator);
+                this.f$0.m429x91f594d8(originalBackgroundColor, liftOnScrollColor, background, colorSurface, valueAnimator);
             }
         };
         ViewCompat.setBackground(this, background);
     }
 
     /* JADX INFO: renamed from: lambda$initializeLiftOnScrollWithColor$0$com-google-android-material-appbar-AppBarLayout, reason: not valid java name */
-    /* synthetic */ void m361x91f594d8(ColorStateList originalBackgroundColor, ColorStateList liftOnScrollColor, MaterialShapeDrawable background, Integer colorSurface, ValueAnimator valueAnimator) {
+    /* synthetic */ void m429x91f594d8(ColorStateList originalBackgroundColor, ColorStateList liftOnScrollColor, MaterialShapeDrawable background, Integer colorSurface, ValueAnimator valueAnimator) {
         float liftProgress = ((Float) valueAnimator.getAnimatedValue()).floatValue();
         int mixedColor = MaterialColors.layer(originalBackgroundColor.getDefaultColor(), liftOnScrollColor.getDefaultColor(), liftProgress);
         background.setFillColor(ColorStateList.valueOf(mixedColor));
@@ -196,14 +196,14 @@ public class AppBarLayout extends LinearLayout implements CoordinatorLayout.Atta
         this.liftOnScrollColorUpdateListener = new ValueAnimator.AnimatorUpdateListener() { // from class: com.google.android.material.appbar.AppBarLayout$$ExternalSyntheticLambda1
             @Override // android.animation.ValueAnimator.AnimatorUpdateListener
             public final void onAnimationUpdate(ValueAnimator valueAnimator) {
-                this.f$0.m362x84b6053(background, valueAnimator);
+                this.f$0.m430x84b6053(background, valueAnimator);
             }
         };
         ViewCompat.setBackground(this, background);
     }
 
     /* JADX INFO: renamed from: lambda$initializeLiftOnScrollWithElevation$1$com-google-android-material-appbar-AppBarLayout, reason: not valid java name */
-    /* synthetic */ void m362x84b6053(MaterialShapeDrawable background, ValueAnimator valueAnimator) {
+    /* synthetic */ void m430x84b6053(MaterialShapeDrawable background, ValueAnimator valueAnimator) {
         float elevation = ((Float) valueAnimator.getAnimatedValue()).floatValue();
         background.setElevation(elevation);
         if (this.statusBarForeground instanceof MaterialShapeDrawable) {
@@ -1157,7 +1157,7 @@ public class AppBarLayout extends LinearLayout implements CoordinatorLayout.Atta
             } else {
                 this.offsetAnimator.cancel();
             }
-            this.offsetAnimator.setDuration(Math.min(duration, MAX_OFFSET_ANIMATION_DURATION));
+            this.offsetAnimator.setDuration(Math.min(duration, 600));
             this.offsetAnimator.setIntValues(currentOffset, offset);
             this.offsetAnimator.start();
         }
@@ -1839,7 +1839,7 @@ public class AppBarLayout extends LinearLayout implements CoordinatorLayout.Atta
             if (distanceFromCeiling <= 0.0f) {
                 float p = MathUtils.clamp(Math.abs(distanceFromCeiling / this.relativeRect.height()), 0.0f, 1.0f);
                 float easeOutQuad = 1.0f - ((1.0f - p) * (1.0f - p));
-                float distance = this.relativeRect.height() * COMPRESS_DISTANCE_FACTOR;
+                float distance = this.relativeRect.height() * 0.3f;
                 float offsetY = (-distanceFromCeiling) - (distance * easeOutQuad);
                 child.setTranslationY(offsetY);
                 child.getDrawingRect(this.ghostRect);
