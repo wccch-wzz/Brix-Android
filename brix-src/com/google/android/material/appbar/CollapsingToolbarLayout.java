@@ -19,7 +19,6 @@ import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.widget.FrameLayout;
 import androidx.appcompat.widget.Toolbar;
-import androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.core.math.MathUtils;
@@ -151,7 +150,7 @@ public class CollapsingToolbarLayout extends FrameLayout {
         if (a.hasValue(R.styleable.CollapsingToolbarLayout_titlePositionInterpolator)) {
             this.collapsingTextHelper.setPositionInterpolator(android.view.animation.AnimationUtils.loadInterpolator(context2, a.getResourceId(R.styleable.CollapsingToolbarLayout_titlePositionInterpolator, 0)));
         }
-        this.scrimAnimationDuration = a.getInt(R.styleable.CollapsingToolbarLayout_scrimAnimationDuration, DEFAULT_SCRIM_ANIMATION_DURATION);
+        this.scrimAnimationDuration = a.getInt(R.styleable.CollapsingToolbarLayout_scrimAnimationDuration, 600);
         this.scrimAnimationFadeInInterpolator = MotionUtils.resolveThemeInterpolator(context2, R.attr.motionEasingStandardInterpolator, AnimationUtils.FAST_OUT_LINEAR_IN_INTERPOLATOR);
         this.scrimAnimationFadeOutInterpolator = MotionUtils.resolveThemeInterpolator(context2, R.attr.motionEasingStandardInterpolator, AnimationUtils.LINEAR_OUT_SLOW_IN_INTERPOLATOR);
         setContentScrim(a.getDrawable(R.styleable.CollapsingToolbarLayout_contentScrim));
@@ -361,7 +360,7 @@ public class CollapsingToolbarLayout extends FrameLayout {
         if ((mode == 0 || this.forceApplySystemWindowInsetTop) && topInset > 0) {
             this.topInsetApplied = topInset;
             int newHeight = getMeasuredHeight() + topInset;
-            super.onMeasure(widthMeasureSpec, View.MeasureSpec.makeMeasureSpec(newHeight, BasicMeasure.EXACTLY));
+            super.onMeasure(widthMeasureSpec, View.MeasureSpec.makeMeasureSpec(newHeight, 1073741824));
         }
         if (!this.extraMultilineHeightEnabled || this.collapsingTextHelper.getMaxLines() <= 1) {
             collapsingToolbarLayout = this;
@@ -374,7 +373,7 @@ public class CollapsingToolbarLayout extends FrameLayout {
                 int expandedTextHeight = Math.round(collapsingToolbarLayout.collapsingTextHelper.getExpandedTextFullHeight());
                 collapsingToolbarLayout.extraMultilineHeight = (lineCount - 1) * expandedTextHeight;
                 int newHeight2 = getMeasuredHeight() + collapsingToolbarLayout.extraMultilineHeight;
-                super.onMeasure(widthMeasureSpec, View.MeasureSpec.makeMeasureSpec(newHeight2, BasicMeasure.EXACTLY));
+                super.onMeasure(widthMeasureSpec, View.MeasureSpec.makeMeasureSpec(newHeight2, 1073741824));
             }
         }
         if (collapsingToolbarLayout.toolbar != null) {
