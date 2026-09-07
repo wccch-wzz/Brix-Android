@@ -394,7 +394,7 @@ public abstract class NavigationBarItemView extends FrameLayout implements MenuV
         this.largeLabel.setEnabled(enabled);
         this.icon.setEnabled(enabled);
         if (enabled) {
-            ViewCompat.setPointerIcon(this, PointerIconCompat.getSystemIcon(getContext(), PointerIconCompat.TYPE_HAND));
+            ViewCompat.setPointerIcon(this, PointerIconCompat.getSystemIcon(getContext(), 1002));
         } else {
             ViewCompat.setPointerIcon(this, null);
         }
