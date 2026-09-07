@@ -106,8 +106,8 @@ public final class ForgeBMCLVersionList extends VersionList<ForgeRemoteVersion> 
                                 String str5 = str3 + "-" + forgeVersion.getVersion() + (lookupBranch.isEmpty() ? "" : '-' + lookupBranch);
                                 String str6 = str4 + str5 + "-" + next.getCategory() + "." + next.getFormat();
                                 String str7 = str4 + str5 + "-" + str3 + "-" + next.getCategory() + "." + next.getFormat();
-                                arrayList.add("https://files.minecraftforge.net/maven/net/minecraftforge/forge/" + str5 + "/" + str6);
-                                arrayList.add("https://files.minecraftforge.net/maven/net/minecraftforge/forge/" + str5 + "-" + str3 + "/" + str7);
+                                arrayList.add(ForgeVersionList.FORGE_LIST + str5 + "/" + str6);
+                                arrayList.add(ForgeVersionList.FORGE_LIST + str5 + "-" + str3 + "/" + str7);
                                 arrayList.add(NetworkUtils.withQuery("https://bmclapi2.bangbang93.com/forge/download", Lang.mapOf(Pair.pair("mcversion", forgeVersion.getGameVersion()), Pair.pair("version", forgeVersion.getVersion()), Pair.pair("branch", lookupBranch), Pair.pair("category", next.getCategory()), Pair.pair("format", next.getFormat()))));
                             }
                             str3 = str2;
