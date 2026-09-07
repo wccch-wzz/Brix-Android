@@ -1,7 +1,6 @@
 package com.github.junrar.rarfile;
 
 import com.github.junrar.io.Raw;
-import kotlin.UByte;
 
 /* JADX INFO: loaded from: classes.dex */
 public class AVHeader extends BaseBlock {
@@ -13,11 +12,11 @@ public class AVHeader extends BaseBlock {
 
     public AVHeader(BaseBlock bb, byte[] avHeader) {
         super(bb);
-        this.unpackVersion = (byte) (this.unpackVersion | (avHeader[0] & UByte.MAX_VALUE));
+        this.unpackVersion = (byte) (this.unpackVersion | (avHeader[0] & 255));
         int pos = 0 + 1;
-        this.method = (byte) (this.method | (avHeader[pos] & UByte.MAX_VALUE));
+        this.method = (byte) (this.method | (avHeader[pos] & 255));
         int pos2 = pos + 1;
-        this.avVersion = (byte) (this.avVersion | (avHeader[pos2] & UByte.MAX_VALUE));
+        this.avVersion = (byte) (this.avVersion | (avHeader[pos2] & 255));
         this.avInfoCRC = Raw.readIntLittleEndian(avHeader, pos2 + 1);
     }
 
