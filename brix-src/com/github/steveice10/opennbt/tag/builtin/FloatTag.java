@@ -4,6 +4,7 @@ import com.github.steveice10.opennbt.SNBTIO;
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
+import org.lwjgl.system.macosx.ObjCRuntime;
 
 /* JADX INFO: loaded from: classes.dex */
 public class FloatTag extends Tag {
@@ -47,13 +48,13 @@ public class FloatTag extends Tag {
     public void stringify(SNBTIO.StringifiedNBTWriter out, boolean linebreak, int depth) throws IOException {
         StringBuilder sb = new StringBuilder();
         sb.append(this.value);
-        sb.append('f');
+        sb.append(ObjCRuntime._C_FLT);
         out.append((CharSequence) sb.toString());
     }
 
     @Override // com.github.steveice10.opennbt.tag.builtin.Tag
     /* JADX INFO: renamed from: clone */
-    public FloatTag mo360clone() {
+    public FloatTag mo428clone() {
         return new FloatTag(getName(), getValue().floatValue());
     }
 }
