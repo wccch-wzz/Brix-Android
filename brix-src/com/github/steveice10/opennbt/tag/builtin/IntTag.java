@@ -52,7 +52,7 @@ public class IntTag extends Tag {
 
     @Override // com.github.steveice10.opennbt.tag.builtin.Tag
     /* JADX INFO: renamed from: clone */
-    public IntTag mo360clone() {
+    public IntTag mo428clone() {
         return new IntTag(getName(), getValue().intValue());
     }
 }
