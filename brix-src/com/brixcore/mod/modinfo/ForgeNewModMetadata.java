@@ -384,7 +384,7 @@ public final class ForgeNewModMetadata extends RecordTag {
             if (embeddedModFiles.isEmpty()) {
                 throw new IOException("Missing embedded mods");
             }
-            Path tempFile = Files.createTempFile("hmcl-", ".zip", new FileAttribute[0]);
+            Path tempFile = Files.createTempFile("brix-", ".zip", new FileAttribute[0]);
             try {
                 Iterator<Path> it = embeddedModFiles.iterator();
                 while (it.hasNext()) {
