@@ -5,6 +5,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Locale;
 import org.apache.commons.io.IOUtils;
+import org.lwjgl.system.macosx.ObjCRuntime;
 
 /* JADX INFO: loaded from: classes10.dex */
 public class ParseUtil {
@@ -109,7 +110,7 @@ public class ParseUtil {
 
     private static int escape(char[] cc, char c, int index) {
         int index2 = index + 1;
-        cc[index] = '%';
+        cc[index] = ObjCRuntime._C_ATOM;
         int index3 = index2 + 1;
         cc[index2] = Character.forDigit((c >> 4) & 15, 16);
         int index4 = index3 + 1;
