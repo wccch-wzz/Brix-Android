@@ -8,7 +8,6 @@ import android.graphics.Typeface;
 import android.text.TextPaint;
 import android.util.Log;
 import androidx.core.content.res.ResourcesCompat;
-import androidx.core.view.ViewCompat;
 import com.google.android.material.R;
 
 /* JADX INFO: loaded from: classes.dex */
@@ -96,7 +95,7 @@ public class TextAppearance {
             ResourcesCompat.getFont(context, this.fontFamilyResourceId, new ResourcesCompat.FontCallback() { // from class: com.google.android.material.resources.TextAppearance.1
                 @Override // androidx.core.content.res.ResourcesCompat.FontCallback
                 /* JADX INFO: renamed from: onFontRetrieved */
-                public void m14x46c88379(Typeface typeface) {
+                public void m45x46c88379(Typeface typeface) {
                     TextAppearance.this.font = Typeface.create(typeface, TextAppearance.this.textStyle);
                     TextAppearance.this.fontResolved = true;
                     callback.onFontRetrieved(TextAppearance.this.font, false);
@@ -104,7 +103,7 @@ public class TextAppearance {
 
                 @Override // androidx.core.content.res.ResourcesCompat.FontCallback
                 /* JADX INFO: renamed from: onFontRetrievalFailed */
-                public void m13xb24343b7(int reason) {
+                public void m44xb24343b7(int reason) {
                     TextAppearance.this.fontResolved = true;
                     callback.onFontRetrievalFailed(reason);
                 }
@@ -170,7 +169,7 @@ public class TextAppearance {
         if (this.textColor != null) {
             colorForState = this.textColor.getColorForState(textPaint.drawableState, this.textColor.getDefaultColor());
         } else {
-            colorForState = ViewCompat.MEASURED_STATE_MASK;
+            colorForState = -16777216;
         }
         textPaint.setColor(colorForState);
         float f = this.shadowRadius;
