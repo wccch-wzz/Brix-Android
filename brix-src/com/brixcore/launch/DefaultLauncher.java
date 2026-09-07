@@ -17,6 +17,7 @@ import com.brixcore.plugins.NativeLibPlugin;
 import com.brixcore.util.Lang;
 import com.brixcore.util.Logging;
 import com.brixcore.util.Pair;
+import com.brixcore.util.ServerAddress;
 import com.brixcore.util.StringUtils;
 import com.brixcore.util.gson.UUIDTypeAdapter;
 import com.brixcore.util.io.FileUtils;
@@ -56,7 +57,6 @@ import java.util.function.Supplier;
 import java.util.logging.Level;
 import java.util.stream.Collectors;
 import org.apache.commons.lang3.SystemProperties;
-import org.jackhuang.hmcl.util.ServerAddress;
 
 /* JADX INFO: loaded from: classes3.dex */
 public class DefaultLauncher extends Launcher {
