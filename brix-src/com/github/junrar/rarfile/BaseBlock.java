@@ -1,7 +1,6 @@
 package com.github.junrar.rarfile;
 
 import com.github.junrar.io.Raw;
-import kotlin.UByte;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -78,7 +77,7 @@ public class BaseBlock {
         this.headerSize = (short) 0;
         this.headCRC = Raw.readShortLittleEndian(baseBlockHeader, 0);
         int pos = 0 + 2;
-        this.headerType = (byte) (this.headerType | (baseBlockHeader[pos] & UByte.MAX_VALUE));
+        this.headerType = (byte) (this.headerType | (baseBlockHeader[pos] & 255));
         int pos2 = pos + 1;
         this.flags = Raw.readShortLittleEndian(baseBlockHeader, pos2);
         this.headerSize = Raw.readShortLittleEndian(baseBlockHeader, pos2 + 2);
