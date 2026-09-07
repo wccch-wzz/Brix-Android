@@ -6,7 +6,7 @@ import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
-/* JADX INFO: loaded from: classes18.dex */
+/* JADX INFO: loaded from: classes19.dex */
 public class MessageCrypt {
     private static final String ALGORITHM = "AES";
     private static final Base64.Decoder B64_DECODER = Base64.getDecoder();
