@@ -68,7 +68,7 @@ public class MaterialResources {
     }
 
     public static boolean isFontScaleAtLeast2_0(Context context) {
-        return context.getResources().getConfiguration().fontScale >= FONT_SCALE_2_0;
+        return context.getResources().getConfiguration().fontScale >= 2.0f;
     }
 
     public static float getFontScale(Context context) {
