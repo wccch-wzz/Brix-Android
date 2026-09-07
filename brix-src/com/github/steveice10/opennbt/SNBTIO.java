@@ -29,6 +29,7 @@ import java.io.PushbackReader;
 import java.util.regex.Pattern;
 import kotlin.text.Typography;
 import org.apache.commons.lang3.CharUtils;
+import org.lwjgl.system.macosx.ObjCRuntime;
 
 /* JADX INFO: loaded from: classes.dex */
 public class SNBTIO {
@@ -199,7 +200,7 @@ public class SNBTIO {
 
         public String readNextSingleValueString(int maxReadLenght) throws IOException {
             if (lookAhead(0) != '\'' && lookAhead(0) != '\"') {
-                String valueString = readUntil(maxReadLenght, false, ',', '}', ']', CharUtils.CR, '\n', '\t');
+                String valueString = readUntil(maxReadLenght, false, ',', ObjCRuntime._C_STRUCT_E, ObjCRuntime._C_ARY_E, CharUtils.CR, '\n', '\t');
                 return valueString;
             }
             char c = (char) read();
@@ -324,7 +325,7 @@ public class SNBTIO {
             }
             if (tag.getName() != null && !tag.getName().equals("")) {
                 appendTagName(tag.getName());
-                append(':');
+                append(ObjCRuntime._C_SEL);
                 append(' ');
             }
             if (tag instanceof CompoundTag) {
