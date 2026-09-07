@@ -1,7 +1,6 @@
 package com.github.junrar.crypt;
 
 import androidx.core.view.MotionEventCompat;
-import androidx.core.view.ViewCompat;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.security.InvalidAlgorithmParameterException;
@@ -12,7 +11,6 @@ import javax.crypto.Cipher;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
-import kotlin.UByte;
 
 /* JADX INFO: loaded from: classes.dex */
 public class Rijndael {
@@ -51,7 +49,7 @@ public class Rijndael {
             if (i4 < 4) {
                 int j = 0;
                 for (int i5 = 4; j < i5; i5 = 4) {
-                    AESKey[(i4 * 4) + j] = (byte) (((digest[(i4 * 4) + 3] & UByte.MAX_VALUE) | ((((digest[i4 * 4] * 16777216) & ViewCompat.MEASURED_STATE_MASK) | ((digest[(i4 * 4) + 1] * 65536) & 16711680)) | ((digest[(i4 * 4) + 2] * 256) & MotionEventCompat.ACTION_POINTER_INDEX_MASK))) >>> (j * 8));
+                    AESKey[(i4 * 4) + j] = (byte) (((digest[(i4 * 4) + 3] & 255) | ((((digest[i4 * 4] * 16777216) & (-16777216)) | ((digest[(i4 * 4) + 1] * 65536) & 16711680)) | ((digest[(i4 * 4) + 2] * 256) & MotionEventCompat.ACTION_POINTER_INDEX_MASK))) >>> (j * 8));
                     j++;
                 }
                 i4++;
