@@ -10,6 +10,7 @@ import java.time.Instant;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
+import org.lwjgl.system.macosx.ObjCRuntime;
 
 /* JADX INFO: loaded from: classes2.dex */
 public class RemoteMod {
@@ -342,7 +343,7 @@ public class RemoteMod {
         }
 
         public String toString() {
-            return "Screenshot{imageUrl='" + this.imageUrl + "', title='" + this.title + "', description=" + this.description + '}';
+            return "Screenshot{imageUrl='" + this.imageUrl + "', title='" + this.title + "', description=" + this.description + ObjCRuntime._C_STRUCT_E;
         }
     }
 }
