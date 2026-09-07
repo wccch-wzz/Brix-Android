@@ -1,7 +1,6 @@
 package com.github.junrar.rarfile;
 
 import com.github.junrar.io.Raw;
-import kotlin.UByte;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,7 +21,7 @@ public class SubBlockHeader extends BlockHeader {
         super(bh);
         this.subType = Raw.readShortLittleEndian(subblock, 0);
         int position = 0 + 2;
-        this.level = (byte) (this.level | (subblock[position] & UByte.MAX_VALUE));
+        this.level = (byte) (this.level | (subblock[position] & 255));
     }
 
     public byte getLevel() {
