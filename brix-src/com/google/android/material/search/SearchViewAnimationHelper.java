@@ -115,13 +115,13 @@ class SearchViewAnimationHelper {
         this.rootView.post(new Runnable() { // from class: com.google.android.material.search.SearchViewAnimationHelper$$ExternalSyntheticLambda2
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.m428x94743afc();
+                this.f$0.m496x94743afc();
             }
         });
     }
 
     /* JADX INFO: renamed from: lambda$startShowAnimationExpand$0$com-google-android-material-search-SearchViewAnimationHelper, reason: not valid java name */
-    /* synthetic */ void m428x94743afc() {
+    /* synthetic */ void m496x94743afc() {
         AnimatorSet animatorSet = getExpandCollapseAnimatorSet(true);
         animatorSet.addListener(new AnimatorListenerAdapter() { // from class: com.google.android.material.search.SearchViewAnimationHelper.1
             @Override // android.animation.AnimatorListenerAdapter, android.animation.Animator.AnimatorListener
@@ -181,13 +181,13 @@ class SearchViewAnimationHelper {
         this.rootView.post(new Runnable() { // from class: com.google.android.material.search.SearchViewAnimationHelper$$ExternalSyntheticLambda5
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.m429x4df249eb();
+                this.f$0.m497x4df249eb();
             }
         });
     }
 
     /* JADX INFO: renamed from: lambda$startShowAnimationTranslate$1$com-google-android-material-search-SearchViewAnimationHelper, reason: not valid java name */
-    /* synthetic */ void m429x4df249eb() {
+    /* synthetic */ void m497x4df249eb() {
         this.rootView.setTranslationY(this.rootView.getHeight());
         AnimatorSet animatorSet = getTranslateAnimatorSet(true);
         animatorSet.addListener(new AnimatorListenerAdapter() { // from class: com.google.android.material.search.SearchViewAnimationHelper.3
@@ -315,7 +315,7 @@ class SearchViewAnimationHelper {
         animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() { // from class: com.google.android.material.search.SearchViewAnimationHelper$$ExternalSyntheticLambda0
             @Override // android.animation.ValueAnimator.AnimatorUpdateListener
             public final void onAnimationUpdate(ValueAnimator valueAnimator) {
-                this.f$0.m427xa183b80f(fromCornerRadius, toCornerRadius, clipBounds, valueAnimator);
+                this.f$0.m495xa183b80f(fromCornerRadius, toCornerRadius, clipBounds, valueAnimator);
             }
         });
         animator.setDuration(show ? 300L : 250L);
@@ -324,7 +324,7 @@ class SearchViewAnimationHelper {
     }
 
     /* JADX INFO: renamed from: lambda$getRootViewAnimator$2$com-google-android-material-search-SearchViewAnimationHelper, reason: not valid java name */
-    /* synthetic */ void m427xa183b80f(float fromCornerRadius, float toCornerRadius, Rect clipBounds, ValueAnimator valueAnimator) {
+    /* synthetic */ void m495xa183b80f(float fromCornerRadius, float toCornerRadius, Rect clipBounds, ValueAnimator valueAnimator) {
         float cornerRadius = AnimationUtils.lerp(fromCornerRadius, toCornerRadius, valueAnimator.getAnimatedFraction());
         this.rootView.updateClipBoundsAndCornerRadius(clipBounds, cornerRadius);
     }
