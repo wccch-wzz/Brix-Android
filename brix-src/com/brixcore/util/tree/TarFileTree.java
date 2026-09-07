@@ -23,7 +23,7 @@ public final class TarFileTree extends ArchiveFileTree<TarFile, TarArchiveEntry>
     public static TarFileTree open(Path file) throws IOException {
         String fileName = file.getFileName().toString();
         if (fileName.endsWith(".tar.gz") || fileName.endsWith(".tgz")) {
-            Path tempFile = Files.createTempFile("hmcl-", ".tar", new FileAttribute[0]);
+            Path tempFile = Files.createTempFile("brix-", ".tar", new FileAttribute[0]);
             try {
                 GZIPInputStream input = new GZIPInputStream(Files.newInputStream(file, new OpenOption[0]));
                 try {
