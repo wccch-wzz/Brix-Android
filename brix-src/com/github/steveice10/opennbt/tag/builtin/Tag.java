@@ -12,7 +12,7 @@ public abstract class Tag implements Cloneable {
 
     @Override // 
     /* JADX INFO: renamed from: clone, reason: merged with bridge method [inline-methods] */
-    public abstract Tag mo360clone();
+    public abstract Tag mo428clone();
 
     public abstract void destringify(SNBTIO.StringifiedNBTReader stringifiedNBTReader) throws IOException;
 
