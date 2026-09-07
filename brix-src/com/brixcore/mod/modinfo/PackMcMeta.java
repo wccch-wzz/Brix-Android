@@ -1,5 +1,6 @@
 package com.brixcore.mod.modinfo;
 
+import androidx.constraintlayout.core.motion.utils.TypedValues;
 import com.android.tools.r8.RecordTag;
 import com.brixcore.mod.LocalModFile;
 import com.brixcore.mod.ModLoaderType;
@@ -250,7 +251,7 @@ public final class PackMcMeta extends RecordTag implements Validation {
             }
             if (element instanceof JsonObject) {
                 JsonObject jsonObj = (JsonObject) element;
-                JsonElement jsonElement = jsonObj.get("color");
+                JsonElement jsonElement = jsonObj.get(TypedValues.Custom.S_COLOR);
                 if (jsonElement instanceof JsonPrimitive) {
                     JsonPrimitive primitive2 = (JsonPrimitive) jsonElement;
                     color = primitive2.getAsString();
@@ -272,7 +273,7 @@ public final class PackMcMeta extends RecordTag implements Validation {
                 if (!jsonArray.isEmpty()) {
                     JsonElement jsonElement4 = jsonArray.get(0);
                     if (jsonElement4 instanceof JsonObject) {
-                        JsonElement jsonElement5 = ((JsonObject) jsonElement4).get("color");
+                        JsonElement jsonElement5 = ((JsonObject) jsonElement4).get(TypedValues.Custom.S_COLOR);
                         if (jsonElement5 instanceof JsonPrimitive) {
                             JsonPrimitive primitive4 = (JsonPrimitive) jsonElement5;
                             color = primitive4.getAsString();
