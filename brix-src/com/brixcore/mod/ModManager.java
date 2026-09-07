@@ -10,7 +10,6 @@ import com.brixcore.mod.modinfo.ForgeOldModMetadata;
 import com.brixcore.mod.modinfo.LiteModMetadata;
 import com.brixcore.mod.modinfo.PackMcMeta;
 import com.brixcore.mod.modinfo.QuiltModMetadata;
-import com.brixcore.util.Logging;
 import com.brixcore.util.Pair;
 import com.brixcore.util.StringUtils;
 import com.brixcore.util.io.CompressingUtils;
@@ -30,11 +29,9 @@ import java.nio.file.StandardCopyOption;
 import java.nio.file.attribute.FileAttribute;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Set;
 import java.util.TreeSet;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -145,108 +142,14 @@ public final class ModManager {
     /* JADX WARN: Bottom block not found for handler: all -> 0x0143 */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
+        To view partially-correct add '--show-bad-code' argument
     */
-    private LocalModFile addModInfo(Path file) throws IOException {
-        LocalModFile modInfo;
-        LocalModFile modInfo2;
-        String fileName = StringUtils.removeSuffix(FileUtils.getName(file), ".disabled", ".old");
-        String extension = fileName.substring(fileName.lastIndexOf(".") + 1);
-        List<Pair<ModMetadataReader, ModLoaderType>> readersMap = READERS.get(extension);
-        LocalModFile localModFile = null;
-        if (readersMap == null) {
-            return null;
-        }
-        Set<ModLoaderType> modLoaderTypes = this.analyzer.getModLoaders();
-        ArrayList<ModMetadataReader> supportedReaders = new ArrayList<>();
-        ArrayList<ModMetadataReader> unsupportedReaders = new ArrayList<>();
-        for (Pair<ModMetadataReader, ModLoaderType> reader : readersMap) {
-            if (modLoaderTypes.contains(reader.getValue())) {
-                supportedReaders.add(reader.getKey());
-            } else {
-                unsupportedReaders.add(reader.getKey());
-            }
-        }
-        LocalModFile modInfo3 = null;
-        List<Exception> exceptions = new ArrayList<>();
-        try {
-            FileSystem fs = CompressingUtils.createReadOnlyZipFileSystem(file);
-            try {
-                for (ModMetadataReader reader2 : supportedReaders) {
-                    try {
-                        try {
-                            modInfo3 = reader2.fromFile(this, file, fs);
-                            break;
-                        } catch (Exception e) {
-                            exceptions.add(e);
-                        }
-                    } catch (Throwable th) {
-                        th = th;
-                        modInfo = modInfo3;
-                        Throwable th2 = th;
-                        if (fs == null) {
-                            throw th2;
-                        }
-                        try {
-                            fs.close();
-                            throw th2;
-                        } catch (Throwable th3) {
-                            th2.addSuppressed(th3);
-                            throw th2;
-                        }
-                    }
-                }
-                if (modInfo3 == null) {
-                    Iterator<ModMetadataReader> it = unsupportedReaders.iterator();
-                    while (true) {
-                        if (it.hasNext()) {
-                            ModMetadataReader reader3 = it.next();
-                            try {
-                                modInfo2 = reader3.fromFile(this, file, fs);
-                                break;
-                            } catch (Exception e2) {
-                            }
-                        } else {
-                            modInfo2 = modInfo3;
-                            break;
-                        }
-                    }
-                } else {
-                    modInfo2 = modInfo3;
-                    break;
-                }
-                if (fs != null) {
-                    try {
-                        fs.close();
-                    } catch (Throwable th4) {
-                        e = th4;
-                        localModFile = null;
-                        Logging.LOG.warning("Failed to open mod file " + file + e);
-                        this.brokenFiles.add(file);
-                        return localModFile;
-                    }
-                }
-                if (modInfo2 == null) {
-                    Exception exception = new Exception("Failed to read mod metadata");
-                    for (Exception e3 : exceptions) {
-                        exception.addSuppressed(e3);
-                    }
-                    Logging.LOG.warning("Failed to read mod metadata:\n" + exception);
-                    String fileNameWithoutExtension = FileUtils.getNameWithoutExtension(file);
-                    modInfo2 = new LocalModFile(this, getLocalMod(fileNameWithoutExtension, ModLoaderType.UNKNOWN), file, fileNameWithoutExtension, new LocalModFile.Description("litemod".equals(extension) ? "LiteLoader Mod" : ""));
-                }
-                if (modInfo2.isOld()) {
-                    return 0;
-                }
-                this.localModFiles.add(modInfo2);
-                return modInfo2;
-            } catch (Throwable th5) {
-                th = th5;
-                modInfo = null;
-            }
-        } catch (Throwable th6) {
-            e = th6;
-            localModFile = null;
-        }
+    private com.brixcore.mod.LocalModFile addModInfo(java.nio.file.Path r18) throws java.io.IOException {
+        /*
+            Method dump skipped, instruction units count: 363
+            To view this dump add '--comments-level debug' option
+        */
+        throw new UnsupportedOperationException("Method not decompiled: com.brixcore.mod.ModManager.addModInfo(java.nio.file.Path):com.brixcore.mod.LocalModFile");
     }
 
     public void refreshMods() throws IOException {
