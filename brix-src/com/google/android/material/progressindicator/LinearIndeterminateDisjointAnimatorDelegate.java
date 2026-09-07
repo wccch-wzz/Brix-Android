@@ -10,6 +10,7 @@ import androidx.core.math.MathUtils;
 import androidx.vectordrawable.graphics.drawable.Animatable2Compat;
 import androidx.vectordrawable.graphics.drawable.AnimationUtilsCompat;
 import com.google.android.material.R;
+import org.lwjgl.system.windows.User32;
 
 /* JADX INFO: loaded from: classes.dex */
 final class LinearIndeterminateDisjointAnimatorDelegate extends IndeterminateAnimatorDelegate<ObjectAnimator> {
@@ -22,7 +23,7 @@ final class LinearIndeterminateDisjointAnimatorDelegate extends IndeterminateAni
     private boolean dirtyColors;
     private int indicatorColorIndex;
     private final Interpolator[] interpolatorArray;
-    private static final int[] DURATION_TO_MOVE_SEGMENT_ENDS = {533, 567, 850, 750};
+    private static final int[] DURATION_TO_MOVE_SEGMENT_ENDS = {User32.WM_CAPTURECHANGED, 567, 850, 750};
     private static final int[] DELAY_TO_MOVE_SEGMENT_ENDS = {1267, 1000, 333, 0};
     private static final Property<LinearIndeterminateDisjointAnimatorDelegate, Float> ANIMATION_FRACTION = new Property<LinearIndeterminateDisjointAnimatorDelegate, Float>(Float.class, "animationFraction") { // from class: com.google.android.material.progressindicator.LinearIndeterminateDisjointAnimatorDelegate.3
         @Override // android.util.Property
