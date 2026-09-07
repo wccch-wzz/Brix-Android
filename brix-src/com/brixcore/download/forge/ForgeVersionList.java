@@ -16,7 +16,7 @@ import java.util.logging.Level;
 
 /* JADX INFO: loaded from: classes3.dex */
 public final class ForgeVersionList extends VersionList<ForgeRemoteVersion> {
-    public static final String FORGE_LIST = "https://hmcl.glavo.site/metadata/forge/";
+    public static final String FORGE_LIST = "https://files.minecraftforge.net/maven/net/minecraftforge/forge/";
     private final DownloadProvider downloadProvider;
 
     public ForgeVersionList(DownloadProvider downloadProvider) {
