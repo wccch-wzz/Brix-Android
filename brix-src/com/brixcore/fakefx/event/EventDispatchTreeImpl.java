@@ -1,5 +1,7 @@
 package com.brixcore.fakefx.event;
 
+import org.lwjgl.system.macosx.ObjCRuntime;
+
 /* JADX INFO: loaded from: classes5.dex */
 public final class EventDispatchTreeImpl implements EventDispatchTree {
     private static final int CAPACITY_GROWTH_FACTOR = 8;
@@ -214,7 +216,7 @@ public final class EventDispatchTreeImpl implements EventDispatchTree {
     }
 
     private void appendTreeLevel(StringBuilder sb, int levelIndex) {
-        sb.append('(');
+        sb.append(ObjCRuntime._C_UNION_B);
         appendSubtree(sb, levelIndex);
         int index = this.nextSiblings[levelIndex];
         while (index != -1) {
@@ -222,7 +224,7 @@ public final class EventDispatchTreeImpl implements EventDispatchTree {
             appendSubtree(sb, index);
             index = this.nextSiblings[index];
         }
-        sb.append(')');
+        sb.append(ObjCRuntime._C_UNION_E);
     }
 
     private void appendSubtree(StringBuilder sb, int index) {
