@@ -16,9 +16,8 @@ import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
 
-/* JADX INFO: loaded from: classes18.dex */
+/* JADX INFO: loaded from: classes19.dex */
 public class AuthManager {
-    private static final String AUTH_API_URL = "https://brix.zdyfkj.work/php/index.php";
     private static final String KEY_ACCESS_TOKEN = "access_token";
     private static final String KEY_LOGIN_TIME = "login_time";
     private static final String KEY_REMEMBER_ME = "remember_me";
@@ -80,19 +79,17 @@ public class AuthManager {
             try {
                 this.userInfo = new JSONObject(userInfoJson);
             } catch (Exception e) {
-                Log.w(TAG, "解析用户信息失败: " + e.getMessage());
+                Log.w(TAG, "解析用户信息失败");
                 clearSession();
-                return;
             }
         }
-        Log.d(TAG, "已加载缓存会话, uid=" + this.accessToken);
     }
 
     private void saveSession(String token, JSONObject info) {
         this.accessToken = token;
         this.userInfo = info;
         this.prefs.edit().putString(KEY_ACCESS_TOKEN, token).putString(KEY_USER_INFO, info != null ? info.toString() : "").putLong(KEY_LOGIN_TIME, System.currentTimeMillis()).apply();
-        Log.d(TAG, "会话已保存, uid=" + token);
+        Log.d(TAG, "会话已保存");
     }
 
     public void clearSession() {
@@ -104,12 +101,10 @@ public class AuthManager {
 
     public String createAuthCode() throws AuthException {
         try {
+            String url = BrixNative.getAuthApiUrl() + "?action=auth_create";
             Map<String, String> params = new HashMap<>();
             params.put("product", PRODUCT_NAME);
-            Log.d(TAG, "auth_create URL: https://brix.zdyfkj.work/php/index.php?action=auth_create");
-            Log.d(TAG, "auth_create 参数: product=BrixLauncher");
-            String response = HttpRequest.POST("https://brix.zdyfkj.work/php/index.php?action=auth_create").form(params).retry(3).getString();
-            Log.d(TAG, "auth_create 响应: " + response);
+            String response = HttpRequest.POST(url).form(params).retry(3).getString();
             JSONObject json = new JSONObject(response);
             int code = json.optInt("code");
             String msg = json.optString(NotificationCompat.CATEGORY_MESSAGE, "");
@@ -117,68 +112,56 @@ public class AuthManager {
                 throw new AuthException(msg.isEmpty() ? "创建授权码失败" : msg);
             }
             this.currentCode = json.optString("auth_code");
-            Log.d(TAG, "auth_create 成功, code=" + this.currentCode);
             return this.currentCode;
         } catch (IOException e) {
-            throw new AuthException("网络错误: " + e.getMessage(), e);
+            throw new AuthException("网络错误", e);
         } catch (Exception e2) {
-            throw new AuthException("创建授权码异常: " + e2.getMessage(), e2);
+            throw new AuthException("创建授权码异常", e2);
         }
     }
 
     public void pollUntilAuthorized() throws AuthException {
-        long j;
         long startMs = System.currentTimeMillis();
         while (System.currentTimeMillis() - startMs < 120000) {
             try {
-                try {
-                    Map<String, String> params = new HashMap<>();
-                    params.put("code", this.currentCode);
-                    String response = HttpRequest.POST("https://brix.zdyfkj.work/php/index.php?action=auth_poll").form(params).retry(3).getString();
-                    Log.d(TAG, "poll 响应: " + response);
-                    JSONObject json = new JSONObject(response);
-                    int code = json.optInt("code");
-                    int status = json.optInt(NotificationCompat.CATEGORY_STATUS);
-                    j = 2000;
-                    try {
-                        String msg = json.optString(NotificationCompat.CATEGORY_MESSAGE, "");
-                        if (code == 200 && status == 3) {
-                            this.userInfo = json.getJSONObject("user");
-                            this.accessToken = this.userInfo.optString("uid");
-                            this.currentCode = null;
-                            saveSession(this.accessToken, this.userInfo);
-                            Log.d(TAG, "auth_poll 成功, username=" + this.userInfo.optString("username"));
-                            return;
-                        }
-                        if (status == 1) {
-                            Thread.sleep(2000L);
-                        } else {
-                            if (code == 200) {
-                                throw new AuthException(msg.isEmpty() ? "授权失败" : msg);
-                            }
-                            if (!msg.isEmpty()) {
-                                throw new AuthException(msg);
-                            }
-                        }
-                    } catch (Exception e) {
-                        e = e;
-                        Log.w(TAG, "轮询网络错误: " + e.getMessage());
-                        try {
-                            Thread.sleep(j);
-                        } catch (InterruptedException ie) {
-                            Thread.currentThread().interrupt();
-                            throw new AuthException("轮询被中断", ie);
-                        }
-                    }
-                } catch (Exception e2) {
-                    e = e2;
-                    j = 2000;
+                String url = BrixNative.getAuthApiUrl() + "?action=auth_poll";
+                Map<String, String> params = new HashMap<>();
+                params.put("code", this.currentCode);
+                String response = HttpRequest.POST(url).form(params).retry(3).getString();
+                JSONObject json = new JSONObject(response);
+                int code = json.optInt("code");
+                int status = json.optInt(NotificationCompat.CATEGORY_STATUS);
+                String msg = json.optString(NotificationCompat.CATEGORY_MESSAGE, "");
+                if (code == 200 && status == 3) {
+                    this.userInfo = json.getJSONObject("user");
+                    this.accessToken = this.userInfo.optString("uid");
+                    this.currentCode = null;
+                    saveSession(this.accessToken, this.userInfo);
+                    return;
                 }
-            } catch (AuthException e3) {
-                throw e3;
-            } catch (InterruptedException e4) {
+                if (status == 1) {
+                    Thread.sleep(2000L);
+                } else {
+                    if (code == 200) {
+                        throw new AuthException(msg.isEmpty() ? "授权失败" : msg);
+                    }
+                    if (!msg.isEmpty()) {
+                        throw new AuthException(msg);
+                    }
+                }
+            } catch (AuthException e) {
+                throw e;
+            } catch (InterruptedException e2) {
                 Thread.currentThread().interrupt();
-                throw new AuthException("轮询被中断", e4);
+                throw new AuthException("轮询被中断", e2);
+            } catch (Exception e3) {
+                Log.w(TAG, "轮询网络错误");
+                try {
+                    Thread.sleep(2000L);
+                } catch (InterruptedException ie) {
+                    Thread.currentThread().interrupt();
+                    throw new AuthException("轮询被中断", ie);
+                }
             }
         }
         throw new AuthException("授权超时，请重新点击按钮");
@@ -188,7 +171,7 @@ public class AuthManager {
         if (this.currentCode == null) {
             return null;
         }
-        return "https://brix.zdyfkj.work/php/auth.html?code=" + this.currentCode;
+        return BrixNative.getAuthPageUrl(this.currentCode);
     }
 
     public void logout() {
@@ -226,11 +209,10 @@ public class AuthManager {
             WifiManager wm = (WifiManager) this.context.getApplicationContext().getSystemService("wifi");
             if (wm != null && (ipInt = wm.getConnectionInfo().getIpAddress()) != 0) {
                 String ip = (ipInt & 255) + "." + ((ipInt >> 8) & 255) + "." + ((ipInt >> 16) & 255) + "." + ((ipInt >> 24) & 255);
-                Log.d(TAG, "WiFi IP=" + ip);
+                Log.d(TAG, "IP获取成功");
                 return ip;
             }
         } catch (Exception e) {
-            Log.d(TAG, "WiFi IP失败: " + e.getMessage());
         }
         try {
             ConnectivityManager cm = (ConnectivityManager) this.context.getApplicationContext().getSystemService("connectivity");
@@ -240,13 +222,13 @@ public class AuthManager {
                     InetAddress addr = en.nextElement();
                     String s = addr.getHostAddress();
                     if (s != null && !s.equals("127.0.0.1") && !s.contains(":")) {
-                        Log.d(TAG, "NetInterface IP=" + s);
+                        Log.d(TAG, "IP获取成功");
                         return s;
                     }
                 }
             }
         } catch (Exception e2) {
-            Log.d(TAG, "NetInterface IP失败: " + e2.getMessage());
+            Log.d(TAG, "NetInterface IP失败");
         }
         try {
             Enumeration<NetworkInterface> ifaces = NetworkInterface.getNetworkInterfaces();
@@ -257,15 +239,13 @@ public class AuthManager {
                     InetAddress addr2 = addrs.nextElement();
                     String s2 = addr2.getHostAddress();
                     if (s2 != null && !s2.equals("127.0.0.1") && !s2.contains(":") && !s2.startsWith("169.254.")) {
-                        Log.d(TAG, "allIF IP=" + s2);
+                        Log.d(TAG, "IP获取成功");
                         return s2;
                     }
                 }
             }
         } catch (Exception e3) {
-            Log.d(TAG, "遍历网络接口失败: " + e3.getMessage());
         }
-        Log.w(TAG, "所有IP获取失败，回退到127.0.0.1");
         return "127.0.0.1";
     }
 
