@@ -20,6 +20,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
+import org.lwjgl.system.macosx.ObjCRuntime;
 
 /* JADX INFO: loaded from: classes.dex */
 public final class DefaultDateTypeAdapter<T extends Date> extends TypeAdapter<T> {
@@ -142,8 +143,8 @@ public final class DefaultDateTypeAdapter<T extends Date> extends TypeAdapter<T>
     public String toString() {
         DateFormat defaultFormat = this.dateFormats.get(0);
         if (defaultFormat instanceof SimpleDateFormat) {
-            return "DefaultDateTypeAdapter(" + ((SimpleDateFormat) defaultFormat).toPattern() + ')';
+            return "DefaultDateTypeAdapter(" + ((SimpleDateFormat) defaultFormat).toPattern() + ObjCRuntime._C_UNION_E;
         }
-        return "DefaultDateTypeAdapter(" + defaultFormat.getClass().getSimpleName() + ')';
+        return "DefaultDateTypeAdapter(" + defaultFormat.getClass().getSimpleName() + ObjCRuntime._C_UNION_E;
     }
 }
