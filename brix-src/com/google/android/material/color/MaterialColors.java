@@ -142,18 +142,18 @@ public class MaterialColors {
         if (isLightTheme) {
             return new ColorRoles(getColorRole(color, 40), getColorRole(color, 100), getColorRole(color, 90), getColorRole(color, 10));
         }
-        return new ColorRoles(getColorRole(color, TONE_ACCENT_DARK), getColorRole(color, 20), getColorRole(color, 30), getColorRole(color, 90));
+        return new ColorRoles(getColorRole(color, 80), getColorRole(color, 20), getColorRole(color, 30), getColorRole(color, 90));
     }
 
     public static int getSurfaceContainerFromSeed(Context context, int seedColor) {
-        int tone = isLightTheme(context) ? TONE_SURFACE_CONTAINER_LIGHT : 12;
+        int tone = isLightTheme(context) ? 94 : 12;
         return getColorRole(seedColor, tone, 6);
     }
 
     public static int getSurfaceContainerHighFromSeed(Context context, int seedColor) {
         int tone;
         if (isLightTheme(context)) {
-            tone = TONE_SURFACE_CONTAINER_HIGH_LIGHT;
+            tone = 92;
         } else {
             tone = 17;
         }
