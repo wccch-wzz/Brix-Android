@@ -13,7 +13,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import kotlin.UByte;
 import org.apache.commons.lang3.CharEncoding;
 
 /* JADX INFO: loaded from: classes.dex */
@@ -48,8 +47,8 @@ final class ColorResourcesTableCreator {
         ColorResource colorResource = null;
         for (Map.Entry<Integer, Integer> entry : colorMapping.entrySet()) {
             colorResource = new ColorResource(entry.getKey().intValue(), context.getResources().getResourceName(entry.getKey().intValue()), entry.getValue().intValue());
-            if (!context.getResources().getResourceTypeName(entry.getKey().intValue()).equals(RESOURCE_TYPE_NAME_COLOR)) {
-                throw new IllegalArgumentException("Non color resource found: name=" + colorResource.name + ", typeId=" + Integer.toHexString(colorResource.typeId & UByte.MAX_VALUE));
+            if (!context.getResources().getResourceTypeName(entry.getKey().intValue()).equals("color")) {
+                throw new IllegalArgumentException("Non color resource found: name=" + colorResource.name + ", typeId=" + Integer.toHexString(colorResource.typeId & 255));
             }
             if (colorResource.packageId == 1) {
                 packageInfo = ANDROID_PACKAGE_INFO;
@@ -245,7 +244,7 @@ final class ColorResourcesTableCreator {
         private final StringPoolChunk keyStrings;
         private final PackageInfo packageInfo;
         private final TypeSpecChunk typeSpecChunk;
-        private final StringPoolChunk typeStrings = new StringPoolChunk(false, "?1", "?2", "?3", "?4", "?5", ColorResourcesTableCreator.RESOURCE_TYPE_NAME_COLOR);
+        private final StringPoolChunk typeStrings = new StringPoolChunk(false, "?1", "?2", "?3", "?4", "?5", "color");
 
         PackageChunk(PackageInfo packageInfo, List<ColorResource> colorResources) {
             this.packageInfo = packageInfo;
@@ -404,7 +403,7 @@ final class ColorResourcesTableCreator {
             outputStream.write(ColorResourcesTableCreator.shortToByteArray((short) 2));
             outputStream.write(ColorResourcesTableCreator.intToByteArray(this.keyStringIndex));
             outputStream.write(ColorResourcesTableCreator.shortToByteArray((short) 8));
-            outputStream.write(new byte[]{0, DATA_TYPE_AARRGGBB});
+            outputStream.write(new byte[]{0, 28});
             outputStream.write(ColorResourcesTableCreator.intToByteArray(this.data));
         }
     }
