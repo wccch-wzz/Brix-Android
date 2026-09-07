@@ -194,7 +194,7 @@ abstract class SheetDialog<C extends SheetCallback> extends AppCompatDialog {
         coordinator.findViewById(TOUCH_OUTSIDE_ID).setOnClickListener(new View.OnClickListener() { // from class: com.google.android.material.sidesheet.SheetDialog$$ExternalSyntheticLambda0
             @Override // android.view.View.OnClickListener
             public final void onClick(View view2) {
-                this.f$0.m430x401f75dd(view2);
+                this.f$0.m498x401f75dd(view2);
             }
         });
         ViewCompat.setAccessibilityDelegate(getSheet(), new AccessibilityDelegateCompat() { // from class: com.google.android.material.sidesheet.SheetDialog.1
@@ -222,7 +222,7 @@ abstract class SheetDialog<C extends SheetCallback> extends AppCompatDialog {
     }
 
     /* JADX INFO: renamed from: lambda$wrapInSheet$0$com-google-android-material-sidesheet-SheetDialog, reason: not valid java name */
-    /* synthetic */ void m430x401f75dd(View v) {
+    /* synthetic */ void m498x401f75dd(View v) {
         if (this.cancelable && isShowing() && shouldWindowCloseOnTouchOutside()) {
             cancel();
         }
