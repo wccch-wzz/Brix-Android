@@ -65,7 +65,7 @@ class RadialViewGroup extends ConstraintLayout {
         this.background.setFillColor(ColorStateList.valueOf(color));
     }
 
-    @Override // androidx.constraintlayout.widget.ConstraintLayout, android.view.ViewGroup
+    @Override // android.view.ViewGroup
     public void addView(View child, int index, ViewGroup.LayoutParams params) {
         super.addView(child, index, params);
         if (child.getId() == -1) {
