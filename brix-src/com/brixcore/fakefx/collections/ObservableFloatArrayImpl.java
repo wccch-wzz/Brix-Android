@@ -1,6 +1,7 @@
 package com.brixcore.fakefx.collections;
 
 import java.util.Arrays;
+import org.lwjgl.system.macosx.ObjCRuntime;
 
 /* JADX INFO: loaded from: classes3.dex */
 public final class ObservableFloatArrayImpl extends ObservableArrayBase<ObservableFloatArray> implements ObservableFloatArray {
@@ -271,12 +272,12 @@ public final class ObservableFloatArrayImpl extends ObservableArrayBase<Observab
             return "[]";
         }
         StringBuilder b = new StringBuilder();
-        b.append('[');
+        b.append(ObjCRuntime._C_ARY_B);
         int i = 0;
         while (true) {
             b.append(this.array[i]);
             if (i == iMax) {
-                return b.append(']').toString();
+                return b.append(ObjCRuntime._C_ARY_E).toString();
             }
             b.append(", ");
             i++;
