@@ -1,6 +1,7 @@
 package com.brixcore.bridge;
 
 import java.io.Serializable;
+import org.lwjgl.util.freetype.FreeType;
 
 /* JADX INFO: loaded from: classes2.dex */
 public class BrixBridge implements Serializable {
@@ -9,7 +10,7 @@ public class BrixBridge implements Serializable {
     public static boolean FORCE_RESOLUTION = false;
     public static float FORCE_RESOLUTION_SCALE = -1.0f;
     public static int FORCE_RESOLUTION_WIDTH = 1920;
-    public static int FORCE_RESOLUTION_HEIGHT = 1080;
+    public static int FORCE_RESOLUTION_HEIGHT = FreeType.TT_MS_LANGID_FAEROESE_FAEROE_ISLANDS;
     public static int FORCE_RESOLUTION_START_SIZE = -1;
 
     public void setLogPath(String path) {
