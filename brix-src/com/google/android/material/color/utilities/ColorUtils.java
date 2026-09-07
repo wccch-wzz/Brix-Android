@@ -1,7 +1,5 @@
 package com.google.android.material.color.utilities;
 
-import androidx.core.view.ViewCompat;
-
 /* JADX INFO: loaded from: classes.dex */
 public class ColorUtils {
     static final double[][] SRGB_TO_XYZ = {new double[]{0.41233895d, 0.35762064d, 0.18051042d}, new double[]{0.2126d, 0.7152d, 0.0722d}, new double[]{0.01932141d, 0.11916382d, 0.95034478d}};
@@ -12,7 +10,7 @@ public class ColorUtils {
     }
 
     public static int argbFromRgb(int red, int green, int blue) {
-        return ((red & 255) << 16) | ViewCompat.MEASURED_STATE_MASK | ((green & 255) << 8) | (blue & 255);
+        return ((red & 255) << 16) | (-16777216) | ((green & 255) << 8) | (blue & 255);
     }
 
     public static int argbFromLinrgb(double[] linrgb) {
