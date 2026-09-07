@@ -11,7 +11,6 @@ import android.graphics.Shader;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 import androidx.core.internal.view.SupportMenu;
-import androidx.core.view.ViewCompat;
 import com.google.android.material.math.MathUtils;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -222,7 +221,7 @@ public class CircularRevealHelper {
             canvas.drawCircle(this.revealInfo.centerX, this.revealInfo.centerY, this.revealInfo.radius, this.scrimPaint);
         }
         if (shouldDrawCircularReveal()) {
-            drawDebugCircle(canvas, ViewCompat.MEASURED_STATE_MASK, 10.0f);
+            drawDebugCircle(canvas, -16777216, 10.0f);
             drawDebugCircle(canvas, SupportMenu.CATEGORY_MASK, 5.0f);
         }
         drawOverlayDrawable(canvas);
