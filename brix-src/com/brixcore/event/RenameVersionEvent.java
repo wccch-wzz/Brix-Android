@@ -1,5 +1,6 @@
 package com.brixcore.event;
 
+import androidx.constraintlayout.core.motion.utils.TypedValues;
 import com.brixcore.util.ToStringBuilder;
 
 /* JADX INFO: loaded from: classes11.dex */
@@ -28,6 +29,6 @@ public class RenameVersionEvent extends Event {
 
     @Override // com.brixcore.event.Event
     public String toString() {
-        return new ToStringBuilder(this).append("source", this.source).append("from", this.from).append("to", this.to).toString();
+        return new ToStringBuilder(this).append("source", this.source).append(TypedValues.TransitionType.S_FROM, this.from).append(TypedValues.TransitionType.S_TO, this.to).toString();
     }
 }
