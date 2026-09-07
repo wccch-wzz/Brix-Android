@@ -1,7 +1,6 @@
 package com.github.junrar.rarfile;
 
 import com.github.junrar.io.Raw;
-import kotlin.UByte;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -21,7 +20,7 @@ public class MainHeader extends BaseBlock {
         this.posAv = Raw.readIntLittleEndian(mainHeader, pos);
         int pos2 = pos + 4;
         if (hasEncryptVersion()) {
-            this.encryptVersion = (byte) (this.encryptVersion | (mainHeader[pos2] & UByte.MAX_VALUE));
+            this.encryptVersion = (byte) (this.encryptVersion | (mainHeader[pos2] & 255));
         }
     }
 
