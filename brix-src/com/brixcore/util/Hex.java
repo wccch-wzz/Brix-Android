@@ -1,10 +1,12 @@
 package com.brixcore.util;
 
 import java.io.IOException;
+import org.lwjgl.opengl.NVPathRendering;
+import org.lwjgl.system.macosx.ObjCRuntime;
 
 /* JADX INFO: loaded from: classes11.dex */
 public final class Hex {
-    private static final char[] DIGITS_LOWER = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
+    private static final char[] DIGITS_LOWER = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', ObjCRuntime._C_BFLD, ObjCRuntime._C_CHR, ObjCRuntime._C_DBL, 'e', ObjCRuntime._C_FLT};
 
     public static byte[] decodeHex(String str) throws IOException {
         char[] data = str.toCharArray();
@@ -32,7 +34,7 @@ public final class Hex {
         int j = 0;
         for (int i = 0; i < l; i++) {
             int j2 = j + 1;
-            out[j] = DIGITS_LOWER[(data[i] & 240) >>> 4];
+            out[j] = DIGITS_LOWER[(data[i] & NVPathRendering.GL_RESTART_PATH_NV) >>> 4];
             j = j2 + 1;
             out[j2] = DIGITS_LOWER[data[i] & 15];
         }
