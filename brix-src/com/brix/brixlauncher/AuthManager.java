@@ -121,48 +121,64 @@ public class AuthManager {
     }
 
     public void pollUntilAuthorized() throws AuthException {
+        long j;
         long startMs = System.currentTimeMillis();
         while (System.currentTimeMillis() - startMs < 120000) {
             try {
-                String url = BrixNative.getAuthApiUrl() + "?action=auth_poll";
-                Map<String, String> params = new HashMap<>();
-                params.put("code", this.currentCode);
-                String response = HttpRequest.POST(url).form(params).retry(3).getString();
-                JSONObject json = new JSONObject(response);
-                int code = json.optInt("code");
-                int status = json.optInt(NotificationCompat.CATEGORY_STATUS);
-                String msg = json.optString(NotificationCompat.CATEGORY_MESSAGE, "");
-                if (code == 200 && status == 3) {
-                    this.userInfo = json.getJSONObject("user");
-                    this.accessToken = this.userInfo.optString("uid");
-                    this.currentCode = null;
-                    saveSession(this.accessToken, this.userInfo);
-                    return;
-                }
-                if (status == 1) {
-                    Thread.sleep(2000L);
-                } else {
-                    if (code == 200) {
-                        throw new AuthException(msg.isEmpty() ? "授权失败" : msg);
-                    }
-                    if (!msg.isEmpty()) {
-                        throw new AuthException(msg);
-                    }
-                }
-            } catch (AuthException e) {
-                throw e;
-            } catch (InterruptedException e2) {
-                Thread.currentThread().interrupt();
-                throw new AuthException("轮询被中断", e2);
-            } catch (Exception e3) {
-                Log.w(TAG, "轮询网络错误");
                 try {
-                    Thread.sleep(2000L);
-                } catch (InterruptedException ie) {
+                    try {
+                        String apiUrl = BrixNative.getAuthApiUrl();
+                        if (apiUrl == null || apiUrl.isEmpty()) {
+                            throw new AuthException("认证服务地址未配置，请检查 App 完整性");
+                        }
+                        String url = apiUrl + "?action=auth_poll";
+                        Map<String, String> params = new HashMap<>();
+                        params.put("code", this.currentCode);
+                        String response = HttpRequest.POST(url).form(params).retry(3).getString();
+                        JSONObject json = new JSONObject(response);
+                        int code = json.optInt("code");
+                        int status = json.optInt(NotificationCompat.CATEGORY_STATUS);
+                        j = 2000;
+                        try {
+                            String msg = json.optString(NotificationCompat.CATEGORY_MESSAGE, "");
+                            if (code == 200 && status == 3) {
+                                this.userInfo = json.getJSONObject("user");
+                                this.accessToken = this.userInfo.optString("uid");
+                                this.currentCode = null;
+                                saveSession(this.accessToken, this.userInfo);
+                                return;
+                            }
+                            if (status == 1) {
+                                Thread.sleep(2000L);
+                            } else {
+                                if (code == 200) {
+                                    throw new AuthException(msg.isEmpty() ? "授权失败" : msg);
+                                }
+                                if (!msg.isEmpty()) {
+                                    throw new AuthException(msg);
+                                }
+                            }
+                        } catch (Exception e) {
+                            e = e;
+                            Log.w(TAG, "轮询网络错误");
+                            Thread.sleep(j);
+                        }
+                    } catch (Exception e2) {
+                        e = e2;
+                        j = 2000;
+                    }
+                } catch (AuthException e3) {
+                    throw e3;
+                } catch (InterruptedException e4) {
                     Thread.currentThread().interrupt();
-                    throw new AuthException("轮询被中断", ie);
+                    throw new AuthException("轮询被中断", e4);
                 }
+                Thread.sleep(j);
+            } catch (InterruptedException ie) {
+                Thread.currentThread().interrupt();
+                throw new AuthException("轮询被中断", ie);
             }
+            Log.w(TAG, "轮询网络错误");
         }
         throw new AuthException("授权超时，请重新点击按钮");
     }

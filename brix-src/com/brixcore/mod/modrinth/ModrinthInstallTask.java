@@ -73,7 +73,7 @@ public class ModrinthInstallTask extends Task<Void> {
         GameBuilder gameBuilderGameVersion = defaultDependencyManager.gameBuilder().name(str).gameVersion(modrinthManifest.getGameVersion());
         Iterator<Map.Entry<String, String>> it = modrinthManifest.getDependencies().entrySet().iterator();
         while (true) {
-            ?? r10 = 2;
+            int r10 = 2;
             if (it.hasNext()) {
                 Map.Entry<String, String> next = it.next();
                 String key = next.getKey();
@@ -90,7 +90,7 @@ public class ModrinthInstallTask extends Task<Void> {
                         if (!key.equals(DefaultCacheRepository.LibraryIndex.TYPE_FORGE)) {
                             r10 = -1;
                         } else {
-                            r10 = z2;
+                            r10 = 1;
                         }
                         break;
                     case 695073197:

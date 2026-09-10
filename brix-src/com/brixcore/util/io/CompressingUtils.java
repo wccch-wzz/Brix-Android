@@ -31,8 +31,6 @@ import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.zip.ZipError;
 import java.util.zip.ZipException;
-import org.apache.commons.compress.archivers.sevenz.SevenZArchiveEntry;
-import org.apache.commons.compress.archivers.sevenz.SevenZFile;
 import org.apache.commons.compress.archivers.zip.ZipArchiveEntry;
 import org.apache.commons.compress.archivers.zip.ZipFile;
 import org.apache.commons.lang3.CharEncoding;
@@ -415,60 +413,73 @@ public final class CompressingUtils {
         throw new UnsupportedOperationException("Method not decompiled: com.brixcore.util.io.CompressingUtils.extractZip(java.io.File, java.io.File):void");
     }
 
-    /* JADX WARN: Code duplicated, block: B:39:0x005b A[EXC_TOP_SPLITTER, SYNTHETIC] */
+    /* JADX WARN: Bottom block not found for handler: all -> 0x0058 */
     /* JADX WARN: Multi-variable type inference failed */
-    public static void extract7z(File sevenZFile, File destination) throws IOException {
-        SevenZFile zf = ((SevenZFile.Builder) SevenZFile.builder().setFile(sevenZFile)).get();
-        while (true) {
-            try {
-                SevenZArchiveEntry entry = zf.getNextEntry();
-                if (entry == null) {
-                    break;
-                }
-                File out = new File(destination, entry.getName());
-                if (entry.isDirectory()) {
-                    out.mkdirs();
-                } else {
-                    out.getParentFile().mkdirs();
-                    FileOutputStream os = new FileOutputStream(out);
-                    try {
-                        byte[] buffer = new byte[8192];
-                        while (true) {
-                            int len = zf.read(buffer);
-                            if (len <= 0) {
-                                break;
-                            } else {
-                                os.write(buffer, 0, len);
-                            }
-                            if (zf != null) {
-                                try {
-                                    zf.close();
-                                } catch (Throwable th) {
-                                    th.addSuppressed(th);
-                                }
-                            }
-                            throw th;
-                        }
-                        os.close();
-                    } catch (Throwable th2) {
-                        try {
-                            os.close();
-                        } catch (Throwable th3) {
-                            th2.addSuppressed(th3);
-                        }
-                        throw th2;
-                    }
-                }
-            } catch (Throwable th4) {
-                if (zf != null) {
-                    zf.close();
-                }
-                throw th4;
-            }
-        }
-        if (zf != null) {
-            zf.close();
-        }
+    /*
+        Code decompiled incorrectly, please refer to instructions dump.
+        To view partially-correct add '--show-bad-code' argument
+    */
+    public static void extract7z(java.io.File r7, java.io.File r8) throws java.io.IOException {
+        /*
+            org.apache.commons.compress.archivers.sevenz.SevenZFile$Builder r0 = org.apache.commons.compress.archivers.sevenz.SevenZFile.builder()
+            org.apache.commons.io.build.AbstractOriginSupplier r0 = r0.setFile(r7)
+            org.apache.commons.compress.archivers.sevenz.SevenZFile$Builder r0 = (org.apache.commons.compress.archivers.sevenz.SevenZFile.Builder) r0
+            org.apache.commons.compress.archivers.sevenz.SevenZFile r0 = r0.get()
+        Le:
+            org.apache.commons.compress.archivers.sevenz.SevenZArchiveEntry r1 = r0.getNextEntry()     // Catch: java.lang.Throwable -> L58
+            r2 = r1
+            if (r1 == 0) goto L52
+            java.io.File r1 = new java.io.File     // Catch: java.lang.Throwable -> L58
+            java.lang.String r3 = r2.getName()     // Catch: java.lang.Throwable -> L58
+            r1.<init>(r8, r3)     // Catch: java.lang.Throwable -> L58
+            boolean r3 = r2.isDirectory()     // Catch: java.lang.Throwable -> L58
+            if (r3 == 0) goto L28
+            r1.mkdirs()     // Catch: java.lang.Throwable -> L58
+            goto L47
+        L28:
+            java.io.File r3 = r1.getParentFile()     // Catch: java.lang.Throwable -> L58
+            r3.mkdirs()     // Catch: java.lang.Throwable -> L58
+            java.io.FileOutputStream r3 = new java.io.FileOutputStream     // Catch: java.lang.Throwable -> L58
+            r3.<init>(r1)     // Catch: java.lang.Throwable -> L58
+            r4 = 8192(0x2000, float:1.148E-41)
+            byte[] r4 = new byte[r4]     // Catch: java.lang.Throwable -> L48
+        L38:
+            int r5 = r0.read(r4)     // Catch: java.lang.Throwable -> L48
+            r6 = r5
+            if (r5 <= 0) goto L44
+            r5 = 0
+            r3.write(r4, r5, r6)     // Catch: java.lang.Throwable -> L48
+            goto L38
+        L44:
+            r3.close()     // Catch: java.lang.Throwable -> L58
+        L47:
+            goto Le
+        L48:
+            r4 = move-exception
+            r3.close()     // Catch: java.lang.Throwable -> L4d
+            goto L51
+        L4d:
+            r5 = move-exception
+            r4.addSuppressed(r5)     // Catch: java.lang.Throwable -> L58
+        L51:
+            throw r4     // Catch: java.lang.Throwable -> L58
+        L52:
+            if (r0 == 0) goto L57
+            r0.close()
+        L57:
+            return
+        L58:
+            r1 = move-exception
+            if (r0 == 0) goto L63
+            r0.close()     // Catch: java.lang.Throwable -> L5f
+            goto L63
+        L5f:
+            r2 = move-exception
+            r1.addSuppressed(r2)
+        L63:
+            throw r1
+        */
+        throw new UnsupportedOperationException("Method not decompiled: com.brixcore.util.io.CompressingUtils.extract7z(java.io.File, java.io.File):void");
     }
 
     public static void extractRar(File rarFile, File destination) throws IOException {

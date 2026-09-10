@@ -222,45 +222,12 @@ public final class LibraryAnalyzer implements Iterable<LibraryMark> {
 
     /* JADX WARN: Failed to restore enum class, 'enum' modifier and super class removed */
     /* JADX WARN: Unknown enum class pattern. Please report as an issue! */
-    public static class LibraryType {
-        private final Pattern artifact;
-        private final Pattern group;
-        private final boolean modLoader;
-        private final ModLoaderType modLoaderType;
-        private final String patchId;
-        public static final LibraryType MINECRAFT = new LibraryType("MINECRAFT", 0, true, "game", Pattern.compile("^$"), Pattern.compile("^$"), null);
-        public static final LibraryType FABRIC = new LibraryType("FABRIC", 1, true, "fabric", Pattern.compile("net\\.fabricmc"), Pattern.compile("fabric-loader"), ModLoaderType.FABRIC);
-        public static final LibraryType FABRIC_API = new LibraryType("FABRIC_API", 2, true, "fabric-api", Pattern.compile("net\\.fabricmc"), Pattern.compile("fabric-api"), null);
-        public static final LibraryType FORGE = new AnonymousClass1("FORGE", 3, true, DefaultCacheRepository.LibraryIndex.TYPE_FORGE, Pattern.compile("net\\.minecraftforge"), Pattern.compile("(forge|fmlloader)"), ModLoaderType.FORGE);
-        public static final LibraryType CLEANROOM = new LibraryType("CLEANROOM", 4, true, "cleanroom", Pattern.compile("com\\.cleanroommc"), Pattern.compile("cleanroom"), ModLoaderType.CLEANROOM);
-        public static final LibraryType NEO_FORGE = new AnonymousClass2("NEO_FORGE", 5, true, "neoforge", Pattern.compile("net\\.neoforged\\.fancymodloader"), Pattern.compile("(core|loader)"), ModLoaderType.NEO_FORGED);
-        public static final LibraryType LITELOADER = new LibraryType("LITELOADER", 6, true, "liteloader", Pattern.compile("com\\.mumfrey"), Pattern.compile("liteloader"), ModLoaderType.LITE_LOADER);
-        public static final LibraryType OPTIFINE = new LibraryType("OPTIFINE", 7, false, "optifine", Pattern.compile("(net\\.)?optifine"), Pattern.compile("^(?!.*launchwrapper).*$"), null);
-        public static final LibraryType QUILT = new LibraryType("QUILT", 8, true, "quilt", Pattern.compile("org\\.quiltmc"), Pattern.compile("quilt-loader"), ModLoaderType.QUILT);
-        public static final LibraryType QUILT_API = new LibraryType("QUILT_API", 9, true, "quilt-api", Pattern.compile("org\\.quiltmc"), Pattern.compile("quilt-api"), null);
-        public static final LibraryType BOOTSTRAP_LAUNCHER = new LibraryType("BOOTSTRAP_LAUNCHER", 10, false, "", Pattern.compile("cpw\\.mods"), Pattern.compile("bootstraplauncher"), null);
-        private static final /* synthetic */ LibraryType[] $VALUES = $values();
-
-        private static /* synthetic */ LibraryType[] $values() {
-            return new LibraryType[]{MINECRAFT, FABRIC, FABRIC_API, FORGE, CLEANROOM, NEO_FORGE, LITELOADER, OPTIFINE, QUILT, QUILT_API, BOOTSTRAP_LAUNCHER};
-        }
-
-        public static LibraryType valueOf(String name) {
-            return (LibraryType) Enum.valueOf(LibraryType.class, name);
-        }
-
-        public static LibraryType[] values() {
-            return (LibraryType[]) $VALUES.clone();
-        }
-
-        /* JADX INFO: renamed from: com.brixcore.download.LibraryAnalyzer$LibraryType$1, reason: invalid class name */
-        final enum AnonymousClass1 extends LibraryType {
-            private final Pattern FORGE_VERSION_MATCHER;
-
-            private AnonymousClass1(String str, int i, boolean modLoader, String patchId, Pattern group, Pattern artifact, ModLoaderType modLoaderType) {
-                super(str, i, modLoader, patchId, group, artifact, modLoaderType);
-                this.FORGE_VERSION_MATCHER = Pattern.compile("^([0-9.]+)-(?<forge>[0-9.]+)(-([0-9.]+))?$");
-            }
+    public enum LibraryType {
+        MINECRAFT(true, "game", Pattern.compile("^$"), Pattern.compile("^$"), null),
+        FABRIC(true, "fabric", Pattern.compile("net\\.fabricmc"), Pattern.compile("fabric-loader"), ModLoaderType.FABRIC),
+        FABRIC_API(true, "fabric-api", Pattern.compile("net\\.fabricmc"), Pattern.compile("fabric-api"), null),
+        FORGE(true, DefaultCacheRepository.LibraryIndex.TYPE_FORGE, Pattern.compile("net\\.minecraftforge"), Pattern.compile("(forge|fmlloader)"), ModLoaderType.FORGE) {
+            private final Pattern FORGE_VERSION_MATCHER = Pattern.compile("^([0-9.]+)-(?<forge>[0-9.]+)(-([0-9.]+))?$");
 
             @Override // com.brixcore.download.LibraryAnalyzer.LibraryType
             protected String patchVersion(Version gameVersion, String libraryVersion) {
@@ -280,16 +247,10 @@ public final class LibraryAnalyzer implements Iterable<LibraryMark> {
                 }
                 return super.matchLibrary(library, libraries);
             }
-        }
-
-        /* JADX INFO: renamed from: com.brixcore.download.LibraryAnalyzer$LibraryType$2, reason: invalid class name */
-        final enum AnonymousClass2 extends LibraryType {
-            private final Pattern NEO_FORGE_VERSION_MATCHER;
-
-            private AnonymousClass2(String str, int i, boolean modLoader, String patchId, Pattern group, Pattern artifact, ModLoaderType modLoaderType) {
-                super(str, i, modLoader, patchId, group, artifact, modLoaderType);
-                this.NEO_FORGE_VERSION_MATCHER = Pattern.compile("^([0-9.]+)-(?<forge>[0-9.]+)(-([0-9.]+))?$");
-            }
+        },
+        CLEANROOM(true, "cleanroom", Pattern.compile("com\\.cleanroommc"), Pattern.compile("cleanroom"), ModLoaderType.CLEANROOM),
+        NEO_FORGE(true, "neoforge", Pattern.compile("net\\.neoforged\\.fancymodloader"), Pattern.compile("(core|loader)"), ModLoaderType.NEO_FORGED) {
+            private final Pattern NEO_FORGE_VERSION_MATCHER = Pattern.compile("^([0-9.]+)-(?<forge>[0-9.]+)(-([0-9.]+))?$");
 
             @Override // com.brixcore.download.LibraryAnalyzer.LibraryType
             protected String patchVersion(Version gameVersion, String libraryVersion) {
@@ -328,10 +289,20 @@ public final class LibraryAnalyzer implements Iterable<LibraryMark> {
                 }
                 return null;
             }
-        }
+        },
+        LITELOADER(true, "liteloader", Pattern.compile("com\\.mumfrey"), Pattern.compile("liteloader"), ModLoaderType.LITE_LOADER),
+        OPTIFINE(false, "optifine", Pattern.compile("(net\\.)?optifine"), Pattern.compile("^(?!.*launchwrapper).*$"), null),
+        QUILT(true, "quilt", Pattern.compile("org\\.quiltmc"), Pattern.compile("quilt-loader"), ModLoaderType.QUILT),
+        QUILT_API(true, "quilt-api", Pattern.compile("org\\.quiltmc"), Pattern.compile("quilt-api"), null),
+        BOOTSTRAP_LAUNCHER(false, "", Pattern.compile("cpw\\.mods"), Pattern.compile("bootstraplauncher"), null);
 
-        private LibraryType(String str, int i, boolean modLoader, String patchId, Pattern group, Pattern artifact, ModLoaderType modLoaderType) {
-            super(str, i);
+        private final Pattern artifact;
+        private final Pattern group;
+        private final boolean modLoader;
+        private final ModLoaderType modLoaderType;
+        private final String patchId;
+
+        private LibraryType(boolean modLoader, String patchId, Pattern group, Pattern artifact, ModLoaderType modLoaderType) {
             this.modLoader = modLoader;
             this.patchId = patchId;
             this.group = group;
