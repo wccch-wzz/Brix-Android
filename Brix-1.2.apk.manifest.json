@@ -1,0 +1,17 @@
+{
+  "file": "Brix-1.2.apk",
+  "size": 47037627,
+  "sha256": "bae87937b49c48919c05191848243d41fd50bd140f626b359dd5314ac0980622",
+  "chunk_bytes": 8388608,
+  "part_count": 6,
+  "parts": [
+    "Brix-1.2.apk.part-000",
+    "Brix-1.2.apk.part-001",
+    "Brix-1.2.apk.part-002",
+    "Brix-1.2.apk.part-003",
+    "Brix-1.2.apk.part-004",
+    "Brix-1.2.apk.part-005"
+  ],
+  "join": "cat Brix-1.2.apk.part-* > Brix-1.2.apk",
+  "note": "因沙箱网络限制，大文件以分片形式提交。下载后执行 join 命令还原，并核对 sha256。"
+}
