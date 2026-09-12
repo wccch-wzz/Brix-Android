@@ -1,5 +1,13 @@
 # Brix
 
+> ### 📦 想找**反编译源码**？请移步 ➡️ [**wccch-wzz/Brix-Android-Source**](https://github.com/wccch-wzz/Brix-Android-Source)
+>
+> Brix 启动器（`com.brix.brixlauncher`）的 **可编译源码工程**已独立成库：
+> 839 个业务源文件 + 完整依赖 jar，克隆后 `./build.sh` 即可编译通过（0 error）。
+> 本仓库的 [`brix-src/`](https://github.com/wccch-wzz/Brix-Android/tree/main/brix-src) 为早期版本，**新版本请以上方仓库为准**。
+
+---
+
 > 💻 **PC 版（Windows）配套仓库：[wccch-wzz/Brix-PC](https://github.com/wccch-wzz/Brix-PC)**
 > 本仓库为 **Brix 手机版（主项目）**；PC 版（Windows）源码见上方 Brix-PC 仓库。
 一个基于 WebView 的 Minecraft（我的世界）启动器 / 模组管理器，适用于 Android。
